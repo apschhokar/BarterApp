@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D2753A91BF039DF0062E0C0 /* BarterLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D2753A81BF039DF0062E0C0 /* BarterLogin.png */; settings = {ASSET_TAGS = (); }; };
 		2D353F411BF0177800BDA3CE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D353F401BF0177800BDA3CE /* main.m */; };
 		2D353F441BF0177800BDA3CE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D353F431BF0177800BDA3CE /* AppDelegate.m */; };
 		2D353F4A1BF0177800BDA3CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D353F481BF0177800BDA3CE /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2D2753A81BF039DF0062E0C0 /* BarterLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BarterLogin.png; sourceTree = "<group>"; };
 		2D353F3C1BF0177800BDA3CE /* BarterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BarterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D353F401BF0177800BDA3CE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2D353F421BF0177800BDA3CE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 		2D353F7D1BF01AE300BDA3CE /* BarterImages */ = {
 			isa = PBXGroup;
 			children = (
+				2D2753A81BF039DF0062E0C0 /* BarterLogin.png */,
 			);
 			name = BarterImages;
 			path = BarterApp/BarterImages;
@@ -293,6 +296,7 @@
 				2D353F521BF0177800BDA3CE /* LaunchScreen.storyboard in Resources */,
 				2D353F4F1BF0177800BDA3CE /* Assets.xcassets in Resources */,
 				2D353F4A1BF0177800BDA3CE /* Main.storyboard in Resources */,
+				2D2753A91BF039DF0062E0C0 /* BarterLogin.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,6 +550,7 @@
 				2D353F6E1BF0177800BDA3CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2D353F6F1BF0177800BDA3CE /* Build configuration list for PBXNativeTarget "BarterAppTests" */ = {
 			isa = XCConfigurationList;
@@ -554,6 +559,7 @@
 				2D353F711BF0177800BDA3CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2D353F721BF0177800BDA3CE /* Build configuration list for PBXNativeTarget "BarterAppUITests" */ = {
 			isa = XCConfigurationList;
@@ -562,6 +568,7 @@
 				2D353F741BF0177800BDA3CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

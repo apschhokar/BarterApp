@@ -17,22 +17,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Barter Books" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="piS-ZU-Bfm">
-                                <rect key="frame" x="58" y="20" width="248" height="90"/>
+                                <rect key="frame" x="70" y="8" width="248" height="90"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="31"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="BarterLogin.png" translatesAutoresizingMaskIntoConstraints="NO" id="JGy-eu-TCt">
+                                <rect key="frame" x="48" y="106" width="270" height="217"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Dv-7f-oa0">
-                                <rect key="frame" x="108" y="445" width="132" height="62"/>
+                                <rect key="frame" x="111" y="490" width="132" height="62"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="onLoginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1KK-YZ-4lX"/>
                                     <segue destination="BtV-tK-xiW" kind="show" id="cO4-po-7Il"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JGy-eu-TCt">
-                                <rect key="frame" x="48" y="137" width="240" height="128"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -61,4 +61,7 @@
             <point key="canvasLocation" x="1001" y="327"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="BarterLogin.png" width="512" height="512"/>
+    </resources>
 </document>
