@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden:NO];
+    self.navigationController.navigationBar.translucent = NO;
 
     // Do any additional setup after loading the view.
 }
