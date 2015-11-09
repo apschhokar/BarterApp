@@ -86,6 +86,8 @@
 		2D353F331BF0177800BDA3CE = {
 			isa = PBXGroup;
 			children = (
+				2D353F7D1BF01AE300BDA3CE /* BarterImages */,
+				2D353F7E1BF01AE300BDA3CE /* BarterView */,
 				2D353F751BF0195A00BDA3CE /* BarterAppController */,
 				2D353F781BF0195A00BDA3CE /* BarterModel */,
 				2D353F3E1BF0177800BDA3CE /* BarterApp */,
@@ -110,7 +112,6 @@
 			children = (
 				2D353F421BF0177800BDA3CE /* AppDelegate.h */,
 				2D353F431BF0177800BDA3CE /* AppDelegate.m */,
-				2D353F481BF0177800BDA3CE /* Main.storyboard */,
 				2D353F4E1BF0177800BDA3CE /* Assets.xcassets */,
 				2D353F501BF0177800BDA3CE /* LaunchScreen.storyboard */,
 				2D353F531BF0177800BDA3CE /* Info.plist */,
@@ -164,6 +165,23 @@
 			);
 			name = BarterModel;
 			path = BarterApp/BarterModel;
+			sourceTree = "<group>";
+		};
+		2D353F7D1BF01AE300BDA3CE /* BarterImages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = BarterImages;
+			path = BarterApp/BarterImages;
+			sourceTree = "<group>";
+		};
+		2D353F7E1BF01AE300BDA3CE /* BarterView */ = {
+			isa = PBXGroup;
+			children = (
+				2D353F481BF0177800BDA3CE /* Main.storyboard */,
+			);
+			name = BarterView;
+			path = BarterApp/BarterView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -345,6 +363,7 @@
 				2D353F491BF0177800BDA3CE /* Base */,
 			);
 			name = Main.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		2D353F501BF0177800BDA3CE /* LaunchScreen.storyboard */ = {
