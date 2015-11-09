@@ -126,10 +126,10 @@
             </objects>
             <point key="canvasLocation" x="1874.5" y="1386.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Take Book Photo View Controller-->
         <scene sceneID="jn3-gW-Sic">
             <objects>
-                <viewController id="HgF-4O-yGp" sceneMemberID="viewController">
+                <viewController id="HgF-4O-yGp" customClass="TakeBookPhotoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ay9-qg-QIt"/>
                         <viewControllerLayoutGuide type="bottom" id="uQp-dK-RX6"/>
@@ -137,9 +137,24 @@
                     <view key="view" contentMode="scaleToFill" id="twh-6z-eBd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GA8-ox-oHV">
+                                <rect key="frame" x="140" y="556" width="92" height="54"/>
+                                <state key="normal" title="Upload"/>
+                                <connections>
+                                    <action selector="takePhoto:" destination="HgF-4O-yGp" eventType="touchUpInside" id="aiv-DC-icf"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CJ8-QD-WRr">
+                                <rect key="frame" x="118" y="115" width="156" height="145"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="imageView" destination="CJ8-QD-WRr" id="qte-9u-Xb8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fDV-kR-QlC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
