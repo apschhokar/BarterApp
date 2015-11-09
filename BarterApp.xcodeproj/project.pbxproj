@@ -9,13 +9,14 @@
 /* Begin PBXBuildFile section */
 		2D353F411BF0177800BDA3CE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D353F401BF0177800BDA3CE /* main.m */; };
 		2D353F441BF0177800BDA3CE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D353F431BF0177800BDA3CE /* AppDelegate.m */; };
-		2D353F471BF0177800BDA3CE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D353F461BF0177800BDA3CE /* ViewController.m */; };
 		2D353F4A1BF0177800BDA3CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D353F481BF0177800BDA3CE /* Main.storyboard */; };
 		2D353F4D1BF0177800BDA3CE /* BarterApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2D353F4B1BF0177800BDA3CE /* BarterApp.xcdatamodeld */; };
 		2D353F4F1BF0177800BDA3CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D353F4E1BF0177800BDA3CE /* Assets.xcassets */; };
 		2D353F521BF0177800BDA3CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D353F501BF0177800BDA3CE /* LaunchScreen.storyboard */; };
 		2D353F5D1BF0177800BDA3CE /* BarterAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D353F5C1BF0177800BDA3CE /* BarterAppTests.m */; };
 		2D353F681BF0177800BDA3CE /* BarterAppUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D353F671BF0177800BDA3CE /* BarterAppUITests.m */; };
+		2D353F791BF0195A00BDA3CE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D353F771BF0195A00BDA3CE /* ViewController.m */; settings = {ASSET_TAGS = (); }; };
+		2D353F7C1BF0198D00BDA3CE /* Books.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D353F7B1BF0198D00BDA3CE /* Books.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,8 +41,6 @@
 		2D353F401BF0177800BDA3CE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2D353F421BF0177800BDA3CE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2D353F431BF0177800BDA3CE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		2D353F451BF0177800BDA3CE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		2D353F461BF0177800BDA3CE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		2D353F491BF0177800BDA3CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2D353F4C1BF0177800BDA3CE /* BarterApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BarterApp.xcdatamodel; sourceTree = "<group>"; };
 		2D353F4E1BF0177800BDA3CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,6 +52,10 @@
 		2D353F631BF0177800BDA3CE /* BarterAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BarterAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D353F671BF0177800BDA3CE /* BarterAppUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BarterAppUITests.m; sourceTree = "<group>"; };
 		2D353F691BF0177800BDA3CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D353F761BF0195A00BDA3CE /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		2D353F771BF0195A00BDA3CE /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		2D353F7A1BF0198D00BDA3CE /* Books.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Books.h; sourceTree = "<group>"; };
+		2D353F7B1BF0198D00BDA3CE /* Books.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Books.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +86,8 @@
 		2D353F331BF0177800BDA3CE = {
 			isa = PBXGroup;
 			children = (
+				2D353F751BF0195A00BDA3CE /* BarterAppController */,
+				2D353F781BF0195A00BDA3CE /* BarterModel */,
 				2D353F3E1BF0177800BDA3CE /* BarterApp */,
 				2D353F5B1BF0177800BDA3CE /* BarterAppTests */,
 				2D353F661BF0177800BDA3CE /* BarterAppUITests */,
@@ -105,8 +110,6 @@
 			children = (
 				2D353F421BF0177800BDA3CE /* AppDelegate.h */,
 				2D353F431BF0177800BDA3CE /* AppDelegate.m */,
-				2D353F451BF0177800BDA3CE /* ViewController.h */,
-				2D353F461BF0177800BDA3CE /* ViewController.m */,
 				2D353F481BF0177800BDA3CE /* Main.storyboard */,
 				2D353F4E1BF0177800BDA3CE /* Assets.xcassets */,
 				2D353F501BF0177800BDA3CE /* LaunchScreen.storyboard */,
@@ -141,6 +144,26 @@
 				2D353F691BF0177800BDA3CE /* Info.plist */,
 			);
 			path = BarterAppUITests;
+			sourceTree = "<group>";
+		};
+		2D353F751BF0195A00BDA3CE /* BarterAppController */ = {
+			isa = PBXGroup;
+			children = (
+				2D353F761BF0195A00BDA3CE /* ViewController.h */,
+				2D353F771BF0195A00BDA3CE /* ViewController.m */,
+			);
+			name = BarterAppController;
+			path = BarterApp/BarterAppController;
+			sourceTree = "<group>";
+		};
+		2D353F781BF0195A00BDA3CE /* BarterModel */ = {
+			isa = PBXGroup;
+			children = (
+				2D353F7A1BF0198D00BDA3CE /* Books.h */,
+				2D353F7B1BF0198D00BDA3CE /* Books.m */,
+			);
+			name = BarterModel;
+			path = BarterApp/BarterModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,10 +299,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D353F471BF0177800BDA3CE /* ViewController.m in Sources */,
 				2D353F441BF0177800BDA3CE /* AppDelegate.m in Sources */,
+				2D353F7C1BF0198D00BDA3CE /* Books.m in Sources */,
 				2D353F411BF0177800BDA3CE /* main.m in Sources */,
 				2D353F4D1BF0177800BDA3CE /* BarterApp.xcdatamodeld in Sources */,
+				2D353F791BF0195A00BDA3CE /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
