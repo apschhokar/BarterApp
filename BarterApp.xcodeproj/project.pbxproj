@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		2D2753A91BF039DF0062E0C0 /* BarterLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D2753A81BF039DF0062E0C0 /* BarterLogin.png */; settings = {ASSET_TAGS = (); }; };
+		2D2753AE1BF1227E0062E0C0 /* MyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2753AD1BF1227E0062E0C0 /* MyProfileViewController.m */; settings = {ASSET_TAGS = (); }; };
+		2D2753AF1BF1227E0062E0C0 /* MyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2753AD1BF1227E0062E0C0 /* MyProfileViewController.m */; settings = {ASSET_TAGS = (); }; };
+		2D2753B21BF1228F0062E0C0 /* BooksFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2753B11BF1228F0062E0C0 /* BooksFeedViewController.m */; settings = {ASSET_TAGS = (); }; };
+		2D2753B31BF1228F0062E0C0 /* BooksFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2753B11BF1228F0062E0C0 /* BooksFeedViewController.m */; settings = {ASSET_TAGS = (); }; };
+		2D2753B61BF1229E0062E0C0 /* MyBooksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2753B51BF1229E0062E0C0 /* MyBooksViewController.m */; settings = {ASSET_TAGS = (); }; };
+		2D2753B71BF1229E0062E0C0 /* MyBooksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2753B51BF1229E0062E0C0 /* MyBooksViewController.m */; settings = {ASSET_TAGS = (); }; };
+		2D2753BA1BF122EB0062E0C0 /* MyRequestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2753B91BF122EB0062E0C0 /* MyRequestsViewController.m */; settings = {ASSET_TAGS = (); }; };
+		2D2753BB1BF122EB0062E0C0 /* MyRequestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2753B91BF122EB0062E0C0 /* MyRequestsViewController.m */; settings = {ASSET_TAGS = (); }; };
+		2D2753C21BF1246B0062E0C0 /* DashboardTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2753C11BF1246B0062E0C0 /* DashboardTabViewController.m */; settings = {ASSET_TAGS = (); }; };
+		2D2753C31BF1246B0062E0C0 /* DashboardTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2753C11BF1246B0062E0C0 /* DashboardTabViewController.m */; settings = {ASSET_TAGS = (); }; };
 		2D353F411BF0177800BDA3CE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D353F401BF0177800BDA3CE /* main.m */; };
 		2D353F441BF0177800BDA3CE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D353F431BF0177800BDA3CE /* AppDelegate.m */; };
 		2D353F4A1BF0177800BDA3CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D353F481BF0177800BDA3CE /* Main.storyboard */; };
@@ -39,6 +49,16 @@
 
 /* Begin PBXFileReference section */
 		2D2753A81BF039DF0062E0C0 /* BarterLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BarterLogin.png; sourceTree = "<group>"; };
+		2D2753AC1BF1227E0062E0C0 /* MyProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyProfileViewController.h; sourceTree = "<group>"; };
+		2D2753AD1BF1227E0062E0C0 /* MyProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyProfileViewController.m; sourceTree = "<group>"; };
+		2D2753B01BF1228F0062E0C0 /* BooksFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BooksFeedViewController.h; sourceTree = "<group>"; };
+		2D2753B11BF1228F0062E0C0 /* BooksFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BooksFeedViewController.m; sourceTree = "<group>"; };
+		2D2753B41BF1229E0062E0C0 /* MyBooksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBooksViewController.h; sourceTree = "<group>"; };
+		2D2753B51BF1229E0062E0C0 /* MyBooksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBooksViewController.m; sourceTree = "<group>"; };
+		2D2753B81BF122EB0062E0C0 /* MyRequestsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyRequestsViewController.h; sourceTree = "<group>"; };
+		2D2753B91BF122EB0062E0C0 /* MyRequestsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyRequestsViewController.m; sourceTree = "<group>"; };
+		2D2753C01BF1246B0062E0C0 /* DashboardTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardTabViewController.h; sourceTree = "<group>"; };
+		2D2753C11BF1246B0062E0C0 /* DashboardTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardTabViewController.m; sourceTree = "<group>"; };
 		2D353F3C1BF0177800BDA3CE /* BarterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BarterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D353F401BF0177800BDA3CE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2D353F421BF0177800BDA3CE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -154,6 +174,16 @@
 			children = (
 				2D353F761BF0195A00BDA3CE /* ViewController.h */,
 				2D353F771BF0195A00BDA3CE /* ViewController.m */,
+				2D2753AC1BF1227E0062E0C0 /* MyProfileViewController.h */,
+				2D2753AD1BF1227E0062E0C0 /* MyProfileViewController.m */,
+				2D2753B01BF1228F0062E0C0 /* BooksFeedViewController.h */,
+				2D2753B11BF1228F0062E0C0 /* BooksFeedViewController.m */,
+				2D2753B41BF1229E0062E0C0 /* MyBooksViewController.h */,
+				2D2753B51BF1229E0062E0C0 /* MyBooksViewController.m */,
+				2D2753B81BF122EB0062E0C0 /* MyRequestsViewController.h */,
+				2D2753B91BF122EB0062E0C0 /* MyRequestsViewController.m */,
+				2D2753C01BF1246B0062E0C0 /* DashboardTabViewController.h */,
+				2D2753C11BF1246B0062E0C0 /* DashboardTabViewController.m */,
 			);
 			name = BarterAppController;
 			path = BarterApp/BarterAppController;
@@ -324,7 +354,12 @@
 				2D353F441BF0177800BDA3CE /* AppDelegate.m in Sources */,
 				2D353F7C1BF0198D00BDA3CE /* Books.m in Sources */,
 				2D353F411BF0177800BDA3CE /* main.m in Sources */,
+				2D2753BA1BF122EB0062E0C0 /* MyRequestsViewController.m in Sources */,
+				2D2753B21BF1228F0062E0C0 /* BooksFeedViewController.m in Sources */,
+				2D2753C21BF1246B0062E0C0 /* DashboardTabViewController.m in Sources */,
 				2D353F4D1BF0177800BDA3CE /* BarterApp.xcdatamodeld in Sources */,
+				2D2753B61BF1229E0062E0C0 /* MyBooksViewController.m in Sources */,
+				2D2753AE1BF1227E0062E0C0 /* MyProfileViewController.m in Sources */,
 				2D353F791BF0195A00BDA3CE /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -333,7 +368,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D2753AF1BF1227E0062E0C0 /* MyProfileViewController.m in Sources */,
+				2D2753B71BF1229E0062E0C0 /* MyBooksViewController.m in Sources */,
+				2D2753B31BF1228F0062E0C0 /* BooksFeedViewController.m in Sources */,
+				2D2753BB1BF122EB0062E0C0 /* MyRequestsViewController.m in Sources */,
 				2D353F5D1BF0177800BDA3CE /* BarterAppTests.m in Sources */,
+				2D2753C31BF1246B0062E0C0 /* DashboardTabViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
