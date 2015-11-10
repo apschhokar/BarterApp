@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     [self openCamera];
 }
 
@@ -31,9 +32,7 @@
     picker.delegate = self;
     picker.allowsEditing = YES;
     picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    
     [self presentViewController:picker animated:YES completion:NULL];
-    
 }
 
 
@@ -41,11 +40,18 @@
     
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     self.imageView.image = chosenImage;
-    
     [picker dismissViewControllerAnimated:YES completion:NULL];
-    
+}
+
+// go back to my Books if user cancelled the camera option
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    [[self navigationController] popViewControllerAnimated:YES];  // goes back to previous view
 }
 
 
-
+- (IBAction)onUploadButtonPressed:(id)sender {
+     [[self navigationController] popViewControllerAnimated:YES];  
+    
+    
+}
 @end

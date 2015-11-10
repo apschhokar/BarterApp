@@ -7,8 +7,9 @@
 //
 
 #import "BooksFeedViewController.h"
+#import "CustomBookCell.h"
 
-@interface BooksFeedViewController ()
+@interface BooksFeedViewController ()  <UITableViewDataSource,UITableViewDelegate>
 
 @end
 
@@ -18,8 +19,18 @@
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden:NO];
     self.navigationController.navigationBar.translucent = NO;
+    
+    NSString *myIdentifier = @"BookCell";
+    [self.booksFeedTableView registerNib:[UINib nibWithNibName:@"CustomBookCell" bundle:nil] forCellReuseIdentifier:myIdentifier];
 
     // Do any additional setup after loading the view.
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+
+    _booksFeedTableView.delegate = self;
+    _booksFeedTableView.dataSource =self;
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,5 +47,40 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+
+{
+    
+    return 10;
+    
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    static NSString *simpleTableIdentifier = @"BookCell";
+    
+    UITableViewCell *cell = (CustomBookCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+    }
+   
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+}
+
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 82;
+}
+
+
 
 @end

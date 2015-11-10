@@ -20,6 +20,14 @@
 		2D2753C31BF1246B0062E0C0 /* DashboardTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2753C11BF1246B0062E0C0 /* DashboardTabViewController.m */; settings = {ASSET_TAGS = (); }; };
 		2D2753C61BF12C2E0062E0C0 /* TakeBookPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2753C51BF12C2E0062E0C0 /* TakeBookPhotoViewController.m */; settings = {ASSET_TAGS = (); }; };
 		2D2753C71BF12C2E0062E0C0 /* TakeBookPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2753C51BF12C2E0062E0C0 /* TakeBookPhotoViewController.m */; settings = {ASSET_TAGS = (); }; };
+		2D2753CC1BF1AD030062E0C0 /* CustomBookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D2753CB1BF1AD030062E0C0 /* CustomBookCell.xib */; settings = {ASSET_TAGS = (); }; };
+		2D2753CD1BF1AD030062E0C0 /* CustomBookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D2753CB1BF1AD030062E0C0 /* CustomBookCell.xib */; settings = {ASSET_TAGS = (); }; };
+		2D2753D11BF1AE650062E0C0 /* CustomBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2753D01BF1AE650062E0C0 /* CustomBookCell.m */; settings = {ASSET_TAGS = (); }; };
+		2D2753D21BF1AE650062E0C0 /* CustomBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2753D01BF1AE650062E0C0 /* CustomBookCell.m */; settings = {ASSET_TAGS = (); }; };
+		2D2753D61BF1C3930062E0C0 /* IMG_0559.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2D2753D51BF1C3930062E0C0 /* IMG_0559.jpg */; settings = {ASSET_TAGS = (); }; };
+		2D2753D71BF1C3930062E0C0 /* IMG_0559.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2D2753D51BF1C3930062E0C0 /* IMG_0559.jpg */; settings = {ASSET_TAGS = (); }; };
+		2D2753DA1BF1CA780062E0C0 /* CustomRequestViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2753D91BF1CA780062E0C0 /* CustomRequestViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		2D2753DB1BF1CA780062E0C0 /* CustomRequestViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2753D91BF1CA780062E0C0 /* CustomRequestViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		2D353F411BF0177800BDA3CE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D353F401BF0177800BDA3CE /* main.m */; };
 		2D353F441BF0177800BDA3CE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D353F431BF0177800BDA3CE /* AppDelegate.m */; };
 		2D353F4A1BF0177800BDA3CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D353F481BF0177800BDA3CE /* Main.storyboard */; };
@@ -63,6 +71,12 @@
 		2D2753C11BF1246B0062E0C0 /* DashboardTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardTabViewController.m; sourceTree = "<group>"; };
 		2D2753C41BF12C2E0062E0C0 /* TakeBookPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakeBookPhotoViewController.h; sourceTree = "<group>"; };
 		2D2753C51BF12C2E0062E0C0 /* TakeBookPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TakeBookPhotoViewController.m; sourceTree = "<group>"; };
+		2D2753CB1BF1AD030062E0C0 /* CustomBookCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomBookCell.xib; sourceTree = "<group>"; };
+		2D2753CF1BF1AE650062E0C0 /* CustomBookCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomBookCell.h; path = BarterApp/HelperClasses/CustomBookCell.h; sourceTree = "<group>"; };
+		2D2753D01BF1AE650062E0C0 /* CustomBookCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomBookCell.m; path = BarterApp/HelperClasses/CustomBookCell.m; sourceTree = "<group>"; };
+		2D2753D51BF1C3930062E0C0 /* IMG_0559.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0559.jpg; sourceTree = "<group>"; };
+		2D2753D81BF1CA780062E0C0 /* CustomRequestViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomRequestViewCell.h; path = BarterApp/HelperClasses/CustomRequestViewCell.h; sourceTree = "<group>"; };
+		2D2753D91BF1CA780062E0C0 /* CustomRequestViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomRequestViewCell.m; path = BarterApp/HelperClasses/CustomRequestViewCell.m; sourceTree = "<group>"; };
 		2D353F3C1BF0177800BDA3CE /* BarterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BarterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D353F401BF0177800BDA3CE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2D353F421BF0177800BDA3CE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -109,9 +123,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D2753CE1BF1AE280062E0C0 /* HelperClasses */ = {
+			isa = PBXGroup;
+			children = (
+				2D2753CF1BF1AE650062E0C0 /* CustomBookCell.h */,
+				2D2753D01BF1AE650062E0C0 /* CustomBookCell.m */,
+				2D2753D81BF1CA780062E0C0 /* CustomRequestViewCell.h */,
+				2D2753D91BF1CA780062E0C0 /* CustomRequestViewCell.m */,
+			);
+			name = HelperClasses;
+			sourceTree = "<group>";
+		};
 		2D353F331BF0177800BDA3CE = {
 			isa = PBXGroup;
 			children = (
+				2D2753CE1BF1AE280062E0C0 /* HelperClasses */,
 				2D353F7D1BF01AE300BDA3CE /* BarterImages */,
 				2D353F7E1BF01AE300BDA3CE /* BarterView */,
 				2D353F751BF0195A00BDA3CE /* BarterAppController */,
@@ -208,6 +234,7 @@
 		2D353F7D1BF01AE300BDA3CE /* BarterImages */ = {
 			isa = PBXGroup;
 			children = (
+				2D2753D51BF1C3930062E0C0 /* IMG_0559.jpg */,
 				2D2753A81BF039DF0062E0C0 /* BarterLogin.png */,
 			);
 			name = BarterImages;
@@ -218,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				2D353F481BF0177800BDA3CE /* Main.storyboard */,
+				2D2753CB1BF1AD030062E0C0 /* CustomBookCell.xib */,
 			);
 			name = BarterView;
 			path = BarterApp/BarterView;
@@ -332,6 +360,8 @@
 				2D353F521BF0177800BDA3CE /* LaunchScreen.storyboard in Resources */,
 				2D353F4F1BF0177800BDA3CE /* Assets.xcassets in Resources */,
 				2D353F4A1BF0177800BDA3CE /* Main.storyboard in Resources */,
+				2D2753CC1BF1AD030062E0C0 /* CustomBookCell.xib in Resources */,
+				2D2753D61BF1C3930062E0C0 /* IMG_0559.jpg in Resources */,
 				2D2753A91BF039DF0062E0C0 /* BarterLogin.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,6 +370,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D2753D71BF1C3930062E0C0 /* IMG_0559.jpg in Resources */,
+				2D2753CD1BF1AD030062E0C0 /* CustomBookCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,8 +398,10 @@
 				2D2753C21BF1246B0062E0C0 /* DashboardTabViewController.m in Sources */,
 				2D353F4D1BF0177800BDA3CE /* BarterApp.xcdatamodeld in Sources */,
 				2D2753B61BF1229E0062E0C0 /* MyBooksViewController.m in Sources */,
+				2D2753D11BF1AE650062E0C0 /* CustomBookCell.m in Sources */,
 				2D2753AE1BF1227E0062E0C0 /* MyProfileViewController.m in Sources */,
 				2D353F791BF0195A00BDA3CE /* ViewController.m in Sources */,
+				2D2753DA1BF1CA780062E0C0 /* CustomRequestViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,8 +410,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D2753AF1BF1227E0062E0C0 /* MyProfileViewController.m in Sources */,
+				2D2753D21BF1AE650062E0C0 /* CustomBookCell.m in Sources */,
 				2D2753B71BF1229E0062E0C0 /* MyBooksViewController.m in Sources */,
 				2D2753B31BF1228F0062E0C0 /* BooksFeedViewController.m in Sources */,
+				2D2753DB1BF1CA780062E0C0 /* CustomRequestViewCell.m in Sources */,
 				2D2753BB1BF122EB0062E0C0 /* MyRequestsViewController.m in Sources */,
 				2D2753C71BF12C2E0062E0C0 /* TakeBookPhotoViewController.m in Sources */,
 				2D353F5D1BF0177800BDA3CE /* BarterAppTests.m in Sources */,

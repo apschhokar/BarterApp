@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MyBooksViewController : UIViewController
+@interface MyBooksViewController : UIViewController <UITableViewDelegate , UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UITableView *myBooksTableView;
 
 @end
