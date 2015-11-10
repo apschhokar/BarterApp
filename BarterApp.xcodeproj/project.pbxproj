@@ -28,6 +28,8 @@
 		2D2753D71BF1C3930062E0C0 /* IMG_0559.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2D2753D51BF1C3930062E0C0 /* IMG_0559.jpg */; settings = {ASSET_TAGS = (); }; };
 		2D2753DA1BF1CA780062E0C0 /* CustomRequestViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2753D91BF1CA780062E0C0 /* CustomRequestViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		2D2753DB1BF1CA780062E0C0 /* CustomRequestViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2753D91BF1CA780062E0C0 /* CustomRequestViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		2D2753DD1BF1CAF00062E0C0 /* CustomRequestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D2753DC1BF1CAF00062E0C0 /* CustomRequestCell.xib */; settings = {ASSET_TAGS = (); }; };
+		2D2753DE1BF1CAF00062E0C0 /* CustomRequestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D2753DC1BF1CAF00062E0C0 /* CustomRequestCell.xib */; settings = {ASSET_TAGS = (); }; };
 		2D353F411BF0177800BDA3CE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D353F401BF0177800BDA3CE /* main.m */; };
 		2D353F441BF0177800BDA3CE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D353F431BF0177800BDA3CE /* AppDelegate.m */; };
 		2D353F4A1BF0177800BDA3CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D353F481BF0177800BDA3CE /* Main.storyboard */; };
@@ -77,6 +79,7 @@
 		2D2753D51BF1C3930062E0C0 /* IMG_0559.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0559.jpg; sourceTree = "<group>"; };
 		2D2753D81BF1CA780062E0C0 /* CustomRequestViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomRequestViewCell.h; path = BarterApp/HelperClasses/CustomRequestViewCell.h; sourceTree = "<group>"; };
 		2D2753D91BF1CA780062E0C0 /* CustomRequestViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomRequestViewCell.m; path = BarterApp/HelperClasses/CustomRequestViewCell.m; sourceTree = "<group>"; };
+		2D2753DC1BF1CAF00062E0C0 /* CustomRequestCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomRequestCell.xib; sourceTree = "<group>"; };
 		2D353F3C1BF0177800BDA3CE /* BarterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BarterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D353F401BF0177800BDA3CE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2D353F421BF0177800BDA3CE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -246,6 +249,7 @@
 			children = (
 				2D353F481BF0177800BDA3CE /* Main.storyboard */,
 				2D2753CB1BF1AD030062E0C0 /* CustomBookCell.xib */,
+				2D2753DC1BF1CAF00062E0C0 /* CustomRequestCell.xib */,
 			);
 			name = BarterView;
 			path = BarterApp/BarterView;
@@ -358,6 +362,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D353F521BF0177800BDA3CE /* LaunchScreen.storyboard in Resources */,
+				2D2753DD1BF1CAF00062E0C0 /* CustomRequestCell.xib in Resources */,
 				2D353F4F1BF0177800BDA3CE /* Assets.xcassets in Resources */,
 				2D353F4A1BF0177800BDA3CE /* Main.storyboard in Resources */,
 				2D2753CC1BF1AD030062E0C0 /* CustomBookCell.xib in Resources */,
@@ -372,6 +377,7 @@
 			files = (
 				2D2753D71BF1C3930062E0C0 /* IMG_0559.jpg in Resources */,
 				2D2753CD1BF1AD030062E0C0 /* CustomBookCell.xib in Resources */,
+				2D2753DE1BF1CAF00062E0C0 /* CustomRequestCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

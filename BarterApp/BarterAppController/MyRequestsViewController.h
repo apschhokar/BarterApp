@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MyRequestsViewController : UIViewController
+@interface MyRequestsViewController : UIViewController <UITableViewDelegate , UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *myRequestTableView;
 
 @end

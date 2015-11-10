@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController () <UITextFieldDelegate>
 
 @end
 
@@ -17,8 +17,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden:YES];
-
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    
+    //Add gesture to hide keyboard whenever we tap on the screen
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,4 +35,12 @@
 - (IBAction)onLoginButtonPressed:(id)sender {
     
 }
+
+
+
+-(void)dismissKeyboard {
+    [self.password resignFirstResponder];
+    [self.emailID resignFirstResponder];
+}
+
 @end
