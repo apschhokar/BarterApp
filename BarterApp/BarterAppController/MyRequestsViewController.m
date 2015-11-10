@@ -9,6 +9,7 @@
 #import "MyRequestsViewController.h"
 #import "CustomRequestViewCell.h"
 
+
 @interface MyRequestsViewController () <UITableViewDataSource , UITableViewDelegate>
 
 @end
@@ -65,7 +66,7 @@
 //use custom book cell for books
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *simpleTableIdentifier = @"BookCell";
+    static NSString *simpleTableIdentifier = @"RequestCell";
     UITableViewCell *cell = (CustomRequestViewCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     
     if (cell == nil) {
@@ -81,7 +82,7 @@
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 82;
+    return 100;
 }
 
 

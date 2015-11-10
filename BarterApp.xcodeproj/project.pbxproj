@@ -80,6 +80,7 @@
 		2D2753D81BF1CA780062E0C0 /* CustomRequestViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomRequestViewCell.h; path = BarterApp/HelperClasses/CustomRequestViewCell.h; sourceTree = "<group>"; };
 		2D2753D91BF1CA780062E0C0 /* CustomRequestViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomRequestViewCell.m; path = BarterApp/HelperClasses/CustomRequestViewCell.m; sourceTree = "<group>"; };
 		2D2753DC1BF1CAF00062E0C0 /* CustomRequestCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomRequestCell.xib; sourceTree = "<group>"; };
+		2D2753E01BF1D1EA0062E0C0 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		2D353F3C1BF0177800BDA3CE /* BarterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BarterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D353F401BF0177800BDA3CE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2D353F421BF0177800BDA3CE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -133,6 +134,7 @@
 				2D2753D01BF1AE650062E0C0 /* CustomBookCell.m */,
 				2D2753D81BF1CA780062E0C0 /* CustomRequestViewCell.h */,
 				2D2753D91BF1CA780062E0C0 /* CustomRequestViewCell.m */,
+				2D2753E01BF1D1EA0062E0C0 /* Constants.h */,
 			);
 			name = HelperClasses;
 			sourceTree = "<group>";
