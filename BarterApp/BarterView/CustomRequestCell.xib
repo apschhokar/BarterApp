@@ -7,10 +7,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RequestCell" rowHeight="100" id="d92-hh-zz9" customClass="CustomRequestViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="458" height="100"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d92-hh-zz9" id="min-bg-Xpc">
-                <rect key="frame" x="0.0" y="0.0" width="458" height="99.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Request By Uttara" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gVn-zL-O3A">
@@ -26,7 +26,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O7o-hS-F1W">
-                        <rect key="frame" x="307" y="14" width="127" height="36"/>
+                        <rect key="frame" x="240" y="14" width="127" height="36"/>
                         <color key="backgroundColor" red="0.46356515786082469" green="0.90840041035353536" blue="0.018729905368114166" alpha="1" colorSpace="calibratedRGB"/>
                         <state key="normal" title="Accept">
                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -36,7 +36,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rjn-h9-dEg">
-                        <rect key="frame" x="307" y="61" width="127" height="30"/>
+                        <rect key="frame" x="240" y="61" width="127" height="30"/>
                         <color key="backgroundColor" red="0.90840041035353536" green="0.23016457182962954" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <state key="normal" title="Decline">
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -49,7 +49,7 @@
                 <outlet property="onDeclineButtonPressed" destination="rjn-h9-dEg" id="N4g-gj-i2G"/>
                 <outlet property="requestByLabel" destination="gVn-zL-O3A" id="9qR-NU-AA6"/>
             </connections>
-            <point key="canvasLocation" x="303" y="247"/>
+            <point key="canvasLocation" x="261.5" y="247"/>
         </tableViewCell>
     </objects>
 </document>
