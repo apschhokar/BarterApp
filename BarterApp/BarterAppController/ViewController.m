@@ -24,6 +24,7 @@
                                    initWithTarget:self
                                    action:@selector(dismissKeyboard)];
     
+    
     [self.view addGestureRecognizer:tap];
 }
 
