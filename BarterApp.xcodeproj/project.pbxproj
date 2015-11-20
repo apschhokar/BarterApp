@@ -74,6 +74,10 @@
 		2D8DE0531BFE7143004998F5 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8DE0311BFE7143004998F5 /* UIRefreshControl+AFNetworking.m */; settings = {ASSET_TAGS = (); }; };
 		2D8DE0541BFE7143004998F5 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8DE0331BFE7143004998F5 /* UIWebView+AFNetworking.m */; settings = {ASSET_TAGS = (); }; };
 		2D8DE0551BFE7143004998F5 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8DE0331BFE7143004998F5 /* UIWebView+AFNetworking.m */; settings = {ASSET_TAGS = (); }; };
+		2D8DE0591BFE7413004998F5 /* WebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8DE0581BFE7413004998F5 /* WebService.m */; settings = {ASSET_TAGS = (); }; };
+		2D8DE05A1BFE7413004998F5 /* WebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8DE0581BFE7413004998F5 /* WebService.m */; settings = {ASSET_TAGS = (); }; };
+		2D8DE05E1BFE7A3A004998F5 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8DE05D1BFE7A3A004998F5 /* RegisterViewController.m */; settings = {ASSET_TAGS = (); }; };
+		2D8DE05F1BFE7A3A004998F5 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8DE05D1BFE7A3A004998F5 /* RegisterViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -171,6 +175,11 @@
 		2D8DE0311BFE7143004998F5 /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		2D8DE0321BFE7143004998F5 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		2D8DE0331BFE7143004998F5 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		2D8DE0571BFE7413004998F5 /* WebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebService.h; path = BarterApp/WebService.h; sourceTree = "<group>"; };
+		2D8DE0581BFE7413004998F5 /* WebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebService.m; path = BarterApp/WebService.m; sourceTree = "<group>"; };
+		2D8DE05B1BFE749C004998F5 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		2D8DE05C1BFE7A3A004998F5 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		2D8DE05D1BFE7A3A004998F5 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +222,7 @@
 		2D353F331BF0177800BDA3CE = {
 			isa = PBXGroup;
 			children = (
+				2D8DE0561BFE7368004998F5 /* ServiceLayer */,
 				2D2753CE1BF1AE280062E0C0 /* HelperClasses */,
 				2D353F7D1BF01AE300BDA3CE /* BarterImages */,
 				2D353F7E1BF01AE300BDA3CE /* BarterView */,
@@ -246,6 +256,7 @@
 				2D353F501BF0177800BDA3CE /* LaunchScreen.storyboard */,
 				2D353F531BF0177800BDA3CE /* Info.plist */,
 				2D353F4B1BF0177800BDA3CE /* BarterApp.xcdatamodeld */,
+				2D8DE05B1BFE749C004998F5 /* PrefixHeader.pch */,
 				2D353F3F1BF0177800BDA3CE /* Supporting Files */,
 			);
 			path = BarterApp;
@@ -294,6 +305,8 @@
 				2D2753C11BF1246B0062E0C0 /* DashboardTabViewController.m */,
 				2D2753C41BF12C2E0062E0C0 /* TakeBookPhotoViewController.h */,
 				2D2753C51BF12C2E0062E0C0 /* TakeBookPhotoViewController.m */,
+				2D8DE05C1BFE7A3A004998F5 /* RegisterViewController.h */,
+				2D8DE05D1BFE7A3A004998F5 /* RegisterViewController.m */,
 			);
 			name = BarterAppController;
 			path = BarterApp/BarterAppController;
@@ -379,6 +392,15 @@
 				2D8DE0331BFE7143004998F5 /* UIWebView+AFNetworking.m */,
 			);
 			path = "UIKit+AFNetworking";
+			sourceTree = "<group>";
+		};
+		2D8DE0561BFE7368004998F5 /* ServiceLayer */ = {
+			isa = PBXGroup;
+			children = (
+				2D8DE0571BFE7413004998F5 /* WebService.h */,
+				2D8DE0581BFE7413004998F5 /* WebService.m */,
+			);
+			name = ServiceLayer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -525,6 +547,7 @@
 				2D8DE0521BFE7143004998F5 /* UIRefreshControl+AFNetworking.m in Sources */,
 				2D8DE0541BFE7143004998F5 /* UIWebView+AFNetworking.m in Sources */,
 				2D353F441BF0177800BDA3CE /* AppDelegate.m in Sources */,
+				2D8DE0591BFE7413004998F5 /* WebService.m in Sources */,
 				2D2753C61BF12C2E0062E0C0 /* TakeBookPhotoViewController.m in Sources */,
 				2D8DE0361BFE7143004998F5 /* AFHTTPRequestOperationManager.m in Sources */,
 				2D353F7C1BF0198D00BDA3CE /* Books.m in Sources */,
@@ -543,6 +566,7 @@
 				2D8DE04E1BFE7143004998F5 /* UIImageView+AFNetworking.m in Sources */,
 				2D8DE03A1BFE7143004998F5 /* AFNetworkReachabilityManager.m in Sources */,
 				2D8DE0441BFE7143004998F5 /* AFURLSessionManager.m in Sources */,
+				2D8DE05E1BFE7A3A004998F5 /* RegisterViewController.m in Sources */,
 				2D2753B61BF1229E0062E0C0 /* MyBooksViewController.m in Sources */,
 				2D8DE04A1BFE7143004998F5 /* UIAlertView+AFNetworking.m in Sources */,
 				2D2753D11BF1AE650062E0C0 /* CustomBookCell.m in Sources */,
@@ -558,6 +582,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D8DE05A1BFE7413004998F5 /* WebService.m in Sources */,
 				2D8DE03D1BFE7143004998F5 /* AFSecurityPolicy.m in Sources */,
 				2D2753AF1BF1227E0062E0C0 /* MyProfileViewController.m in Sources */,
 				2D8DE03B1BFE7143004998F5 /* AFNetworkReachabilityManager.m in Sources */,
@@ -568,6 +593,7 @@
 				2D8DE0491BFE7143004998F5 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				2D8DE0551BFE7143004998F5 /* UIWebView+AFNetworking.m in Sources */,
 				2D8DE0351BFE7143004998F5 /* AFHTTPRequestOperation.m in Sources */,
+				2D8DE05F1BFE7A3A004998F5 /* RegisterViewController.m in Sources */,
 				2D8DE0391BFE7143004998F5 /* AFHTTPSessionManager.m in Sources */,
 				2D8DE04B1BFE7143004998F5 /* UIAlertView+AFNetworking.m in Sources */,
 				2D8DE0411BFE7143004998F5 /* AFURLRequestSerialization.m in Sources */,
@@ -715,10 +741,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/BarterApp/PrefixHeader.pch";
 				INFOPLIST_FILE = BarterApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = UB.BarterApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SHARED_PRECOMPS_DIR = "$(SRCROOT)/BarterApp/Prefix.pch";
 			};
 			name = Debug;
 		};
@@ -726,10 +755,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/BarterApp/PrefixHeader.pch";
 				INFOPLIST_FILE = BarterApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = UB.BarterApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SHARED_PRECOMPS_DIR = "$(SRCROOT)/BarterApp/Prefix.pch";
 			};
 			name = Release;
 		};
