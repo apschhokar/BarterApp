@@ -30,7 +30,7 @@
                                 <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="onLoginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1KK-YZ-4lX"/>
-                                    <segue destination="jfR-pM-I1D" kind="show" id="mKh-vV-6ku"/>
+                                    <segue destination="jfR-pM-I1D" kind="show" identifier="LoginSegue" id="mKh-vV-6ku"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter Email ID" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zav-yN-Gxf">
