@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+body {
+    background-color: linen;
+}
+</style>
+
+
+</head>
+
+<body>
+    
+    <h1 style="display:inline; float:left">    
+</h1> 
+    <input type="button" value="LogOut" style="vertical-align:top; float: right"/>
+<h3> 1) Book Name: Twilight</h3>
+<img src="C:\wamp\www\img1.jpg" alt="Twilight cover page" width="128" height="128" > 
+<p> <input type="button" value="POST" /> &nbsp; &nbsp;
+  
+    <input type="button" value="REJECT " style="vertical-align:middle; float: center-right"/> </p>
+
+<p>Bella is just a regular girl in a new town. Everything is normal until she meets brooding and mysterious Edward Cullen. As they start to get closer she stumbles upon his most deadly secret. She found out he's a vampire. With this on her mind she also notices the gruesome murders that have been happening around town. Will she trust her heart? Or the warning signs going through her head? This love story follows a girl and her vampire boyfriend as they struggle to appear as the normal couple everyone expects them to be.</p>
+<p> Purchase Date: Oct 10 2002</p>
+<p> Author: Ellen</p>
+<p> Tags: fiction, thriller</p>
+<p> Amazon link: <input type="button" value="Click here" /> </p>
+
+<hr>
+<h3> 2) Book Name: Harry Potter</h3>
+<img src="C:\wamp\www\23.jpg" alt="Harry Potter cover page" width="128" height="128" > 
+<p> <input type="button" value="POST" /> &nbsp; &nbsp;
+  
+    <input type="button" value="REJECT " style="vertical-align:middle; float: center-right"/> </p>
+
+<p>Harry Potter thinks he is an ordinary boy celebrating his 11th birthday, but he is far from wrong. A giant named Hagrid appears, and gives Harry the all important news. He is a wizard. Now his journey in life gets more intense as he travels to Hogwarts school of witchcraft and wizardry to learn the trade of being a wizard..</p>
+<p> Purchase Date: Jab 10 2003</p>
+<p> Author: JK Rowling</p>
+<p> Tags: fiction, thriller, magic, witchcraft</p>
+<p> Amazon link: <input type="button" value="Click here" /> </p>
+
+<hr>
+
+
+</body>
+</html>
