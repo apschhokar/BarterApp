@@ -78,6 +78,8 @@
 		2D8DE05A1BFE7413004998F5 /* WebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8DE0581BFE7413004998F5 /* WebService.m */; settings = {ASSET_TAGS = (); }; };
 		2D8DE05E1BFE7A3A004998F5 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8DE05D1BFE7A3A004998F5 /* RegisterViewController.m */; settings = {ASSET_TAGS = (); }; };
 		2D8DE05F1BFE7A3A004998F5 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8DE05D1BFE7A3A004998F5 /* RegisterViewController.m */; settings = {ASSET_TAGS = (); }; };
+		2DF599101C02C99F00398520 /* User.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DF5990F1C02C99F00398520 /* User.png */; settings = {ASSET_TAGS = (); }; };
+		2DF599111C02C99F00398520 /* User.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DF5990F1C02C99F00398520 /* User.png */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -180,6 +182,7 @@
 		2D8DE05B1BFE749C004998F5 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		2D8DE05C1BFE7A3A004998F5 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		2D8DE05D1BFE7A3A004998F5 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		2DF5990F1C02C99F00398520 /* User.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = User.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -325,6 +328,7 @@
 		2D353F7D1BF01AE300BDA3CE /* BarterImages */ = {
 			isa = PBXGroup;
 			children = (
+				2DF5990F1C02C99F00398520 /* User.png */,
 				2D2753D51BF1C3930062E0C0 /* IMG_0559.jpg */,
 				2D2753A81BF039DF0062E0C0 /* BarterLogin.png */,
 			);
@@ -511,6 +515,7 @@
 			files = (
 				2D353F521BF0177800BDA3CE /* LaunchScreen.storyboard in Resources */,
 				2D2753DD1BF1CAF00062E0C0 /* CustomRequestCell.xib in Resources */,
+				2DF599101C02C99F00398520 /* User.png in Resources */,
 				2D353F4F1BF0177800BDA3CE /* Assets.xcassets in Resources */,
 				2D353F4A1BF0177800BDA3CE /* Main.storyboard in Resources */,
 				2D2753CC1BF1AD030062E0C0 /* CustomBookCell.xib in Resources */,
@@ -525,6 +530,7 @@
 			files = (
 				2D2753D71BF1C3930062E0C0 /* IMG_0559.jpg in Resources */,
 				2D2753CD1BF1AD030062E0C0 /* CustomBookCell.xib in Resources */,
+				2DF599111C02C99F00398520 /* User.png in Resources */,
 				2D2753DE1BF1CAF00062E0C0 /* CustomRequestCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -30,7 +30,6 @@
                                 <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="onLoginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1KK-YZ-4lX"/>
-                                    <segue destination="jfR-pM-I1D" kind="show" identifier="LoginSegue" id="mKh-vV-6ku"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter Email ID" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zav-yN-Gxf">
@@ -47,7 +46,8 @@
                                 <rect key="frame" x="123" y="522" width="106" height="35"/>
                                 <state key="normal" title="Register"/>
                                 <connections>
-                                    <segue destination="NMb-OS-Vlb" kind="show" id="qkV-r3-aC3"/>
+                                    <action selector="onRegisterBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ncc-I6-CSB"/>
+                                    <segue destination="NMb-OS-Vlb" kind="show" identifier="RegisterSegue" id="qkV-r3-aC3"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -58,6 +58,7 @@
                     <connections>
                         <outlet property="emailID" destination="zav-yN-Gxf" id="Zxs-6b-Gqx"/>
                         <outlet property="password" destination="9AP-2i-5Lm" id="fSd-5q-4MS"/>
+                        <segue destination="jfR-pM-I1D" kind="show" identifier="LoginSegue" id="1B0-ba-qPQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -383,18 +384,9 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0n7-Ae-kcA">
-                                <rect key="frame" x="11" y="64" width="167" height="215"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="User.png" translatesAutoresizingMaskIntoConstraints="NO" id="4qb-QQ-cWn">
+                                <rect key="frame" x="10" y="105" width="161" height="141"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="IMG_0559.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="4qb-QQ-cWn">
-                                <rect key="frame" x="17" y="69" width="154" height="204"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ajay Partap SIngh Chhokar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cCH-Qq-iJp">
-                                <rect key="frame" x="20" y="30" width="223" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fR4-zj-8eB">
                                 <rect key="frame" x="20" y="300" width="130" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -428,6 +420,24 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hello," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7db-gS-XI0">
+                                <rect key="frame" x="179" y="105" width="133" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9V-YJ-eCW">
+                                <rect key="frame" x="215" y="137" width="130" height="28"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jGR-le-yf2">
+                                <rect key="frame" x="51" y="20" width="242" height="37"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -482,6 +492,6 @@
     </scenes>
     <resources>
         <image name="BarterLogin.png" width="512" height="512"/>
-        <image name="IMG_0559.jpg" width="960" height="1280"/>
+        <image name="User.png" width="512" height="512"/>
     </resources>
 </document>
