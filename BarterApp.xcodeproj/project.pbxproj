@@ -339,9 +339,9 @@
 		2D353F7E1BF01AE300BDA3CE /* BarterView */ = {
 			isa = PBXGroup;
 			children = (
+				2D2753DC1BF1CAF00062E0C0 /* CustomRequestCell.xib */,
 				2D353F481BF0177800BDA3CE /* Main.storyboard */,
 				2D2753CB1BF1AD030062E0C0 /* CustomBookCell.xib */,
-				2D2753DC1BF1CAF00062E0C0 /* CustomRequestCell.xib */,
 			);
 			name = BarterView;
 			path = BarterApp/BarterView;

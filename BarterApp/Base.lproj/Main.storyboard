@@ -218,6 +218,7 @@
                     <connections>
                         <outlet property="booksFeedTableView" destination="2gb-mH-p4f" id="F8v-0B-00j"/>
                         <outlet property="searchDisplayController" destination="Fhr-ZY-uGn" id="iNC-M6-huH"/>
+                        <segue destination="K8g-IR-KK4" kind="show" identifier="SingleBook" id="NGx-Hy-sKd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UbT-aM-PFv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -232,6 +233,25 @@
                 </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1121.5" y="1413.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="P4z-w0-4Oy">
+            <objects>
+                <viewController id="K8g-IR-KK4" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eFc-XK-KKd"/>
+                        <viewControllerLayoutGuide type="bottom" id="jAx-58-AfB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9Wd-0d-99G">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E8e-eP-wZp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="658.5" y="1419.5"/>
         </scene>
         <!--My Books-->
         <scene sceneID="zVc-8u-yky">

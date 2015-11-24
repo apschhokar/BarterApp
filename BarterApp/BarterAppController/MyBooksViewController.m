@@ -16,7 +16,6 @@
 @implementation MyBooksViewController
 
 NSMutableArray *dictobj;
-NSMutableArray *booksArray;
 
 
 
@@ -26,7 +25,6 @@ NSMutableArray *booksArray;
     self.navigationController.navigationBar.translucent = NO;
     
     dictobj = [[NSMutableArray alloc]init];
-    booksArray = [[NSMutableDictionary alloc]init];
 
 
     NSString *myIdentifier = @"BookCell";
