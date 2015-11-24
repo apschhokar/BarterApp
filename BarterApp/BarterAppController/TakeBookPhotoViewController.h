@@ -10,7 +10,6 @@
 
 @interface TakeBookPhotoViewController : UIViewController <UIImagePickerControllerDelegate , UINavigationControllerDelegate>
 
-@property (strong, nonatomic) IBOutlet UIImageView *imageView;
 - (IBAction)onUploadButtonPressed:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *bookTitle;
 @property (weak, nonatomic) IBOutlet UITextField *bookAuthor;

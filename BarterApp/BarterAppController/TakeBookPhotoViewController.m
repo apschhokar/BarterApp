@@ -48,7 +48,7 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
-    self.imageView.image = chosenImage;
+    self.bookImage.image = chosenImage;
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
 
@@ -59,23 +59,26 @@
 
 
 - (IBAction)onUploadButtonPressed:(id)sender {
-     [[self navigationController] popViewControllerAnimated:YES];  
     
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     
     // getting an NSString
-    NSString *userID = [prefs stringForKey:@"uid"];
+    NSString *userID = [prefs stringForKey:@"userID"];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     //header fields
-    [manager.requestSerializer setValue:@"vTdpl8GYzaxIxbT5PF6WauKWyVLMXfv2f57WoNvV9H0" forHTTPHeaderField:@"X-CSRF-Token"];
+    [manager.requestSerializer setValue:@"vZu-YUFWLzIdFIn7VDoA6hV9IhrYe-BimkC1ncRdojU" forHTTPHeaderField:@"X-CSRF-Token"];
     [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     
     manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+   // manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-    NSDictionary *originalParameters = @{@"title":[self.bookTitle text] ,@"book_owner_id":userID , @"book_author": [self.bookAuthor text] ,@"book_description": [self.bookDescription text], @"image_encode": [self getImageBase64] , @"book_original_price": [self.originalPrice text]};
+    NSString * image = [ self getImageBase64];
+    
+    NSDictionary *originalParameters = @{@"title":[self.bookTitle text] ,@"book_owner_id":userID , @"book_author": [self.bookAuthor text] ,@"book_description": [self.bookDescription text], @"image_encode": image ,@"book_year_of_purchase" :[self.yearOfPurchase text] , @"book_original_price": [self.originalPrice text] ,@"amazon_link" : [NSString stringWithFormat:@"nothing"]};
     
     
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"application/hal+json",@"text/json", @"text/javascript", @"text/html", nil];
@@ -87,18 +90,13 @@
         NSLog(@"hello");
         NSLog(@"%@", responseObject);
         
-        
         NSError* error= nil;
-        
         NSMutableArray *jsonArray = [NSMutableArray arrayWithArray:responseObject];
         NSString *json = [NSString stringWithFormat:@"%@" ,[jsonArray objectAtIndex:0]];
-        
         NSData *objectData = [json dataUsingEncoding:NSUTF8StringEncoding];
         NSDictionary *jsonD = [NSJSONSerialization JSONObjectWithData:objectData
                                                               options:NSJSONReadingMutableContainers
                                                                 error:&error];
-        
-        
         
         UIAlertController * alert=   [UIAlertController
                                       alertControllerWithTitle:[NSString stringWithFormat:@"%@", responseObject]
@@ -110,26 +108,14 @@
                                     style:UIAlertActionStyleDefault
                                     handler:^(UIAlertAction * action)
                                     {
-                                        
+                                        [self performSegueWithIdentifier:@"UploadComplete" sender:sender];
                                         [[self navigationController] popViewControllerAnimated:YES];
-                                        
                                         //Handel your yes please button action here
                                         [alert dismissViewControllerAnimated:YES completion:nil];
                                         
                                     }];
-        UIAlertAction* noButton = [UIAlertAction
-                                   actionWithTitle:@"cancel"
-                                   style:UIAlertActionStyleDefault
-                                   handler:^(UIAlertAction * action)
-                                   {
-                                       [[self navigationController] popViewControllerAnimated:YES];
-                                       
-                                       [alert dismissViewControllerAnimated:YES completion:nil];
-                                       
-                                   }];
         
         [alert addAction:yesButton];
-        [alert addAction:noButton];
         
         [self presentViewController:alert animated:YES completion:nil];
         
@@ -143,7 +129,7 @@
 
 
 -(NSString*) getImageBase64 {
-    UIImage *picture =  [self.imageView image];
+    UIImage *picture =  [self.bookImage image];
     NSData* imageData = UIImageJPEGRepresentation(picture, 0.5);
     NSString *strBase64 = [imageData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     return strBase64;
@@ -157,7 +143,9 @@
     [self.yearOfPurchase resignFirstResponder];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
 
+}
 
 
 @end

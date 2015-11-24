@@ -72,6 +72,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    
 }
 
 
@@ -83,4 +84,9 @@
 
 
 
+- (IBAction)onuploadBtnPressed:(id)sender {
+    [self performSegueWithIdentifier:@"Upload" sender:sender];
+
+    
+}
 @end
