@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CustomBookCell.h"
+
 
 @interface MyBooksViewController : UIViewController <UITableViewDelegate , UITableViewDataSource>
 
