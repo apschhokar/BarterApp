@@ -17,5 +17,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *bookDescription;
 @property (weak, nonatomic) IBOutlet UITextField *yearOfPurchase;
 @property (weak, nonatomic) IBOutlet UITextField *originalPrice;
+@property (weak, nonatomic) IBOutlet UIImageView *bookImage;
 
 @end

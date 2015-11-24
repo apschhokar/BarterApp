@@ -8,7 +8,7 @@
 
 #import "TakeBookPhotoViewController.h"
 
-@interface TakeBookPhotoViewController ()
+@interface TakeBookPhotoViewController () <UITextFieldDelegate>
 
 @end
 
@@ -16,6 +16,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //Add gesture to hide keyboard whenever we tap on the screen
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    
+    
+    [self.view addGestureRecognizer:tap];
+    
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [self openCamera];
 }
@@ -52,6 +61,10 @@
 - (IBAction)onUploadButtonPressed:(id)sender {
      [[self navigationController] popViewControllerAnimated:YES];  
     
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    
+    // getting an NSString
+    NSString *userID = [prefs stringForKey:@"uid"];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
@@ -62,7 +75,7 @@
     manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-    NSDictionary *originalParameters = @{@"title":[self.bookTitle text] ,@"book_owner_id":[self.bookTitle text] , @"book_author": [self.bookAuthor text] ,@"book_description": [self.bookDescription text], @"image_encode": [self.bookTitle text] , @"book_original_price": [self.originalPrice text]};
+    NSDictionary *originalParameters = @{@"title":[self.bookTitle text] ,@"book_owner_id":userID , @"book_author": [self.bookAuthor text] ,@"book_description": [self.bookDescription text], @"image_encode": [self getImageBase64] , @"book_original_price": [self.originalPrice text]};
     
     
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"application/hal+json",@"text/json", @"text/javascript", @"text/html", nil];
@@ -125,7 +138,26 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
-
     
 }
+
+
+-(NSString*) getImageBase64 {
+    UIImage *picture =  [self.imageView image];
+    NSData* imageData = UIImageJPEGRepresentation(picture, 0.5);
+    NSString *strBase64 = [imageData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    return strBase64;
+}
+
+-(void)dismissKeyboard {
+    [self.bookTitle resignFirstResponder];
+    [self.bookAuthor resignFirstResponder];
+    [self.bookDescription resignFirstResponder];
+    [self.originalPrice resignFirstResponder];
+    [self.yearOfPurchase resignFirstResponder];
+}
+
+
+
+
 @end

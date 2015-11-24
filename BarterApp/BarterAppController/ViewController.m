@@ -74,6 +74,10 @@
                                                              options:NSJSONReadingMutableContainers
                                                                error:&error];
         
+        
+        [self saveUserID:jsonD];
+
+        
 
         if ([[jsonD objectForKey:@"result"]integerValue] == 1) {
             [self performSegueWithIdentifier:@"LoginSegue" sender:sender];
@@ -156,6 +160,13 @@
 
 - (IBAction)onRegisterBtnPressed:(id)sender {
     [self performSegueWithIdentifier:@"RegisterSegue" sender:sender];
-
 }
+
+-(void) saveUserID : (NSDictionary *) retreivedDictionary{
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    // saving an NSString
+    [prefs setObject:[retreivedDictionary objectForKey:@"uid"] forKey:@"userID"];
+    [prefs synchronize];
+}
+
 @end

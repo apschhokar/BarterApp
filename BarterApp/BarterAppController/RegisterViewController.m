@@ -8,7 +8,7 @@
 
 #import "RegisterViewController.h"
 
-@interface RegisterViewController ()
+@interface RegisterViewController () <UITextFieldDelegate>
 
 @end
 
@@ -20,6 +20,15 @@
     self.navigationController.navigationBar.translucent = NO;
 
     // Do any additional setup after loading the view.
+}
+
+
+-(void)viewWillAppear:(BOOL)animated{
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -178,6 +187,15 @@
 
     return @"hello";
 
+}
+
+
+-(void)dismissKeyboard {
+    [self.emailID resignFirstResponder];
+    [self.firstName resignFirstResponder];
+    [self.lastName resignFirstResponder];
+    [self.password resignFirstResponder];
+    [self.confirmPassword resignFirstResponder];
 }
 
 
