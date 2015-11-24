@@ -53,5 +53,79 @@
      [[self navigationController] popViewControllerAnimated:YES];  
     
     
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    //header fields
+    [manager.requestSerializer setValue:@"vTdpl8GYzaxIxbT5PF6WauKWyVLMXfv2f57WoNvV9H0" forHTTPHeaderField:@"X-CSRF-Token"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    NSDictionary *originalParameters = @{@"title":[self.bookTitle text] ,@"book_owner_id":[self.bookTitle text] , @"book_author": [self.bookAuthor text] ,@"book_description": [self.bookDescription text], @"image_encode": [self.bookTitle text] , @"book_original_price": [self.originalPrice text]};
+    
+    
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"application/hal+json",@"text/json", @"text/javascript", @"text/html", nil];
+    
+    NSString *fullString = [NSString stringWithFormat:@"http://dev-my-barter-site.pantheon.io/myrestapi/books_backend"];
+    
+    
+    [manager POST:fullString parameters:originalParameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"hello");
+        NSLog(@"%@", responseObject);
+        
+        
+        NSError* error= nil;
+        
+        NSMutableArray *jsonArray = [NSMutableArray arrayWithArray:responseObject];
+        NSString *json = [NSString stringWithFormat:@"%@" ,[jsonArray objectAtIndex:0]];
+        
+        NSData *objectData = [json dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *jsonD = [NSJSONSerialization JSONObjectWithData:objectData
+                                                              options:NSJSONReadingMutableContainers
+                                                                error:&error];
+        
+        
+        
+        UIAlertController * alert=   [UIAlertController
+                                      alertControllerWithTitle:[NSString stringWithFormat:@"%@", responseObject]
+                                      message:@""
+                                      preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* yesButton = [UIAlertAction
+                                    actionWithTitle:@"OK"
+                                    style:UIAlertActionStyleDefault
+                                    handler:^(UIAlertAction * action)
+                                    {
+                                        
+                                        [[self navigationController] popViewControllerAnimated:YES];
+                                        
+                                        //Handel your yes please button action here
+                                        [alert dismissViewControllerAnimated:YES completion:nil];
+                                        
+                                    }];
+        UIAlertAction* noButton = [UIAlertAction
+                                   actionWithTitle:@"cancel"
+                                   style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction * action)
+                                   {
+                                       [[self navigationController] popViewControllerAnimated:YES];
+                                       
+                                       [alert dismissViewControllerAnimated:YES completion:nil];
+                                       
+                                   }];
+        
+        [alert addAction:yesButton];
+        [alert addAction:noButton];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+        
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+
+    
 }
 @end

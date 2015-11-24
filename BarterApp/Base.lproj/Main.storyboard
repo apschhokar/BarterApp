@@ -335,11 +335,6 @@
                                     <action selector="takePhoto:" destination="HgF-4O-yGp" eventType="touchUpInside" id="aiv-DC-icf"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Book Description" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EJy-mt-ONg">
-                                <rect key="frame" x="29" y="376" width="312" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter Book Title" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="du7-J9-71E">
                                 <rect key="frame" x="29" y="271" width="312" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -360,12 +355,22 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Book Description" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EJy-mt-ONg">
+                                <rect key="frame" x="29" y="376" width="312" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="bookAuthor" destination="H9l-qf-rWR" id="1Uj-n5-biL"/>
+                        <outlet property="bookDescription" destination="EJy-mt-ONg" id="rlB-9i-EE9"/>
+                        <outlet property="bookTitle" destination="du7-J9-71E" id="b0z-UZ-zJQ"/>
                         <outlet property="imageView" destination="CJ8-QD-WRr" id="qte-9u-Xb8"/>
+                        <outlet property="originalPrice" destination="zaG-Wh-V9J" id="885-by-99a"/>
+                        <outlet property="yearOfPurchase" destination="9p2-Lh-ASg" id="aA9-2n-E1J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fDV-kR-QlC" userLabel="First Responder" sceneMemberID="firstResponder"/>
