@@ -1,0 +1,10 @@
+name = barter user service api
+description = user REST services
+package = public-action
+version = VERSION
+core = 7.x
+files[] = user_service.module
+; Information added by drupal.org packaging script on 2015-11-19
+version = "7.0-alpha3"
+project = "drupal"
+datestamp = "1269192313"
