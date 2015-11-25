@@ -49,3 +49,27 @@ function entity_functions_menu() {
   );
     return $items;
 }
+
+function foo_ajax_reject_books()
+{
+    
+    $id_to_reject=$_POST['id'];
+    
+    node_delete($id_to_reject);
+    drupal_json_output('deleted');
+}
+function foo_ajax_approve_books()
+{
+    $id_to_approve=$_POST['id'];
+    $node=node_load($id_to_approve);
+    $node->field_moderator_approval[LANGUAGE_NONE]['0']['value']='0';
+    node_save($node);
+    drupal_json_output('complete');
+}
+
+
+function helloworld()
+{
+    
+    return 'sample page';
+}
