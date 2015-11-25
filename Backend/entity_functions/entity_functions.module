@@ -1,0 +1,51 @@
+<?php
+function entity_functions_menu() {
+    $items = array();
+
+    $items['entity_test/helloworld'] = array(
+        'title' => 'Function Page',
+        'page callback' => 'helloworld',
+        'access arguments' => array('access content'),
+        'type' => MENU_CALLBACK,
+     );
+
+    $items['entity_test/new_user'] = array(
+        'title' => 'Function Page',
+        'page callback' => 'make_new_user',
+        'access arguments' => array('access content'),
+        'type' => MENU_CALLBACK,
+     );
+    
+    $items['entity_test/new_book'] = array(
+        'title' => 'Function Page',
+        'page callback' => 'make_new_book',
+        'access arguments' => array('access content'),
+        'type' => MENU_CALLBACK,
+     );
+    $items['entity_test/new_request'] = array(
+        'title' => 'Function Page',
+        'page callback' => 'make_new_request',
+        'access arguments' => array('access content'),
+        'type' => MENU_CALLBACK,
+     );
+    
+    $items['book_list'] = array(
+        'title' => 'Manager Approval',
+        'page callback' => 'books_list',
+        'access arguments' => array('access content'),
+        'type' => MENU_CALLBACK,
+     );
+    $items['foo/ajax/approve_books'] = array(
+    'title' => t('foo AJAX'),
+    'type' => MENU_CALLBACK,
+    'page callback' => 'foo_ajax_approve_books',
+    'access callback' => TRUE
+  );
+    $items['foo/ajax/reject_books'] = array(
+    'title' => t('foo AJAX'),
+    'type' => MENU_CALLBACK,
+    'page callback' => 'foo_ajax_reject_books',
+    'access callback' => TRUE
+  );
+    return $items;
+}
