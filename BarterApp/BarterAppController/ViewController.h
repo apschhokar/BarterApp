@@ -13,6 +13,7 @@
 - (IBAction)onLoginButtonPressed:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *emailID;
 @property (weak, nonatomic) IBOutlet UITextField *password;
+- (IBAction)onRegisterBtnPressed:(id)sender;
 
 @end
 

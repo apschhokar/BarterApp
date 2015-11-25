@@ -78,6 +78,35 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    UIAlertController *alert= [UIAlertController
+                               alertControllerWithTitle:@"Accept Request"
+                               message:@""
+                               preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* ok = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault
+                                               handler:^(UIAlertAction * action){
+                                                   //Do Some action here
+                                                   UITextField *textField = alert.textFields[0];
+                                                   NSLog(@"text was %@", textField.text);
+                                                   
+                                               }];
+    UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleDefault
+                                                   handler:^(UIAlertAction * action) {
+                                                       
+                                                       NSLog(@"cancel btn");
+                                                       
+                                                       [alert dismissViewControllerAnimated:YES completion:nil];
+                                                       
+                                                   }];
+    
+    [alert addAction:ok];
+    [alert addAction:cancel];
+    
+  
+    [self presentViewController:alert animated:YES completion:nil];
+    
+    
+    
 }
 
 

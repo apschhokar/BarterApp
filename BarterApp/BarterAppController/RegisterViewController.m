@@ -8,7 +8,7 @@
 
 #import "RegisterViewController.h"
 
-@interface RegisterViewController ()
+@interface RegisterViewController () <UITextFieldDelegate>
 
 @end
 
@@ -16,7 +16,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.navigationController setNavigationBarHidden:NO];
+    self.navigationController.navigationBar.translucent = NO;
+
     // Do any additional setup after loading the view.
+}
+
+
+-(void)viewWillAppear:(BOOL)animated{
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -85,6 +97,18 @@
         NSLog(@"hello");
         NSLog(@"%@", responseObject);
         
+
+        NSError* error= nil;
+        
+        NSMutableArray *jsonArray = [NSMutableArray arrayWithArray:responseObject];
+        NSString *json = [NSString stringWithFormat:@"%@" ,[jsonArray objectAtIndex:0]];
+        
+        NSData *objectData = [json dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *jsonD = [NSJSONSerialization JSONObjectWithData:objectData
+                                                              options:NSJSONReadingMutableContainers
+                                                                error:&error];
+        
+     
         
         UIAlertController * alert=   [UIAlertController
                                       alertControllerWithTitle:[NSString stringWithFormat:@"%@", responseObject]
@@ -154,6 +178,24 @@
     
     [self presentViewController:alert animated:YES completion:nil];
 
+}
+
+
+-(NSString *) GetJsonData :(id) Object String:(NSString *) value {
+    NSError *error = nil;
+    NSArray* jsonArray = [NSJSONSerialization JSONObjectWithData:Object options:NSJSONReadingMutableLeaves error: &error];
+
+    return @"hello";
+
+}
+
+
+-(void)dismissKeyboard {
+    [self.emailID resignFirstResponder];
+    [self.firstName resignFirstResponder];
+    [self.lastName resignFirstResponder];
+    [self.password resignFirstResponder];
+    [self.confirmPassword resignFirstResponder];
 }
 
 
