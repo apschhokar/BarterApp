@@ -143,15 +143,13 @@ NSMutableArray *dictobj;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
+    [self performSegueWithIdentifier:@"SingleBook" sender:self];
 }
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 82;
 }
-
-
 
 
 - (IBAction)onuploadBtnPressed:(id)sender {

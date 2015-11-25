@@ -218,7 +218,7 @@
                     <connections>
                         <outlet property="booksFeedTableView" destination="2gb-mH-p4f" id="F8v-0B-00j"/>
                         <outlet property="searchDisplayController" destination="Fhr-ZY-uGn" id="iNC-M6-huH"/>
-                        <segue destination="Zox-Cp-R6x" kind="show" id="JoI-xs-3KV"/>
+                        <segue destination="Zox-Cp-R6x" kind="show" identifier="SingleBook" id="JoI-xs-3KV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UbT-aM-PFv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -267,17 +267,17 @@
                     <connections>
                         <outlet property="myBooksTableView" destination="HBD-ow-I8o" id="FK2-Ea-IXT"/>
                         <segue destination="HgF-4O-yGp" kind="show" identifier="Upload" id="C6l-2W-gBQ"/>
-                        <segue destination="u93-jS-wk4" kind="show" id="Hdd-Zs-LEV"/>
+                        <segue destination="u93-jS-wk4" kind="show" identifier="SingleBook" id="Hdd-Zs-LEV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AgS-hg-96B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1874.5" y="1386.5"/>
         </scene>
-        <!--View Controller-->
+        <!--My Book Single Book Controller-->
         <scene sceneID="UDf-xt-Yb4">
             <objects>
-                <viewController id="u93-jS-wk4" sceneMemberID="viewController">
+                <viewController id="u93-jS-wk4" customClass="MyBookSingleBookController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lMb-5u-2nN"/>
                         <viewControllerLayoutGuide type="bottom" id="AoA-lc-yiG"/>
@@ -497,10 +497,10 @@
             </objects>
             <point key="canvasLocation" x="244" y="321"/>
         </scene>
-        <!--View Controller-->
+        <!--Book Feed Single Book Controller-->
         <scene sceneID="YvX-cS-fpP">
             <objects>
-                <viewController id="Zox-Cp-R6x" sceneMemberID="viewController">
+                <viewController id="Zox-Cp-R6x" customClass="BookFeedSingleBookController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IAT-gz-IYv"/>
                         <viewControllerLayoutGuide type="bottom" id="FP2-12-Ek4"/>

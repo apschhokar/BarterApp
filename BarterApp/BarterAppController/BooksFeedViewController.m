@@ -128,12 +128,12 @@ NSMutableArray *BooksAll;
     cell.yearOfPurchase.text = [[BooksAll objectAtIndex:indexPath.row]objectForKey:@"book_year_of_purchase"];
     
     
-
-   
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self performSegueWithIdentifier:@"SingleBook" sender:self];
+
     
 }
 
