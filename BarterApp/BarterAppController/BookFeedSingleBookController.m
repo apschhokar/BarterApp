@@ -1,39 +1,24 @@
 //
-//  BooksFeedViewController.m
+//  BookFeedSingleBookController.m
 //  BarterApp
 //
-//  Created by ajay singh on 11/9/15.
+//  Created by ajay singh on 11/24/15.
 //  Copyright © 2015 UB. All rights reserved.
 //
 
-#import "BooksFeedViewController.h"
-#import "CustomBookCell.h"
+#import "BookFeedSingleBookController.h"
 
-@interface BooksFeedViewController ()  <UITableViewDataSource,UITableViewDelegate>
+@interface BookFeedSingleBookController ()
 
 @end
 
-@implementation BooksFeedViewController
-NSMutableArray *BooksAll;
+@implementation BookFeedSingleBookController
+NSMutableArray *dictobj;
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationController setNavigationBarHidden:NO];
-    self.navigationController.navigationBar.translucent = NO;
-    
-    BooksAll = [[NSMutableArray alloc]init];
-    
-    NSString *myIdentifier = @"BookCell";
-    [self.booksFeedTableView registerNib:[UINib nibWithNibName:@"CustomBookCell" bundle:nil] forCellReuseIdentifier:myIdentifier];
-
     // Do any additional setup after loading the view.
-}
-
--(void)viewWillAppear:(BOOL)animated{
-
-    _booksFeedTableView.delegate = self;
-    _booksFeedTableView.dataSource =self;
     
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -49,12 +34,12 @@ NSMutableArray *BooksAll;
     manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-    NSDictionary *originalParameters = @{@"empty":@"empty"};
+    NSDictionary *originalParameters = @{@"user_id":userID};
     
     
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"application/hal+json",@"text/json", @"text/javascript", @"text/html", nil];
     
-    NSString *fullString = [NSString stringWithFormat:@"http://dev-my-barter-site.pantheon.io/myrestapi/books_backend/retrieve_all_books"];
+    NSString *fullString = [NSString stringWithFormat:@"http://dev-my-barter-site.pantheon.io/myrestapi/books_backend/retrieve_user_books"];
     
     
     [manager POST:fullString parameters:originalParameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -73,20 +58,22 @@ NSMutableArray *BooksAll;
         NSString *json = [NSString stringWithFormat:@"%@" ,[jsonArray objectAtIndex:0]];
         
         NSData *objectData = [json dataUsingEncoding:NSUTF8StringEncoding];
-        BooksAll = [NSJSONSerialization JSONObjectWithData:objectData
+        dictobj = [NSJSONSerialization JSONObjectWithData:objectData
                                                   options:NSJSONReadingMutableContainers
                                                     error:&error];
         
-        [self.booksFeedTableView reloadData];
+        
+        
         
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
     
-
     
 
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -103,45 +90,5 @@ NSMutableArray *BooksAll;
     // Pass the selected object to the new view controller.
 }
 */
-
-
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-
-{
-  return [BooksAll count];
-    
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    static NSString *simpleTableIdentifier = @"BookCell";
-    
-    CustomBookCell *cell = (CustomBookCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
-    
-    if (cell == nil) {
-        cell = [[CustomBookCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
-    }
-    cell.BookTitle.text  = [[BooksAll objectAtIndex:indexPath.row]objectForKey:@"title"];
-    cell.BookAuthor.text = [[BooksAll objectAtIndex:indexPath.row]objectForKey:@"book_author"];
-    cell.yearOfPurchase.text = [[BooksAll objectAtIndex:indexPath.row]objectForKey:@"book_year_of_purchase"];
-    
-    
-    return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self performSegueWithIdentifier:@"SingleBook" sender:self];
-
-    
-}
-
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 82;
-}
-
-
 
 @end

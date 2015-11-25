@@ -78,6 +78,12 @@
 		2D8DE05A1BFE7413004998F5 /* WebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8DE0581BFE7413004998F5 /* WebService.m */; settings = {ASSET_TAGS = (); }; };
 		2D8DE05E1BFE7A3A004998F5 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8DE05D1BFE7A3A004998F5 /* RegisterViewController.m */; settings = {ASSET_TAGS = (); }; };
 		2D8DE05F1BFE7A3A004998F5 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8DE05D1BFE7A3A004998F5 /* RegisterViewController.m */; settings = {ASSET_TAGS = (); }; };
+		2DF599101C02C99F00398520 /* User.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DF5990F1C02C99F00398520 /* User.png */; settings = {ASSET_TAGS = (); }; };
+		2DF599111C02C99F00398520 /* User.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DF5990F1C02C99F00398520 /* User.png */; settings = {ASSET_TAGS = (); }; };
+		2DF599141C05088100398520 /* BookFeedSingleBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF599131C05088100398520 /* BookFeedSingleBookController.m */; settings = {ASSET_TAGS = (); }; };
+		2DF599151C05088100398520 /* BookFeedSingleBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF599131C05088100398520 /* BookFeedSingleBookController.m */; settings = {ASSET_TAGS = (); }; };
+		2DF599181C0508A100398520 /* MyBookSingleBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF599171C0508A100398520 /* MyBookSingleBookController.m */; settings = {ASSET_TAGS = (); }; };
+		2DF599191C0508A100398520 /* MyBookSingleBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF599171C0508A100398520 /* MyBookSingleBookController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -180,6 +186,11 @@
 		2D8DE05B1BFE749C004998F5 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		2D8DE05C1BFE7A3A004998F5 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		2D8DE05D1BFE7A3A004998F5 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		2DF5990F1C02C99F00398520 /* User.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = User.png; sourceTree = "<group>"; };
+		2DF599121C05088100398520 /* BookFeedSingleBookController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookFeedSingleBookController.h; sourceTree = "<group>"; };
+		2DF599131C05088100398520 /* BookFeedSingleBookController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookFeedSingleBookController.m; sourceTree = "<group>"; };
+		2DF599161C0508A100398520 /* MyBookSingleBookController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBookSingleBookController.h; sourceTree = "<group>"; };
+		2DF599171C0508A100398520 /* MyBookSingleBookController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBookSingleBookController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -307,6 +318,10 @@
 				2D2753C51BF12C2E0062E0C0 /* TakeBookPhotoViewController.m */,
 				2D8DE05C1BFE7A3A004998F5 /* RegisterViewController.h */,
 				2D8DE05D1BFE7A3A004998F5 /* RegisterViewController.m */,
+				2DF599121C05088100398520 /* BookFeedSingleBookController.h */,
+				2DF599131C05088100398520 /* BookFeedSingleBookController.m */,
+				2DF599161C0508A100398520 /* MyBookSingleBookController.h */,
+				2DF599171C0508A100398520 /* MyBookSingleBookController.m */,
 			);
 			name = BarterAppController;
 			path = BarterApp/BarterAppController;
@@ -325,6 +340,7 @@
 		2D353F7D1BF01AE300BDA3CE /* BarterImages */ = {
 			isa = PBXGroup;
 			children = (
+				2DF5990F1C02C99F00398520 /* User.png */,
 				2D2753D51BF1C3930062E0C0 /* IMG_0559.jpg */,
 				2D2753A81BF039DF0062E0C0 /* BarterLogin.png */,
 			);
@@ -335,9 +351,9 @@
 		2D353F7E1BF01AE300BDA3CE /* BarterView */ = {
 			isa = PBXGroup;
 			children = (
+				2D2753DC1BF1CAF00062E0C0 /* CustomRequestCell.xib */,
 				2D353F481BF0177800BDA3CE /* Main.storyboard */,
 				2D2753CB1BF1AD030062E0C0 /* CustomBookCell.xib */,
-				2D2753DC1BF1CAF00062E0C0 /* CustomRequestCell.xib */,
 			);
 			name = BarterView;
 			path = BarterApp/BarterView;
@@ -511,6 +527,7 @@
 			files = (
 				2D353F521BF0177800BDA3CE /* LaunchScreen.storyboard in Resources */,
 				2D2753DD1BF1CAF00062E0C0 /* CustomRequestCell.xib in Resources */,
+				2DF599101C02C99F00398520 /* User.png in Resources */,
 				2D353F4F1BF0177800BDA3CE /* Assets.xcassets in Resources */,
 				2D353F4A1BF0177800BDA3CE /* Main.storyboard in Resources */,
 				2D2753CC1BF1AD030062E0C0 /* CustomBookCell.xib in Resources */,
@@ -525,6 +542,7 @@
 			files = (
 				2D2753D71BF1C3930062E0C0 /* IMG_0559.jpg in Resources */,
 				2D2753CD1BF1AD030062E0C0 /* CustomBookCell.xib in Resources */,
+				2DF599111C02C99F00398520 /* User.png in Resources */,
 				2D2753DE1BF1CAF00062E0C0 /* CustomRequestCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -548,12 +566,14 @@
 				2D8DE0541BFE7143004998F5 /* UIWebView+AFNetworking.m in Sources */,
 				2D353F441BF0177800BDA3CE /* AppDelegate.m in Sources */,
 				2D8DE0591BFE7413004998F5 /* WebService.m in Sources */,
+				2DF599181C0508A100398520 /* MyBookSingleBookController.m in Sources */,
 				2D2753C61BF12C2E0062E0C0 /* TakeBookPhotoViewController.m in Sources */,
 				2D8DE0361BFE7143004998F5 /* AFHTTPRequestOperationManager.m in Sources */,
 				2D353F7C1BF0198D00BDA3CE /* Books.m in Sources */,
 				2D8DE03E1BFE7143004998F5 /* AFURLConnectionOperation.m in Sources */,
 				2D353F411BF0177800BDA3CE /* main.m in Sources */,
 				2D8DE0481BFE7143004998F5 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				2DF599141C05088100398520 /* BookFeedSingleBookController.m in Sources */,
 				2D2753BA1BF122EB0062E0C0 /* MyRequestsViewController.m in Sources */,
 				2D8DE0401BFE7143004998F5 /* AFURLRequestSerialization.m in Sources */,
 				2D2753B21BF1228F0062E0C0 /* BooksFeedViewController.m in Sources */,
@@ -597,11 +617,13 @@
 				2D8DE0391BFE7143004998F5 /* AFHTTPSessionManager.m in Sources */,
 				2D8DE04B1BFE7143004998F5 /* UIAlertView+AFNetworking.m in Sources */,
 				2D8DE0411BFE7143004998F5 /* AFURLRequestSerialization.m in Sources */,
+				2DF599191C0508A100398520 /* MyBookSingleBookController.m in Sources */,
 				2D2753B71BF1229E0062E0C0 /* MyBooksViewController.m in Sources */,
 				2D8DE0451BFE7143004998F5 /* AFURLSessionManager.m in Sources */,
 				2D2753B31BF1228F0062E0C0 /* BooksFeedViewController.m in Sources */,
 				2D8DE0371BFE7143004998F5 /* AFHTTPRequestOperationManager.m in Sources */,
 				2D8DE0511BFE7143004998F5 /* UIProgressView+AFNetworking.m in Sources */,
+				2DF599151C05088100398520 /* BookFeedSingleBookController.m in Sources */,
 				2D2753DB1BF1CA780062E0C0 /* CustomRequestViewCell.m in Sources */,
 				2D8DE04D1BFE7143004998F5 /* UIButton+AFNetworking.m in Sources */,
 				2D8DE0431BFE7143004998F5 /* AFURLResponseSerialization.m in Sources */,
@@ -745,6 +767,7 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/BarterApp/PrefixHeader.pch";
 				INFOPLIST_FILE = BarterApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = UB.BarterApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SHARED_PRECOMPS_DIR = "$(SRCROOT)/BarterApp/Prefix.pch";
@@ -759,6 +782,7 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/BarterApp/PrefixHeader.pch";
 				INFOPLIST_FILE = BarterApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = UB.BarterApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SHARED_PRECOMPS_DIR = "$(SRCROOT)/BarterApp/Prefix.pch";
