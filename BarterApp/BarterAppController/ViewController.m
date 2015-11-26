@@ -77,16 +77,12 @@
         
         [self saveUserID:jsonD];
 
-        
-
         if ([[jsonD objectForKey:@"result"]integerValue] == 1) {
             [self performSegueWithIdentifier:@"LoginSegue" sender:sender];
         }
-
         else{
             [self showAlertView:@"Invalid Username or Password" and:@"OK"];
         }
-        
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
@@ -106,9 +102,6 @@
     {
         NSLog(@"ok fine");
     }
-    
-    
-    
 }
 
 
@@ -162,9 +155,9 @@
     [self performSegueWithIdentifier:@"RegisterSegue" sender:sender];
 }
 
+
 -(void) saveUserID : (NSDictionary *) retreivedDictionary{
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    // saving an NSString
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];  // saving an NSString
     [prefs setObject:[retreivedDictionary objectForKey:@"uid"] forKey:@"userID"];
     [prefs synchronize];
 }

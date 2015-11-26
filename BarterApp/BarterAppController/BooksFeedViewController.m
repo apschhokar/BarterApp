@@ -104,13 +104,8 @@ int selectedBook;
     {
         BookFeedSingleBookController * viewcontroller = [segue destinationViewController];
         viewcontroller.bookID = [[[BooksAll objectAtIndex:selectedBook] objectForKey:@"id"]integerValue ];
-        
-
     }
-
-
 }
-
 
 
 

@@ -13,5 +13,6 @@
 @property (nonatomic) NSInteger bookID;
 @property (weak, nonatomic) IBOutlet UILabel *bookTitle;
 @property (weak, nonatomic) IBOutlet UILabel *bookDescription;
+@property (weak, nonatomic) IBOutlet UIImageView *bookImage;
 
 @end

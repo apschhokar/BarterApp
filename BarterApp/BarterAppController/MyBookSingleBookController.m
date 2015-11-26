@@ -51,14 +51,13 @@ NSMutableDictionary *mybooks;
         }
         
         NSError* error= nil;
-       // NSMutableArray *jsonArray = [NSMutableArray arrayWithArray:responseObject];
-        NSString *json = [NSString stringWithFormat:@"%@" ,responseObject];
+        NSMutableArray *jsonArray = [NSMutableArray arrayWithArray:responseObject];
+        NSString *json = [NSString stringWithFormat:@"%@" ,[jsonArray objectAtIndex:0]];
         
         NSData *objectData = [json dataUsingEncoding:NSUTF8StringEncoding];
         mybooks = [NSJSONSerialization JSONObjectWithData:objectData
-                                                  options:NSJSONReadingMutableContainers
-                                                    error:&error];
-        
+                                                              options:NSJSONReadingMutableContainers
+                                                                error:&error];
         [self setUIValues];
 
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -73,8 +72,13 @@ NSMutableDictionary *mybooks;
 }
 
 -(void) setUIValues{
-    [self.bookTitle setText:[mybooks objectForKey:@"book_description"]];
+    [self.bookTitle setText:[mybooks objectForKey:@"title"]];
     [self.bookDescription setText:[mybooks objectForKey:@"book_description"]];
+
+    NSString *ImageURL = [mybooks objectForKey:@"book_image_url"];
+    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:ImageURL]];
+    self.bookImage.image = [UIImage imageWithData:imageData];
+
 }
 
 @end

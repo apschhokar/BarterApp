@@ -14,6 +14,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *emailID;
 @property (weak, nonatomic) IBOutlet UITextField *password;
 - (IBAction)onRegisterBtnPressed:(id)sender;
-
+-(void) saveUserID : (NSDictionary *) retreivedDictionary;
 @end
 

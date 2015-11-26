@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="MeH-LP-R9U">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <scenes>
@@ -232,7 +233,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1121.5" y="1413.5"/>
+            <point key="canvasLocation" x="965.5" y="1401.5"/>
         </scene>
         <!--My Books-->
         <scene sceneID="zVc-8u-yky">
@@ -289,7 +290,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="BarterLogin.png" translatesAutoresizingMaskIntoConstraints="NO" id="IW3-35-bpx">
                                 <rect key="frame" x="20" y="73" width="166" height="171"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Book Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4w1-LL-GMT">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Loading" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4w1-LL-GMT">
                                 <rect key="frame" x="20" y="28" width="180" height="47"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -299,9 +300,8 @@
                                 <rect key="frame" x="0.0" y="270" width="375" height="357"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="wordWrap" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugV-9i-P5T">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Loading" lineBreakMode="wordWrap" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugV-9i-P5T">
                                 <rect key="frame" x="200" y="73" width="146" height="145"/>
-                                <string key="text">Book Description- ............................................................................................................................................................................................................................................................................................................................................................................................</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -312,12 +312,13 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="bookDescription" destination="ugV-9i-P5T" id="fir-RO-mEt"/>
+                        <outlet property="bookImage" destination="IW3-35-bpx" id="yLa-nb-L12"/>
                         <outlet property="bookTitle" destination="4w1-LL-GMT" id="dPg-GV-beS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CDq-sm-kbv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2012.5" y="2142.5"/>
+            <point key="canvasLocation" x="1993.5" y="2242.5"/>
         </scene>
         <!--Take Book Photo View Controller-->
         <scene sceneID="jn3-gW-Sic">
@@ -529,18 +530,30 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CXP-Om-yaf">
-                                <rect key="frame" x="0.0" y="270" width="375" height="357"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ofy-a8-Trz">
+                                <rect key="frame" x="30" y="380" width="295" height="75"/>
+                                <color key="backgroundColor" red="0.76172151853262915" green="0.90840041039999997" blue="0.69422089812218135" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Raise Barter Request For This Book">
+                                    <color key="titleShadowColor" red="0.73365885949999998" green="1" blue="0.95938443790000005" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="raiseBarterRequest:" destination="Zox-Cp-R6x" eventType="touchUpInside" id="fg2-Oh-kae"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="bookDescription" destination="azU-qJ-e4w" id="Aix-AB-YZc"/>
+                        <outlet property="bookImage" destination="U7M-lu-7tz" id="dZk-3x-EMU"/>
+                        <outlet property="bookTitle" destination="0sc-RA-HOO" id="7h2-Ug-758"/>
+                        <segue destination="w5D-BZ-97b" kind="show" identifier="SelectForBarter" id="Rr7-wP-g4F"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LYH-o2-TU0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="639.5" y="1413.5"/>
+            <point key="canvasLocation" x="1400.5" y="1423.5"/>
         </scene>
     </scenes>
     <resources>
@@ -548,6 +561,6 @@
         <image name="User.png" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kwi-NN-uK8"/>
+        <segue reference="Rr7-wP-g4F"/>
     </inferredMetricsTieBreakers>
 </document>

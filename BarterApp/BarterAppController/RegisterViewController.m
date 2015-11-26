@@ -92,7 +92,6 @@
         NSLog(@"hello");
         NSLog(@"%@", responseObject);
         
-
         NSError* error= nil;
         
         NSMutableArray *jsonArray = [NSMutableArray arrayWithArray:responseObject];
