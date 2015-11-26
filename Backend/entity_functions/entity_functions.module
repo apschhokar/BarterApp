@@ -73,3 +73,66 @@ function helloworld()
     
     return 'sample page';
 }
+
+function make_new_user($account)
+{
+    dpm(user_load(69));
+    
+    dpm('here');
+//       $email='ajfyyyftyv2@sahil.com';
+//       $pass='qwerty';
+//    $firstname='firstname';
+//    $lastname=='lastname';
+    
+       $email=$account['email'];
+       $pass=$account['pass'];
+    $firstname=$account['firstName'];
+    $lastname=$account['lastName'];
+    
+   if(is_object(user_load_by_mail($email)))
+   {
+       return 'already a user';
+       
+   }
+   
+    
+    $split = explode('@',$email);
+    $name = $split[0];
+
+    
+    $users = db_select('users', 'u')
+    ->fields('u', array('uid'))
+    ->orderBy('u.uid',"DESC")    
+    ->execute()
+    ->fetchAll();
+
+
+if(isset($users['0']->uid))
+{
+    $name=$name."(".($users['0']->uid+1).")";
+}
+
+ $new_user = array(
+  'name' => $name,
+  'pass' => $pass, // note: do not md5 the password
+  'mail' => $email,
+  'status' => 1,
+  'init' => $email,
+  'roles' => array(
+    DRUPAL_AUTHENTICATED_RID => 'authenticated user',    
+  ),
+);
+
+// The first parameter is sent blank so a new user is created.
+user_save('', $new_user);
+
+$u=user_load_by_mail($email);
+$u->field_user_first_name['und']['0']['value']=$firstname;
+$u->field_last_name['und']['0']['value']=$lastname;
+
+user_save($u);
+    dpm($u);
+    
+    return $u;
+    return 'make new user';    
+}
