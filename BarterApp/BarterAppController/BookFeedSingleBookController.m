@@ -13,7 +13,7 @@
 @end
 
 @implementation BookFeedSingleBookController
-NSMutableArray *dictobj;
+NSMutableArray *dictobject;
 
 
 - (void)viewDidLoad {
@@ -34,15 +34,14 @@ NSMutableArray *dictobj;
     manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-    NSDictionary *originalParameters = @{@"user_id":userID};
     
     
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"application/hal+json",@"text/json", @"text/javascript", @"text/html", nil];
     
-    NSString *fullString = [NSString stringWithFormat:@"http://dev-my-barter-site.pantheon.io/myrestapi/books_backend/retrieve_user_books"];
+    NSString *fullString = [NSString stringWithFormat:@"http://dev-my-barter-site.pantheon.io/myrestapi/books_backend/%d", self.bookID];
     
     
-    [manager POST:fullString parameters:originalParameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:fullString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"hello");
         NSLog(@"%@", responseObject) ;
         
@@ -58,21 +57,15 @@ NSMutableArray *dictobj;
         NSString *json = [NSString stringWithFormat:@"%@" ,[jsonArray objectAtIndex:0]];
         
         NSData *objectData = [json dataUsingEncoding:NSUTF8StringEncoding];
-        dictobj = [NSJSONSerialization JSONObjectWithData:objectData
+        dictobject = [NSJSONSerialization JSONObjectWithData:objectData
                                                   options:NSJSONReadingMutableContainers
                                                     error:&error];
-        
-        
-        
         
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
-    
-    
-
-    
+ 
     
 }
 

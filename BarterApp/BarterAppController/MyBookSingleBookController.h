@@ -10,4 +10,8 @@
 
 @interface MyBookSingleBookController : UIViewController
 
+@property (nonatomic) NSInteger bookID;
+@property (weak, nonatomic) IBOutlet UILabel *bookTitle;
+@property (weak, nonatomic) IBOutlet UILabel *bookDescription;
+
 @end

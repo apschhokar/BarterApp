@@ -8,6 +8,7 @@
 
 #import "MyBooksViewController.h"
 #import "CustomBookCell.h"
+#import "MyBookSingleBookController.h"
 
 @interface MyBooksViewController ()  <UITableViewDataSource,UITableViewDelegate>
 
@@ -16,6 +17,7 @@
 @implementation MyBooksViewController
 
 NSMutableArray *dictobj;
+int selectedRow;
 
 
 
@@ -78,17 +80,11 @@ NSMutableArray *dictobj;
                                                               options:NSJSONReadingMutableContainers
                                                                 error:&error];
        
-        
-        [self.myBooksTableView reloadData];
-        
-       
-        
+       [self.myBooksTableView reloadData];
+  
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
-    
-
-    
     
 }
 
@@ -97,24 +93,18 @@ NSMutableArray *dictobj;
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:@"SingleBook"])
+    {
+        MyBookSingleBookController * viewcontroller = [ segue destinationViewController];
+        viewcontroller.bookID = [[[dictobj objectAtIndex:selectedRow] objectForKey:@"id"]integerValue ];
+    }
 }
-*/
-
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-
 {
-    
     return [dictobj count];
-    
 }
 
 
@@ -135,21 +125,22 @@ NSMutableArray *dictobj;
     
     
     //cell. = [dictobj objectForKey:[keys objectAtIndex:indexPath.row]];
-
-    
     
     return cell;
 }
 
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    selectedRow = indexPath.row;
     [self performSegueWithIdentifier:@"SingleBook" sender:self];
 }
+
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 82;
 }
+
 
 
 - (IBAction)onuploadBtnPressed:(id)sender {

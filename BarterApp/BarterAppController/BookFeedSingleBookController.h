@@ -10,4 +10,6 @@
 
 @interface BookFeedSingleBookController : UIViewController
 
+@property (nonatomic) NSInteger bookID;
+
 @end
