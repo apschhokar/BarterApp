@@ -157,6 +157,29 @@ $outer=array();
     
 }
 
+function books_backend_retrieve_books_of_user($user_details)
+{
+  $user_details = _services_arg_value($user_details, 'user_details');
+  $list_array=array();
+  
+  $list_array[]="check";
+  $list_array[]=$user_details;
+  $list=book_list_for_user($user_details['user_id']);
+  
+  $nodes = node_load_multiple($list);
+dpm($nodes);
+
+$outer=array();
+   
+   foreach($nodes as $value)
+   {
+      $outer[]=a_book_array($value); 
+   }
+  
+  
+  return json_encode($outer);
+}
+
 function books_backend_create_access($op = 'view', $args = array()) {
     return true;
 }
