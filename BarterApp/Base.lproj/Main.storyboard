@@ -259,6 +259,12 @@
                                 <rect key="frame" x="0.0" y="109" width="375" height="426"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select Your Book For Barter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qMr-3x-Zdz">
+                                <rect key="frame" x="20" y="30" width="315" height="68"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -267,6 +273,8 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="myBooksTableView" destination="HBD-ow-I8o" id="FK2-Ea-IXT"/>
+                        <outlet property="selectBookLabel" destination="qMr-3x-Zdz" id="N6f-fZ-8CT"/>
+                        <outlet property="uploadButton" destination="eXS-bN-Xmc" id="eGB-Qp-WM7"/>
                         <segue destination="HgF-4O-yGp" kind="show" identifier="Upload" id="C6l-2W-gBQ"/>
                         <segue destination="u93-jS-wk4" kind="show" identifier="SingleBook" id="Hdd-Zs-LEV"/>
                     </connections>

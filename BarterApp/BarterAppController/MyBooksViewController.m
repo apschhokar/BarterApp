@@ -9,6 +9,8 @@
 #import "MyBooksViewController.h"
 #import "CustomBookCell.h"
 #import "MyBookSingleBookController.h"
+#import "BookFeedSingleBookController.h"
+#import "MyBooksViewController.m"
 
 @interface MyBooksViewController ()  <UITableViewDataSource,UITableViewDelegate>
 
@@ -18,6 +20,7 @@
 
 NSMutableArray *dictobj;
 int selectedRow;
+bool fromBarterRequest;
 
 
 
@@ -31,6 +34,7 @@ int selectedRow;
 
     NSString *myIdentifier = @"BookCell";
     [self.myBooksTableView registerNib:[UINib nibWithNibName:@"CustomBookCell" bundle:nil] forCellReuseIdentifier:myIdentifier];
+    [self checkForBarterOrMyBooks];
 
 }
 
@@ -53,7 +57,6 @@ int selectedRow;
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
     NSDictionary *originalParameters = @{@"user_id":userID};
-    
     
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"application/hal+json",@"text/json", @"text/javascript", @"text/html", nil];
     
@@ -139,6 +142,27 @@ int selectedRow;
     else
         return [self.navigationController.viewControllers objectAtIndex:numberOfViewControllers - 2];
 }
+
+
+
+-(void) checkForBarterOrMyBooks{
+    
+    UIViewController *previousViewController = [[UIViewController alloc]init];
+    previousViewController = [self backViewController];
+    
+    if ([previousViewController isMemberOfClass:NSClassFromString(@"BookFeedSingleBookController")]) {
+        [self.uploadButton setHidden:YES];
+        [self.selectBookLabel setHidden:NO];
+        fromBarterRequest = true;
+    }
+    else{
+        fromBarterRequest = false;
+        [self.uploadButton setHidden:NO];
+        [self.selectBookLabel setHidden:YES];
+    }
+    
+}
+
 
 
 

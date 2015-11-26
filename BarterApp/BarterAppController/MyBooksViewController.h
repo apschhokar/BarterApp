@@ -14,5 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *myBooksTableView;
 - (IBAction)onuploadBtnPressed:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *uploadButton;
+@property (weak, nonatomic) IBOutlet UILabel *selectBookLabel;
 
 @end

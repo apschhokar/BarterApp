@@ -129,8 +129,6 @@ int selectedBook;
     cell.BookTitle.text  = [[BooksAll objectAtIndex:indexPath.row]objectForKey:@"title"];
     cell.BookAuthor.text = [[BooksAll objectAtIndex:indexPath.row]objectForKey:@"book_author"];
     cell.yearOfPurchase.text = [[BooksAll objectAtIndex:indexPath.row]objectForKey:@"book_year_of_purchase"];
-    
-    
     return cell;
 }
 
