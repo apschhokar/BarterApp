@@ -45,7 +45,6 @@
 
 
 -(BOOL) checkAllTheParameters{
-    
     //check for valid email
     if (![self validateEmail:[self.emailID text]]) {
         [self showAlertView:@"Not a valid email ID" and:@"OK"];
@@ -69,13 +68,9 @@
 
 
 - (IBAction)onRegisterButtonPressed:(id)sender {
-    
     if (![self checkAllTheParameters]) {
         return;
     }
-    
-
-    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     //header fields
@@ -97,7 +92,6 @@
         NSLog(@"hello");
         NSLog(@"%@", responseObject);
         
-
         NSError* error= nil;
         
         NSMutableArray *jsonArray = [NSMutableArray arrayWithArray:responseObject];

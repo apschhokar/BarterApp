@@ -13,13 +13,12 @@
 @end
 
 @implementation BookFeedSingleBookController
-NSMutableArray *dictobj;
+NSMutableDictionary *dictobject;
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
@@ -34,15 +33,12 @@ NSMutableArray *dictobj;
     manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-    NSDictionary *originalParameters = @{@"user_id":userID};
-    
     
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"application/hal+json",@"text/json", @"text/javascript", @"text/html", nil];
     
-    NSString *fullString = [NSString stringWithFormat:@"http://dev-my-barter-site.pantheon.io/myrestapi/books_backend/retrieve_user_books"];
+    NSString *fullString = [NSString stringWithFormat:@"http://dev-my-barter-site.pantheon.io/myrestapi/books_backend/%d", self.bookID];
     
-    
-    [manager POST:fullString parameters:originalParameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:fullString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"hello");
         NSLog(@"%@", responseObject) ;
         
@@ -51,30 +47,21 @@ NSMutableArray *dictobj;
             NSLog(@"Good JSON \n");
         }
         
-        
         NSError* error= nil;
-        
         NSMutableArray *jsonArray = [NSMutableArray arrayWithArray:responseObject];
         NSString *json = [NSString stringWithFormat:@"%@" ,[jsonArray objectAtIndex:0]];
         
         NSData *objectData = [json dataUsingEncoding:NSUTF8StringEncoding];
-        dictobj = [NSJSONSerialization JSONObjectWithData:objectData
+        dictobject = [NSJSONSerialization JSONObjectWithData:objectData
                                                   options:NSJSONReadingMutableContainers
                                                     error:&error];
-        
-        
-        
-        
+        [self setUI:dictobject];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
-    
-    
-
-    
-    
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -90,5 +77,23 @@ NSMutableArray *dictobj;
     // Pass the selected object to the new view controller.
 }
 */
+
+
+
+
+-(void) setUI :(NSDictionary *) dict{
+
+    [self.bookTitle setText:[dict objectForKey:@"title"]];
+    [self.bookDescription setText:[dict objectForKey:@"book_description"]];
+    
+    NSString *ImageURL = [dict objectForKey:@"book_image_url"];
+    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:ImageURL]];
+    self.bookImage.image = [UIImage imageWithData:imageData];
+
+}
+
+- (IBAction)raiseBarterRequest:(id)sender {
+    [self performSegueWithIdentifier:@"SelectForBarter" sender:sender];
+}
 
 @end
