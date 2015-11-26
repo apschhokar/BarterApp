@@ -1,0 +1,10 @@
+name = requests_backend
+description = requests backend
+package = public-action
+version = VERSION
+core = 7.x
+files[] = requests_backend.module
+; Information added by drupal.org packaging script on 2010-03-21
+version = "7.0-alpha3"
+project = "drupal"
+datestamp = "1269192313"
