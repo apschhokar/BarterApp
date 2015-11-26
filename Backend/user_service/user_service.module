@@ -165,6 +165,50 @@ function user_service_services_resources() {
           'access arguments append' => FALSE,
         ),
       ),
+      'actions' => array(
+        'login' => array(
+          'help' => 'Login a user for a new session',
+          'callback' => '_user_resource_login_exp_barter',
+          'args' => array(
+            array(
+              'name' => 'account',
+              'type' => 'array',
+              'description' => 'The user object',
+              'source' => 'data',
+              'optional' => FALSE,
+            ),
+          ),
+          'access callback' => 'services_access_menu',
+          'file' => array('type' => 'inc', 'module' => 'services', 'name' => 'resources/user_resource'),
+        ),
+        'logout' => array(
+          'file' => array('type' => 'inc', 'module' => 'services', 'name' => 'resources/user_resource'),
+          'help' => 'Logout a user session',
+          'callback' => '_user_resource_logout',
+          'access callback' => 'services_access_menu',
+        ),
+        'token' => array(
+          'file' => array('type' => 'inc', 'module' => 'services', 'name' => 'resources/user_resource'),
+          'callback' => '_user_resource_get_token',
+          'access callback' => 'services_access_menu',
+          'help' => t('Returns the CSRF token.'),
+        ),
+        'request_new_password' => array(
+          'help' => 'Request a new password, given a user name or e-mail address',
+          'callback' => '_user_resource_request_new_password',
+          'args' => array(
+            array(
+              'name' => 'name',
+              'type' => 'string',
+              'description' => 'A valid user name or e-mail address',
+              'source' => array('data' => 'name'),
+              'optional' => FALSE,
+            ),
+          ),
+          'access callback' => 'services_access_menu',
+          'file' => array('type' => 'inc', 'module' => 'services', 'name' => 'resources/user_resource'),
+        ),
+      ),
       'targeted_actions' => array(
         'cancel' => array(
           'help' => 'Cancel a user',
@@ -223,3 +267,84 @@ function user_service_services_resources() {
 
   return $definition;
 }
+
+function user_service_form_alter(&$form, $form_state, $form_id)
+{
+    
+}
+
+
+
+    function _user_resource_create_exp_barter($account) {
+        
+
+  $account = _services_arg_value($account, 'account');
+    $email=$account['email'];
+  $pass=$decoded['pass'];
+  
+  
+if(valid_email_address($email))
+{
+    $split = explode('@',$email);
+$name = $split[0];
+$name=$name;
+    
+}
+else
+{
+    return 'not a valid email';
+}
+
+$check=user_load_by_mail($email);
+watchdog('check','<pre>'.print_r($check,true).'</pre>');
+if(isset($check->mail))
+{
+return $email." already exists";
+}
+
+//return json_encode($array);
+
+//$users = db_select('users', 'u')
+//    ->fields('u', array('uid'))
+//    ->orderBy('u.uid',"DESC")    
+//    ->execute()
+//    ->fetchAll();
+//
+//watchdog('users','<pre>'.print_r($users,true).'</pre>');
+//if(isset($users['0']->uid))
+//{
+//    $name=$name."(".($users['0']->uid+1).")";
+//}
+//
+// $new_user = array(
+//  'name' => $name,
+//  'pass' => $pass, // note: do not md5 the password
+//  'mail' => $email,
+//  'status' => 1,
+//  'init' => $email,
+//  'roles' => array(
+//    DRUPAL_AUTHENTICATED_RID => 'authenticated user',
+//    
+//  ),
+//);
+//
+//// The first parameter is sent blank so a new user is created.
+//user_save('', $new_user);
+//
+//$u=user_load_by_mail($email);
+//
+//$reply=array();
+//$reply['a']='Haan Bhai user ban gaya';
+//$reply['b']=$u;
+//
+//$u->name="oyee";
+//user_save($u);
+
+
+//$encoded_user=json_encode($u);
+//$array['e']=$u;  
+
+$reply=make_new_user($account);
+  return json_encode($reply);
+}
+
