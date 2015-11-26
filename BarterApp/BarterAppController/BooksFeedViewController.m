@@ -8,6 +8,7 @@
 
 #import "BooksFeedViewController.h"
 #import "CustomBookCell.h"
+#import "BookFeedSingleBookController.h"
 
 @interface BooksFeedViewController ()  <UITableViewDataSource,UITableViewDelegate>
 
@@ -15,7 +16,7 @@
 
 @implementation BooksFeedViewController
 NSMutableArray *BooksAll;
-
+int selectedBook;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -79,7 +80,6 @@ NSMutableArray *BooksAll;
         
         [self.booksFeedTableView reloadData];
         
-        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
@@ -94,15 +94,18 @@ NSMutableArray *BooksAll;
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    if ([[segue identifier] isEqualToString:@"SingleBook"])
+    {
+        BookFeedSingleBookController * viewcontroller = [segue destinationViewController];
+        viewcontroller.bookID = [[[BooksAll objectAtIndex:selectedBook] objectForKey:@"id"]integerValue ];
+    }
 }
-*/
 
 
 
@@ -132,6 +135,8 @@ NSMutableArray *BooksAll;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    selectedBook = indexPath.row;
+
     [self performSegueWithIdentifier:@"SingleBook" sender:self];
 
     
