@@ -1,0 +1,225 @@
+<?php
+function user_service_menu() {
+    $items = array();
+
+
+//    $items['test/hello_world'] = array(
+//        'title' => 'Hello World Test',
+//        'page callback' => 'say_hello_world',
+//        'access arguments' => array('access content'),
+//        'type' => MENU_CALLBACK,
+//     );
+
+
+    return $items;
+}
+
+//
+//function service_exp_say_hello_world() {
+//    
+//    $vars = array();
+//    $vars['type']="ul";
+//    $vars['title'] = "";
+//    $vars['attributes']=array("");
+//    $vars['items'][0]="This is a simple proof of concept module";
+// $uu=user_load_by_mail('sahildgfdfdfuu@gmail.com');
+//dpm($uu);
+//module_load_include('inc', 'content', 'includes/password');
+//if(user_check_password('hello',$uu))
+//{
+//    dpm('pass');
+//    
+//}else
+//{
+//    dpm('fail');
+//}
+//
+// 
+//    return theme_item_list($vars);
+//    
+//}
+function user_service_services_resources() {
+  $definition = array(
+    'barter_user_service' => array(
+      'operations' => array(
+        'retrieve' => array(
+          'help' => 'Retrieve a user',
+          'callback' => '_user_resource_retrieve_exp_barter',
+          'file' => array('type' => 'inc', 'module' => 'services', 'name' => 'resources/user_resource'),
+          'access callback' => '_user_resource_access',
+          'access arguments' => array('view'),
+          'access arguments append' => TRUE,
+          'args' => array(
+            array(
+              'name' => 'uid',
+              'type' => 'int',
+              'description' => 'The uid of the user to retrieve.',
+              'source' => array('path' => 0),
+              'optional' => FALSE,
+            ),
+          ),
+            
+            
+            
+        ),
+
+        'create' => array(
+          'help' => 'Create a user',
+          'callback' => '_user_resource_create_exp_barter',
+          'file' => array('type' => 'inc', 'module' => 'services', 'name' => 'resources/user_resource'),
+          'access callback' => '_user_resource_access',
+          'access arguments' => array('create'),
+          'access arguments append' => FALSE,
+          'args' => array(
+            array(
+              'name' => 'account',
+              'type' => 'array',
+              'description' => 'The user object',
+              'source' => 'data',
+              'optional' => FALSE,
+            ),
+          ),
+        ),
+
+        'update' => array(
+          'help' => 'Update a user',
+          'callback' => '_user_resource_update_exp_barter',
+          'file' => array('type' => 'inc', 'module' => 'services', 'name' => 'resources/user_resource'),
+          'access callback' => '_user_resource_access',
+          'access arguments' => array('view'),
+          'access arguments append' => TRUE,
+          'args' => array(
+            array(
+              'name' => 'uid',
+              'type' => 'int',
+              'description' => 'Unique identifier for this user',
+              'source' => array('path' => 0),
+              'optional' => FALSE,
+            ),
+            array(
+              'name' => 'data',
+              'type' => 'array',
+              'description' => 'The user object with updated information',
+              'source' => 'data',
+              'optional' => FALSE,
+            ),
+          ),
+        ),
+
+        'delete' => array(
+          'help' => 'Delete a user',
+          'callback' => '_user_resource_delete_exp_barter',
+          'file' => array('type' => 'inc', 'module' => 'services', 'name' => 'resources/user_resource'),
+          'access callback' => '_user_resource_access',
+          'access arguments' => array('delete'),
+          'access arguments append' => TRUE,
+          'args' => array(
+            array(
+              'name' => 'uid',
+              'type' => 'int',
+              'description' => 'The id of the user to delete',
+              'source' => array('path' => 0),
+              'optional' => FALSE,
+            ),
+          ),
+        ),
+        'index' => array(
+          'help' => 'List all users',
+          'file' => array('type' => 'inc', 'module' => 'services', 'name' => 'resources/user_resource'),
+          'callback' => '_user_resource_index',
+          'args' => array(
+            array(
+              'name' => 'page',
+              'optional' => TRUE,
+              'type' => 'int',
+              'description' => 'The zero-based index of the page to get, defaults to 0.',
+              'default value' => 0,
+              'source' => array('param' => 'page'),
+            ),
+            array(
+              'name' => 'fields',
+              'optional' => TRUE,
+              'type' => 'string',
+              'description' => 'The fields to get.',
+              'default value' => '*',
+              'source' => array('param' => 'fields'),
+            ),
+            array(
+              'name' => 'parameters',
+              'optional' => TRUE,
+              'type' => 'array',
+              'description' => 'Parameters',
+              'default value' => array(),
+              'source' => array('param' => 'parameters'),
+            ),
+            array(
+              'name' => 'pagesize',
+              'optional' => TRUE,
+              'type' => 'int',
+              'description' => 'Number of records to get per page.',
+              'default value' => variable_get('services_user_index_page_size', 20),
+              'source' => array('param' => 'pagesize'),
+            ),
+          ),
+          'access arguments' => array('access user profiles'),
+          'access arguments append' => FALSE,
+        ),
+      ),
+      'targeted_actions' => array(
+        'cancel' => array(
+          'help' => 'Cancel a user',
+          'callback' => '_user_resource_cancel',
+          'file' => array('type' => 'inc', 'module' => 'services', 'name' => 'resources/user_resource'),
+          'access callback' => '_user_resource_access',
+          'access arguments' => array('cancel'),
+          'access arguments append' => TRUE,
+          'args' => array(
+            array(
+              'name' => 'uid',
+              'optional' => FALSE,
+              'source' => array('path' => 0),
+              'type' => 'int',
+              'description' => 'The id of the user to cancel.',
+            ),
+          ),
+        ),
+        'password_reset' => array(
+          'access callback' => '_user_resource_access',
+          'access arguments' => array('password_reset'),
+          'access arguments append' => TRUE,
+          'callback' => '_user_resource_password_reset',
+          'args' => array(
+            array(
+              'name' => 'uid',
+              'optional' => FALSE,
+              'source' => array('path' => 0),
+              'type' => 'int',
+              'description' => 'The id of the user whose password to reset.',
+            ),
+          ),
+        ),
+        'resend_welcome_email' => array(
+          'access callback' => '_user_resource_access',
+          'access arguments' => array('resend_welcome_email'),
+          'access arguments append' => TRUE,
+          'callback' => '_user_resource_resend_welcome_email',
+          'args' => array(
+            array(
+              'name' => 'uid',
+              'optional' => FALSE,
+              'source' => array('path' => 0),
+              'type' => 'int',
+              'description' => 'The id of the user whose welcome email to resend.',
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
+
+//  $definition['user']['actions']['register'] = array_merge($definition['user']['operations']['create'], array(
+//    'help' => 'Register a user',
+//  ));
+
+  return $definition;
+}

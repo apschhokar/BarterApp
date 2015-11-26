@@ -1,0 +1,163 @@
+<?php
+function books_backend_exp_menu() {
+    $items = array();
+    return $items;
+}
+
+
+
+function books_backend_services_resources() { 
+
+//  $definition['user']['actions']['register'] = array_merge($definition['user']['operations']['create'], array(
+//    'help' => 'Register a user',
+//  ));
+    $node_resource = array(
+    'books_backend' => array(
+      'operations' => array(
+        'retrieve' => array(
+          'help' => 'Retrieve a node',
+          'file' => array('type' => 'inc', 'module' => 'services', 'name' => 'resources/node_resource'),
+          'callback' => '_node_resource_retrieve_book',
+          'args' => array(
+            array(
+              'name' => 'nid',
+              'optional' => FALSE,
+              'source' => array('path' => 0),
+              'type' => 'int',
+              'description' => 'The nid of the node to retrieve',
+            ),
+          ),
+          'access callback' => '_node_resource_access',
+          'access arguments' => array('view'),
+          'access arguments append' => TRUE,
+        ),
+        'create' => array(
+          'help' => 'Create a node',
+          'file' => array('type' => 'inc', 'module' => 'services', 'name' => 'resources/node_resource'),
+          'callback' => '_node_resource_create_book',
+          'args' => array(
+            array(
+              'name' => 'node',
+              'optional' => FALSE,
+              'source' => 'data',
+              'description' => 'The node data to create',
+              'type' => 'array',
+            ),
+          ),
+          'access callback' => 'books_backend_create_access',//_node_resource_access',
+          'access arguments' => array('view'),
+          'access arguments append' => TRUE,
+        ),
+        'update' => array(
+          'help' => 'Update a node',
+          'file' => array('type' => 'inc', 'module' => 'services', 'name' => 'resources/node_resource'),
+          'callback' => '_node_resource_update_book',
+          'args' => array(
+            array(
+              'name' => 'nid',
+              'optional' => FALSE,
+              'source' => array('path' => 0),
+              'type' => 'int',
+              'description' => 'The nid of the node to update',
+            ),
+            array(
+              'name' => 'node',
+              'optional' => FALSE,
+              'source' => 'data',
+              'description' => 'The node data to update',
+              'type' => 'array',
+            ),
+          ),
+          'access callback' => '_node_resource_access',
+          'access arguments' => array('view'),
+          'access arguments append' => TRUE,
+        ),
+        'delete' => array(
+          'help' => t('Delete a node'),
+          'file' => array('type' => 'inc', 'module' => 'services', 'name' => 'resources/node_resource'),
+          'callback' => '_node_resource_delete_book',
+          'args' => array(
+            array(
+              'name' => 'nid',
+              'optional' => FALSE,
+              'source' => array('path' => 0),
+              'type' => 'int',
+              'description' => 'The nid of the node to delete',
+            ),
+          ),
+          'access callback' => 'books_backend_create_access',
+          'access arguments' => array('delete'),
+          'access arguments append' => TRUE,
+        ),
+       ),
+        'actions' => array(
+        'retrieve_user_books' => array(
+          'help' => 'Login a user for a new session',
+          'callback' => 'books_backend_retrieve_books_of_user',
+          'args' => array(
+            array(
+              'name' => 'user_details',
+              'type' => 'array',
+              'description' => 'user id of the user whose books are to be retrieved',
+              'source' => 'data',
+              'optional' => FALSE,
+            ),
+          ),
+          'access callback' => 'books_backend_create_access',
+          //'file' => array('type' => 'inc', 'module' => 'services', 'name' => 'resources/user_resource'),
+        ),        
+         'retrieve_all_books' => array(
+          'help' => 'Login a user for a new session',
+          'callback' => 'books_backend_retrieve_all_books',
+          'args' => array(
+            array(
+              'name' => 'user_details',
+              'type' => 'array',
+              'description' => 'user id of the user whose books are to be retrieved',
+              'source' => 'data',
+              'optional' => FALSE,
+            ),
+          ),
+          'access callback' => 'books_backend_create_access',
+          //'file' => array('type' => 'inc', 'module' => 'services', 'name' => 'resources/user_resource'),
+        ),   
+      ),
+       ),
+        );
+    
+  return $node_resource;
+}
+
+function books_backend_retrieve_all_books($user_details)
+{
+    $query = db_select('node', 'n');
+$query->leftjoin('field_data_field_moderator_approval', 'av', 'av.entity_id = n.nid');
+$query->leftjoin('field_data_field_available_for_barter', 'fb', 'fb.entity_id = n.nid');
+$query->leftjoin('field_data_field_books_owner', 'bo', 'bo.entity_id = n.nid');
+  $query->condition('n.type', 'books');
+  $query->condition('av.field_moderator_approval_value', '0');
+  $query->condition('fb.field_available_for_barter_value', '1');
+  //$query->condition('bo.field_books_owner_target_id', $user_id);
+
+        $query->fields('n', array('nid'));
+        
+     $result = $query->execute()->fetchCol();
+$nodes = node_load_multiple($result);
+dpm($nodes);
+
+$outer=array();
+   
+   foreach($nodes as $value)
+   {
+      $outer[]=a_book_array($value); 
+   }
+  
+  
+  return json_encode($outer);
+    
+}
+
+function books_backend_create_access($op = 'view', $args = array()) {
+    return true;
+}
+
