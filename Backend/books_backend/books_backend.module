@@ -180,7 +180,29 @@ $outer=array();
   return json_encode($outer);
 }
 
+function _node_resource_delete_book($nid)
+{
+    //return $nid;
+    node_delete($nid);
+    $temp_array=array();
+    $temp_array['reply']='deleted';
+    return json_encode($temp_array);
+}
+
+function books_backend_form_alter(&$form, $form_state, $form_id)
+{
+    
+}
+
 function books_backend_create_access($op = 'view', $args = array()) {
     return true;
 }
 
+
+function _node_resource_update_book($nid, $node) {
+  // Adds backwards compatability with regression fixed in #1083242
+  $node_data = _services_arg_value($node, 'node');
+
+  return $node_data;
+ // $node['nid'] = $nid;
+}
