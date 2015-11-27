@@ -9,6 +9,8 @@
 #import "BooksFeedViewController.h"
 #import "CustomBookCell.h"
 #import "BookFeedSingleBookController.h"
+#import "AFNetworking.h"
+
 
 @interface BooksFeedViewController ()  <UITableViewDataSource,UITableViewDelegate>
 
@@ -50,7 +52,7 @@ int selectedBook;
     manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-    NSDictionary *originalParameters = @{@"empty":@"empty"};
+    NSDictionary *originalParameters = @{@"user_id":userID};
     
     
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"application/hal+json",@"text/json", @"text/javascript", @"text/html", nil];

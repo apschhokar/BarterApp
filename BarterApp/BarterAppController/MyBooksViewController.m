@@ -10,7 +10,8 @@
 #import "CustomBookCell.h"
 #import "MyBookSingleBookController.h"
 #import "BookFeedSingleBookController.h"
-#import "MyBooksViewController.m"
+#import "AFNetworking.h"
+
 
 @interface MyBooksViewController ()  <UITableViewDataSource,UITableViewDelegate>
 
@@ -62,7 +63,8 @@ bool fromBarterRequest;
     
     NSString *fullString = [NSString stringWithFormat:@"http://dev-my-barter-site.pantheon.io/myrestapi/books_backend/retrieve_user_books"];
     
-    
+#import "AFNetworking.h"
+
     [manager POST:fullString parameters:originalParameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"hello");
         NSLog(@"%@", responseObject) ;

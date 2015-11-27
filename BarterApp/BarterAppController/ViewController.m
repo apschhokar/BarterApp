@@ -65,7 +65,6 @@
 
         
         NSError* error= nil;
-        
         NSMutableArray *jsonArray = [NSMutableArray arrayWithArray:responseObject];
         NSString *json = [NSString stringWithFormat:@"%@" ,[jsonArray objectAtIndex:0]];
         
@@ -73,7 +72,6 @@
         NSDictionary *jsonD = [NSJSONSerialization JSONObjectWithData:objectData
                                                              options:NSJSONReadingMutableContainers
                                                                error:&error];
-        
         
         [self saveUserID:jsonD];
 
@@ -161,5 +159,14 @@
     [prefs setObject:[retreivedDictionary objectForKey:@"uid"] forKey:@"userID"];
     [prefs synchronize];
 }
+
+-(BOOL) validateEmail: (NSString *) candidate {
+    NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex]; //  return 0;
+    return [emailTest evaluateWithObject:candidate];
+}
+
+
+
 
 @end

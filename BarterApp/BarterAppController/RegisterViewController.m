@@ -7,6 +7,8 @@
 //
 
 #import "RegisterViewController.h"
+#import "AFNetworking.h"
+
 
 @interface RegisterViewController () <UITextFieldDelegate>
 
@@ -14,13 +16,14 @@
 
 @implementation RegisterViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden:NO];
     self.navigationController.navigationBar.translucent = NO;
-
     // Do any additional setup after loading the view.
 }
+
 
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -31,10 +34,12 @@
     [self.view addGestureRecognizer:tap];
 }
 
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 
 -(BOOL) validateEmail: (NSString *) candidate {
@@ -42,6 +47,7 @@
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex]; //  return 0;
     return [emailTest evaluateWithObject:candidate];
 }
+
 
 
 -(BOOL) checkAllTheParameters{
@@ -61,10 +67,9 @@
         [self showAlertView:@"password donot match" and:@"OK"];
         return false;
     }
-
-    
     return true;
 }
+
 
 
 - (IBAction)onRegisterButtonPressed:(id)sender {
