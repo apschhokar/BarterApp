@@ -127,6 +127,23 @@ function requests_backend_services_resources() {
     
   return $node_resource;
 }
+
+function _node_resource_retrieve_requests($nid) {
+    //return 'heyy';
+  $node = node_load($nid);
+  
+  if($node)
+  {
+      $array_requests_node=a_requests_array($node);
+              return $array_requests_node;
+              //return isset($node->field_book_coverpage['und']['0']['uri']);
+                return $node;    
+            }
+            else {
+      return 'node not found';
+    }
+}
+
 function requests_backend_create_access($op = 'view', $args = array()) {
     return true;
 }
