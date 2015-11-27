@@ -8,10 +8,52 @@ function bartertest_menu() {
         'type' => MENU_CALLBACK,
         
      );
+    $items['user_list'] = array(
+        'title' => 'Barter User List',
+        'page callback' => 'user_display_page',
+        'access arguments' => array('access content'),
+        'type' => MENU_CALLBACK,        
+     );
     return $items;
 }
 
+function user_display_page()
+{
+    $query = db_select('users', 'u');
+    $query->leftjoin('users_roles', 'ur', 'ur.uid = u.uid');
+//  $query->condition('n.type', 'books');
+  //$query->condition('ur.rid', '3','!=');
+        $query->fields('u', array('uid'));
+        $query->fields('u', array('mail'));
+        $query->fields('ur', array('rid'));
+        
+     $result = $query->execute()->fetchAll();
+     
+     $anonymous=array();
+     foreach($result as $value)
+     {
+         if((isset($value->rid) && ($value->rid==3 || $value->rid==5)) || $value->uid==0)
+         {
+         
+         }
+         else {
+             $anonymous[]=$value->uid;
+         }
+     }
+    
+     
+     
+//return 'hellooo';     
+$nodes = user_load_multiple($anonymous);
+$t='<html><p>Users Email List</p>';
+foreach($nodes as $value)
+{
+$t.='<div>'.$value->mail.'</div>';        
+}
+$t.='</html>';    
 
+return $t;
+}
 function image_display_page()
 {
     $file = system_retrieve_file('http://dev-my-barter-site.pantheon.io/sites/default/files/book_1_0.png', $directory=NULL, TRUE);            

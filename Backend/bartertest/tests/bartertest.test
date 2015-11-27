@@ -44,5 +44,86 @@ class BartertestTests extends DrupalWebTestCase
         
     }
     
+    public function testusersave_check1()
+    {    
+        $email='barter@barter.com';
+        $pass='password';
+        if(is_object(user_load_by_mail($email)))   {
+            return 'already a user';       
+            }
+        $split = explode('@',$email);
+        $name = $split[0];
+        $users = db_select('users', 'u')
+        ->fields('u', array('uid'))
+        ->orderBy('u.uid',"DESC")    
+        ->execute()
+        ->fetchAll();
+        if(isset($users['0']->uid)){
+        $name=$name."(".($users['0']->uid+1).")";
+            }
+        $new_user = array(
+         'name' => $name,
+         'pass' => $pass, // note: do not md5 the password
+         'mail' => $email,
+         'status' => 1,
+         'init' => $email,
+         'roles' => array(
+           DRUPAL_AUTHENTICATED_RID => 'authenticated user',    
+         ),
+       );
+
+        user_save('', $new_user);
+
+        $this->drupalGet('user_list');
+        $this->assertText($email,'The '.$email.' is present');
+    }
+    
+    public function testusersave_check2()
+    {
+    
+    $email='user2@barter.com';
+    $pass='password';
+    
+    
+   if(is_object(user_load_by_mail($email)))
+   {
+       return 'already a user';       
+   }
+   
+    
+    $split = explode('@',$email);
+    $name = $split[0];
+
+    
+    $users = db_select('users', 'u')
+    ->fields('u', array('uid'))
+    ->orderBy('u.uid',"DESC")    
+    ->execute()
+    ->fetchAll();
+
+
+if(isset($users['0']->uid))
+{
+    $name=$name."(".($users['0']->uid+1).")";
+}
+
+ $new_user = array(
+  'name' => $name,
+  'pass' => $pass, // note: do not md5 the password
+  'mail' => $email,
+  'status' => 1,
+  'init' => $email,
+  'roles' => array(
+    DRUPAL_AUTHENTICATED_RID => 'authenticated user',    
+  ),
+);
+
+// The first parameter is sent blank so a new user is created.
+user_save('', $new_user);
+
+        $this->drupalGet('user_list');
+        $this->assertText($email,'The '.$email.' is present');
+    }
+    
     }
 
