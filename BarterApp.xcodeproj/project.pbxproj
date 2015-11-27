@@ -85,6 +85,7 @@
 		2DF5991D1C068F8A00398520 /* LoginTestCases.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5991C1C068F8A00398520 /* LoginTestCases.m */; settings = {ASSET_TAGS = (); }; };
 		2DF599251C069A9D00398520 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF599241C069A9D00398520 /* RegisterViewController.m */; settings = {ASSET_TAGS = (); }; };
 		2DF599261C069A9D00398520 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF599241C069A9D00398520 /* RegisterViewController.m */; settings = {ASSET_TAGS = (); }; };
+		2DF599291C080F8600398520 /* RegisterTestCases.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF599281C080F8600398520 /* RegisterTestCases.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -193,6 +194,7 @@
 		2DF599231C069A9D00398520 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		2DF599241C069A9D00398520 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		2DF599271C0807A800398520 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		2DF599281C080F8600398520 /* RegisterTestCases.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegisterTestCases.m; path = BarterApp/TestCases/RegisterTestCases.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -426,6 +428,7 @@
 			isa = PBXGroup;
 			children = (
 				2DF5991C1C068F8A00398520 /* LoginTestCases.m */,
+				2DF599281C080F8600398520 /* RegisterTestCases.m */,
 			);
 			name = Testcases;
 			sourceTree = "<group>";
@@ -615,6 +618,7 @@
 			files = (
 				2D8DE05A1BFE7413004998F5 /* WebService.m in Sources */,
 				2DF5991D1C068F8A00398520 /* LoginTestCases.m in Sources */,
+				2DF599291C080F8600398520 /* RegisterTestCases.m in Sources */,
 				2D8DE03D1BFE7143004998F5 /* AFSecurityPolicy.m in Sources */,
 				2D2753AF1BF1227E0062E0C0 /* MyProfileViewController.m in Sources */,
 				2D8DE03B1BFE7143004998F5 /* AFNetworkReachabilityManager.m in Sources */,
