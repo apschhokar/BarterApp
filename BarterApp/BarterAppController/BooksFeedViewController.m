@@ -105,7 +105,7 @@ int selectedBook;
     if ([[segue identifier] isEqualToString:@"SingleBook"])
     {
         BookFeedSingleBookController * viewcontroller = [segue destinationViewController];
-        viewcontroller.bookID = [[[BooksAll objectAtIndex:selectedBook] objectForKey:@"id"]integerValue ];
+        viewcontroller.selectedBookID = [[[BooksAll objectAtIndex:selectedBook] objectForKey:@"id"]integerValue ];
     }
 }
 

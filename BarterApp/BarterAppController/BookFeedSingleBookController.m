@@ -17,7 +17,7 @@
 
 @implementation BookFeedSingleBookController
 NSMutableDictionary *dictobject;
-int selectedBook;
+int selectedBookID;
 
 
 - (void)viewDidLoad {
@@ -45,7 +45,7 @@ int selectedBook;
     
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"application/hal+json",@"text/json", @"text/javascript", @"text/html", nil];
     
-    NSString *fullString = [NSString stringWithFormat:@"http://dev-my-barter-site.pantheon.io/myrestapi/books_backend/%d", self.bookID];
+    NSString *fullString = [NSString stringWithFormat:@"http://dev-my-barter-site.pantheon.io/myrestapi/books_backend/%d", self.selectedBookID];
     
     [manager GET:fullString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"hello");
@@ -111,9 +111,7 @@ int selectedBook;
     if ([[segue identifier] isEqualToString:@"SelectForBarter"])
     {
         MyBooksViewController * viewcontroller = [segue destinationViewController];
-        viewcontroller.requesterBookID = self.bookID;
-        
-
+        viewcontroller.requesterBookID = self.selectedBookID;
     }
 }
 

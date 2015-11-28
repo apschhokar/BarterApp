@@ -10,7 +10,7 @@
 
 @interface BookFeedSingleBookController : UIViewController
 
-@property (nonatomic) NSInteger bookID;
+@property (nonatomic) NSInteger selectedBookID;
 @property (weak, nonatomic) IBOutlet UILabel *bookDescription;
 @property (weak, nonatomic) IBOutlet UILabel *bookTitle;
 @property (weak, nonatomic) IBOutlet UIImageView *bookImage;

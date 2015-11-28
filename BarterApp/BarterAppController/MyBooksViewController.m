@@ -176,17 +176,38 @@ bool fromBarterRequest;
 
     }
     else{
-        [self raiseBarterRequest];
+        
+        UIAlertController *alert= [UIAlertController
+                                   alertControllerWithTitle:@"are you sure?"
+                                   message:@""
+                                   preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* ok = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault
+                                                   handler:^(UIAlertAction * action){
+                                                       //Do Some action here
+                                                       [self raiseBarterRequest];
+
+                                                       
+                                                   }];
+        UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction * action) {
+ 
+                                                           [alert dismissViewControllerAnimated:YES completion:nil];
+                                                           
+                                                       }];
+        
+        [alert addAction:ok];
+        [alert addAction:cancel];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+           
     }
 }
 
 
 
 -(void) raiseBarterRequest{
-    
-    
-    
-    
+  
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     
@@ -200,19 +221,20 @@ bool fromBarterRequest;
     manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-    NSDictionary *originalParameters = @{@"user_id":userID};
+    NSString* AccepterID =[NSString stringWithFormat:@"%d",  [[[dictobj objectAtIndex:selectedRow] objectForKey:@"book_owner_id"]integerValue ]];
+    NSString * AcceptorBookID = [NSString stringWithFormat:@"%d",  [[[dictobj objectAtIndex:selectedRow] objectForKey:@"id"]integerValue ]];
+    
+    NSDictionary *originalParameters = @{@"requester_id":userID , @"req_book_id":[NSString stringWithFormat:@"%ld" , (long)self.requesterBookID], @"acceptor_id":AccepterID , @"accept_book_id":AcceptorBookID};
     
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"application/hal+json",@"text/json", @"text/javascript", @"text/html", nil];
     
     NSString *fullString = [NSString stringWithFormat:@"http://dev-my-barter-site.pantheon.io/myrestapi/requests_backend"];
     
-    
     [manager POST:fullString parameters:originalParameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"hello");
         NSLog(@"%@", responseObject) ;
         
-        
-        if ([NSJSONSerialization isValidJSONObject: responseObject]){
+        if ([NSJSONSerialization isValidJSONObject:responseObject]){
             NSLog(@"Good JSON \n");
         }
         
@@ -220,17 +242,26 @@ bool fromBarterRequest;
         NSMutableArray *jsonArray = [NSMutableArray arrayWithArray:responseObject];
         NSString *json = [NSString stringWithFormat:@"%@" ,[jsonArray objectAtIndex:0]];
         NSData *objectData = [json dataUsingEncoding:NSUTF8StringEncoding];
-        dictobj = [NSJSONSerialization JSONObjectWithData:objectData
-                                                  options:NSJSONReadingMutableContainers
-                                                    error:&error];
-        [self.myBooksTableView reloadData];
+        
+        UIAlertController *alert= [UIAlertController
+                                   alertControllerWithTitle:@"Request successfully raised"
+                                   message:@""
+                                   preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* ok = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault
+                                                   handler:^(UIAlertAction * action){
+                                                       //Do Some action here
+                                                       [self raiseBarterRequest];
+                                                   }];
+        
+        [alert addAction:ok];
+        [self presentViewController:alert animated:YES completion:nil];
+
+        //[self.myBooksTableView reloadData];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
-
-    
-
 
 }
 
