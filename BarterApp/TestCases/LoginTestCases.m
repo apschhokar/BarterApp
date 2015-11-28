@@ -30,12 +30,24 @@
 
 
 - (void) testLoginMethod {
-    NSString *originalString = @"himynameisandy";
-    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:@"uid", @"key1", @"value2", @"key2", nil];
-
+    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:@"108", @"uid", nil];
     [self.vcToTest saveUserID:dict];
-    
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *userID = [prefs stringForKey:@"userID"];
+    XCTAssertTrue([userID isEqualToString: @"108"]);
 }
+
+
+-(void) testForValidEmail{
+    NSString *validEmail = @"apschhokar@gmail.com";
+    XCTAssertTrue( [self.vcToTest validateEmail:validEmail]);
+    NSString *invalidEmail = @"apschhokar@gmail";
+    XCTAssertFalse( [self.vcToTest validateEmail:invalidEmail]);
+}
+
+
+
+
 
 
 - (void)testExample {

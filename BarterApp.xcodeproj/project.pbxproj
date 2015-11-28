@@ -85,6 +85,14 @@
 		2DF5991D1C068F8A00398520 /* LoginTestCases.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5991C1C068F8A00398520 /* LoginTestCases.m */; settings = {ASSET_TAGS = (); }; };
 		2DF599251C069A9D00398520 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF599241C069A9D00398520 /* RegisterViewController.m */; settings = {ASSET_TAGS = (); }; };
 		2DF599261C069A9D00398520 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF599241C069A9D00398520 /* RegisterViewController.m */; settings = {ASSET_TAGS = (); }; };
+		2DF599291C080F8600398520 /* RegisterTestCases.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF599281C080F8600398520 /* RegisterTestCases.m */; settings = {ASSET_TAGS = (); }; };
+		2DF5992B1C08169C00398520 /* launch.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DF5992A1C08169C00398520 /* launch.png */; settings = {ASSET_TAGS = (); }; };
+		2DF5992C1C08169C00398520 /* launch.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DF5992A1C08169C00398520 /* launch.png */; settings = {ASSET_TAGS = (); }; };
+		2DF5992D1C08169C00398520 /* launch.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DF5992A1C08169C00398520 /* launch.png */; settings = {ASSET_TAGS = (); }; };
+		2DF5992F1C0A39A200398520 /* UserProfileTestCases.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5992E1C0A39A200398520 /* UserProfileTestCases.m */; settings = {ASSET_TAGS = (); }; };
+		2DF599331C0A3A5B00398520 /* RequestPageTestCases.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF599321C0A3A5B00398520 /* RequestPageTestCases.m */; settings = {ASSET_TAGS = (); }; };
+		2DF599351C0A3A8400398520 /* BooksFeedTestCases.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF599341C0A3A8400398520 /* BooksFeedTestCases.m */; settings = {ASSET_TAGS = (); }; };
+		2DF599371C0A3AA100398520 /* MyBooksTestCases.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF599361C0A3AA100398520 /* MyBooksTestCases.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -184,7 +192,6 @@
 		2D8DE0331BFE7143004998F5 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		2D8DE0571BFE7413004998F5 /* WebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebService.h; path = BarterApp/WebService.h; sourceTree = "<group>"; };
 		2D8DE0581BFE7413004998F5 /* WebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebService.m; path = BarterApp/WebService.m; sourceTree = "<group>"; };
-		2D8DE05B1BFE749C004998F5 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		2DF5990F1C02C99F00398520 /* User.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = User.png; sourceTree = "<group>"; };
 		2DF599121C05088100398520 /* BookFeedSingleBookController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookFeedSingleBookController.h; sourceTree = "<group>"; };
 		2DF599131C05088100398520 /* BookFeedSingleBookController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookFeedSingleBookController.m; sourceTree = "<group>"; };
@@ -193,6 +200,13 @@
 		2DF5991C1C068F8A00398520 /* LoginTestCases.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginTestCases.m; path = BarterApp/TestCases/LoginTestCases.m; sourceTree = "<group>"; };
 		2DF599231C069A9D00398520 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		2DF599241C069A9D00398520 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		2DF599271C0807A800398520 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		2DF599281C080F8600398520 /* RegisterTestCases.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegisterTestCases.m; path = BarterApp/TestCases/RegisterTestCases.m; sourceTree = "<group>"; };
+		2DF5992A1C08169C00398520 /* launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch.png; sourceTree = "<group>"; };
+		2DF5992E1C0A39A200398520 /* UserProfileTestCases.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserProfileTestCases.m; path = BarterApp/TestCases/UserProfileTestCases.m; sourceTree = "<group>"; };
+		2DF599321C0A3A5B00398520 /* RequestPageTestCases.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RequestPageTestCases.m; path = BarterApp/TestCases/RequestPageTestCases.m; sourceTree = "<group>"; };
+		2DF599341C0A3A8400398520 /* BooksFeedTestCases.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BooksFeedTestCases.m; path = BarterApp/TestCases/BooksFeedTestCases.m; sourceTree = "<group>"; };
+		2DF599361C0A3AA100398520 /* MyBooksTestCases.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyBooksTestCases.m; path = BarterApp/TestCases/MyBooksTestCases.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,13 +278,13 @@
 		2D353F3E1BF0177800BDA3CE /* BarterApp */ = {
 			isa = PBXGroup;
 			children = (
+				2DF599271C0807A800398520 /* PrefixHeader.pch */,
 				2D353F421BF0177800BDA3CE /* AppDelegate.h */,
 				2D353F431BF0177800BDA3CE /* AppDelegate.m */,
 				2D353F4E1BF0177800BDA3CE /* Assets.xcassets */,
 				2D353F501BF0177800BDA3CE /* LaunchScreen.storyboard */,
 				2D353F531BF0177800BDA3CE /* Info.plist */,
 				2D353F4B1BF0177800BDA3CE /* BarterApp.xcdatamodeld */,
-				2D8DE05B1BFE749C004998F5 /* PrefixHeader.pch */,
 				2D353F3F1BF0177800BDA3CE /* Supporting Files */,
 			);
 			path = BarterApp;
@@ -343,6 +357,7 @@
 		2D353F7D1BF01AE300BDA3CE /* BarterImages */ = {
 			isa = PBXGroup;
 			children = (
+				2DF5992A1C08169C00398520 /* launch.png */,
 				2DF5990F1C02C99F00398520 /* User.png */,
 				2D2753D51BF1C3930062E0C0 /* IMG_0559.jpg */,
 				2D2753A81BF039DF0062E0C0 /* BarterLogin.png */,
@@ -426,6 +441,11 @@
 			isa = PBXGroup;
 			children = (
 				2DF5991C1C068F8A00398520 /* LoginTestCases.m */,
+				2DF599281C080F8600398520 /* RegisterTestCases.m */,
+				2DF5992E1C0A39A200398520 /* UserProfileTestCases.m */,
+				2DF599321C0A3A5B00398520 /* RequestPageTestCases.m */,
+				2DF599341C0A3A8400398520 /* BooksFeedTestCases.m */,
+				2DF599361C0A3AA100398520 /* MyBooksTestCases.m */,
 			);
 			name = Testcases;
 			sourceTree = "<group>";
@@ -539,6 +559,7 @@
 				2D353F521BF0177800BDA3CE /* LaunchScreen.storyboard in Resources */,
 				2D2753DD1BF1CAF00062E0C0 /* CustomRequestCell.xib in Resources */,
 				2DF599101C02C99F00398520 /* User.png in Resources */,
+				2DF5992B1C08169C00398520 /* launch.png in Resources */,
 				2D353F4F1BF0177800BDA3CE /* Assets.xcassets in Resources */,
 				2D353F4A1BF0177800BDA3CE /* Main.storyboard in Resources */,
 				2D2753CC1BF1AD030062E0C0 /* CustomBookCell.xib in Resources */,
@@ -552,6 +573,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D2753D71BF1C3930062E0C0 /* IMG_0559.jpg in Resources */,
+				2DF5992C1C08169C00398520 /* launch.png in Resources */,
 				2D2753CD1BF1AD030062E0C0 /* CustomBookCell.xib in Resources */,
 				2DF599111C02C99F00398520 /* User.png in Resources */,
 				2D2753DE1BF1CAF00062E0C0 /* CustomRequestCell.xib in Resources */,
@@ -562,6 +584,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DF5992D1C08169C00398520 /* launch.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -613,8 +636,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DF599331C0A3A5B00398520 /* RequestPageTestCases.m in Sources */,
 				2D8DE05A1BFE7413004998F5 /* WebService.m in Sources */,
 				2DF5991D1C068F8A00398520 /* LoginTestCases.m in Sources */,
+				2DF599291C080F8600398520 /* RegisterTestCases.m in Sources */,
 				2D8DE03D1BFE7143004998F5 /* AFSecurityPolicy.m in Sources */,
 				2D2753AF1BF1227E0062E0C0 /* MyProfileViewController.m in Sources */,
 				2D8DE03B1BFE7143004998F5 /* AFNetworkReachabilityManager.m in Sources */,
@@ -626,8 +651,11 @@
 				2D8DE0551BFE7143004998F5 /* UIWebView+AFNetworking.m in Sources */,
 				2D8DE0351BFE7143004998F5 /* AFHTTPRequestOperation.m in Sources */,
 				2D8DE0391BFE7143004998F5 /* AFHTTPSessionManager.m in Sources */,
+				2DF599351C0A3A8400398520 /* BooksFeedTestCases.m in Sources */,
+				2DF599371C0A3AA100398520 /* MyBooksTestCases.m in Sources */,
 				2DF599261C069A9D00398520 /* RegisterViewController.m in Sources */,
 				2D8DE04B1BFE7143004998F5 /* UIAlertView+AFNetworking.m in Sources */,
+				2DF5992F1C0A39A200398520 /* UserProfileTestCases.m in Sources */,
 				2D8DE0411BFE7143004998F5 /* AFURLRequestSerialization.m in Sources */,
 				2DF599191C0508A100398520 /* MyBookSingleBookController.m in Sources */,
 				2D2753B71BF1229E0062E0C0 /* MyBooksViewController.m in Sources */,
@@ -774,7 +802,6 @@
 		2D353F6D1BF0177800BDA3CE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/BarterApp/PrefixHeader.pch";
 				INFOPLIST_FILE = BarterApp/Info.plist;
@@ -790,7 +817,6 @@
 		2D353F6E1BF0177800BDA3CE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/BarterApp/PrefixHeader.pch";
 				INFOPLIST_FILE = BarterApp/Info.plist;
@@ -830,10 +856,13 @@
 		2D353F731BF0177800BDA3CE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = BarterAppUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = UB.BarterAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_TARGET_NAME = BarterApp;
 				USES_XCTRUNNER = YES;
 			};
@@ -842,10 +871,13 @@
 		2D353F741BF0177800BDA3CE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = BarterAppUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = UB.BarterAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_TARGET_NAME = BarterApp;
 				USES_XCTRUNNER = YES;
 			};
