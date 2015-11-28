@@ -18,6 +18,15 @@
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden:NO];
     //self.navigationController.navigationBar.translucent = NO;
+    
+    
+    
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout"
+                                                                 style:UIBarButtonItemStyleBordered
+                                                                target:nil
+                                                                action:nil];
+    
+    [self.navigationItem setBackBarButtonItem:backItem];
 
     // Do any additional setup after loading the view.
 }

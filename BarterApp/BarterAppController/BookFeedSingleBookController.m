@@ -8,6 +8,7 @@
 
 #import "BookFeedSingleBookController.h"
 #import "AFNetworking.h"
+#import "MyBooksViewController.h";
 
 
 @interface BookFeedSingleBookController ()
@@ -16,10 +17,16 @@
 
 @implementation BookFeedSingleBookController
 NSMutableDictionary *dictobject;
+int selectedBook;
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout"
+                                                                 style:UIBarButtonItemStyleBordered
+                                                                target:nil
+                                                                action:nil];
+
     // Do any additional setup after loading the view.
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -96,6 +103,20 @@ NSMutableDictionary *dictobject;
 
 - (IBAction)raiseBarterRequest:(id)sender {
     [self performSegueWithIdentifier:@"SelectForBarter" sender:sender];
+    
+   }
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"SelectForBarter"])
+    {
+        MyBooksViewController * viewcontroller = [segue destinationViewController];
+        viewcontroller.requesterBookID = self.bookID;
+        
+
+    }
 }
+
+
 
 @end
