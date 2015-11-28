@@ -89,6 +89,10 @@
 		2DF5992B1C08169C00398520 /* launch.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DF5992A1C08169C00398520 /* launch.png */; settings = {ASSET_TAGS = (); }; };
 		2DF5992C1C08169C00398520 /* launch.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DF5992A1C08169C00398520 /* launch.png */; settings = {ASSET_TAGS = (); }; };
 		2DF5992D1C08169C00398520 /* launch.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DF5992A1C08169C00398520 /* launch.png */; settings = {ASSET_TAGS = (); }; };
+		2DF5992F1C0A39A200398520 /* UserProfileTestCases.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF5992E1C0A39A200398520 /* UserProfileTestCases.m */; settings = {ASSET_TAGS = (); }; };
+		2DF599331C0A3A5B00398520 /* RequestPageTestCases.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF599321C0A3A5B00398520 /* RequestPageTestCases.m */; settings = {ASSET_TAGS = (); }; };
+		2DF599351C0A3A8400398520 /* BooksFeedTestCases.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF599341C0A3A8400398520 /* BooksFeedTestCases.m */; settings = {ASSET_TAGS = (); }; };
+		2DF599371C0A3AA100398520 /* MyBooksTestCases.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DF599361C0A3AA100398520 /* MyBooksTestCases.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -199,6 +203,10 @@
 		2DF599271C0807A800398520 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		2DF599281C080F8600398520 /* RegisterTestCases.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegisterTestCases.m; path = BarterApp/TestCases/RegisterTestCases.m; sourceTree = "<group>"; };
 		2DF5992A1C08169C00398520 /* launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch.png; sourceTree = "<group>"; };
+		2DF5992E1C0A39A200398520 /* UserProfileTestCases.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserProfileTestCases.m; path = BarterApp/TestCases/UserProfileTestCases.m; sourceTree = "<group>"; };
+		2DF599321C0A3A5B00398520 /* RequestPageTestCases.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RequestPageTestCases.m; path = BarterApp/TestCases/RequestPageTestCases.m; sourceTree = "<group>"; };
+		2DF599341C0A3A8400398520 /* BooksFeedTestCases.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BooksFeedTestCases.m; path = BarterApp/TestCases/BooksFeedTestCases.m; sourceTree = "<group>"; };
+		2DF599361C0A3AA100398520 /* MyBooksTestCases.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyBooksTestCases.m; path = BarterApp/TestCases/MyBooksTestCases.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -434,6 +442,10 @@
 			children = (
 				2DF5991C1C068F8A00398520 /* LoginTestCases.m */,
 				2DF599281C080F8600398520 /* RegisterTestCases.m */,
+				2DF5992E1C0A39A200398520 /* UserProfileTestCases.m */,
+				2DF599321C0A3A5B00398520 /* RequestPageTestCases.m */,
+				2DF599341C0A3A8400398520 /* BooksFeedTestCases.m */,
+				2DF599361C0A3AA100398520 /* MyBooksTestCases.m */,
 			);
 			name = Testcases;
 			sourceTree = "<group>";
@@ -624,6 +636,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DF599331C0A3A5B00398520 /* RequestPageTestCases.m in Sources */,
 				2D8DE05A1BFE7413004998F5 /* WebService.m in Sources */,
 				2DF5991D1C068F8A00398520 /* LoginTestCases.m in Sources */,
 				2DF599291C080F8600398520 /* RegisterTestCases.m in Sources */,
@@ -638,8 +651,11 @@
 				2D8DE0551BFE7143004998F5 /* UIWebView+AFNetworking.m in Sources */,
 				2D8DE0351BFE7143004998F5 /* AFHTTPRequestOperation.m in Sources */,
 				2D8DE0391BFE7143004998F5 /* AFHTTPSessionManager.m in Sources */,
+				2DF599351C0A3A8400398520 /* BooksFeedTestCases.m in Sources */,
+				2DF599371C0A3AA100398520 /* MyBooksTestCases.m in Sources */,
 				2DF599261C069A9D00398520 /* RegisterViewController.m in Sources */,
 				2D8DE04B1BFE7143004998F5 /* UIAlertView+AFNetworking.m in Sources */,
+				2DF5992F1C0A39A200398520 /* UserProfileTestCases.m in Sources */,
 				2D8DE0411BFE7143004998F5 /* AFURLRequestSerialization.m in Sources */,
 				2DF599191C0508A100398520 /* MyBookSingleBookController.m in Sources */,
 				2D2753B71BF1229E0062E0C0 /* MyBooksViewController.m in Sources */,

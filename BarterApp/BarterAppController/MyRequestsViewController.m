@@ -8,6 +8,7 @@
 
 #import "MyRequestsViewController.h"
 #import "CustomRequestViewCell.h"
+#import "AFNetworking.h"
 
 
 @interface MyRequestsViewController () <UITableViewDataSource , UITableViewDelegate>
@@ -60,14 +61,11 @@ NSMutableArray *RequestDict;
     
     
     [manager POST:fullString parameters:originalParameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"hello");
         NSLog(@"%@", responseObject) ;
-        
         
         if ([NSJSONSerialization isValidJSONObject: responseObject]){
             NSLog(@"Good JSON \n");
         }
-        
         
         NSError* error= nil;
         
@@ -108,7 +106,7 @@ NSMutableArray *RequestDict;
 
 {
     
-    return 10;
+    return [RequestDict count];
     
 }
 
@@ -123,9 +121,8 @@ NSMutableArray *RequestDict;
         cell = [[CustomRequestViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
     
-    
-    
-    
+    cell.requesterBook = [[RequestDict objectAtIndex:indexPath.row]objectForKey:@"acceptor_book_name"];
+    cell.yourBook = [[RequestDict objectAtIndex:indexPath.row]objectForKey:@"title"];
     return cell;
 }
 
@@ -164,11 +161,6 @@ NSMutableArray *RequestDict;
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 100;
 }
-
-
-
-
-
 
 
 
