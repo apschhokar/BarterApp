@@ -1,0 +1,4 @@
+name =Barter test
+description = barter test example
+core = 7.x
+files[] = tests/bartertest.test
