@@ -16,6 +16,8 @@
 - (IBAction)onuploadBtnPressed:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *uploadButton;
 @property (weak, nonatomic) IBOutlet UILabel *selectBookLabel;
-@property (nonatomic) NSInteger requesterBookID;
+@property (nonatomic) NSInteger AccepterBookID;
+@property (nonatomic) NSInteger AccepterID;
+
 
 @end

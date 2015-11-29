@@ -16,5 +16,8 @@
 - (IBAction)onRegisterBtnPressed:(id)sender;
 -(void) saveUserID : (NSDictionary *) retreivedDictionary;
 -(BOOL) validateEmail: (NSString *) candidate ;
+-(void) showAlertView: (NSString *) Title and:(NSString *) information;
+
+
 @end
 

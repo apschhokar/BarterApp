@@ -517,7 +517,7 @@
 				TargetAttributes = {
 					2D353F3B1BF0177800BDA3CE = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 3TWR7QGRLZ;
+						DevelopmentTeam = NTUU5QXD56;
 					};
 					2D353F571BF0177800BDA3CE = {
 						CreatedOnToolsVersion = 7.0;
@@ -736,9 +736,10 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ajay Partap Singh Chhokar (CMZ8DDF9LU)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ajay Partap Singh Chhokar (CMZ8DDF9LU)";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -758,6 +759,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "ebd5829a-df15-49ef-aba8-a59df83a5a8f";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -779,7 +781,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Ajay Partap Singh Chhokar (9W6H76D88F)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ajay Partap Singh Chhokar (9W6H76D88F)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -794,6 +797,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "2c9a4e01-783f-4f1e-bdf5-89ad095bdd27";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -802,15 +806,16 @@
 		2D353F6D1BF0177800BDA3CE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: apschhokar@gmail.com (QXCKS63PNH)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ajay Partap Singh Chhokar (CMZ8DDF9LU)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/BarterApp/PrefixHeader.pch";
 				INFOPLIST_FILE = BarterApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = UB.BarterApp;
+				PRODUCT_BUNDLE_IDENTIFIER = UB.BarterBookApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "ebd5829a-df15-49ef-aba8-a59df83a5a8f";
 				SHARED_PRECOMPS_DIR = "$(SRCROOT)/BarterApp/Prefix.pch";
 			};
 			name = Debug;
@@ -818,15 +823,16 @@
 		2D353F6E1BF0177800BDA3CE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: apschhokar@gmail.com (QXCKS63PNH)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Ajay Partap Singh Chhokar (9W6H76D88F)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/BarterApp/PrefixHeader.pch";
 				INFOPLIST_FILE = BarterApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = UB.BarterApp;
+				PRODUCT_BUNDLE_IDENTIFIER = UB.BarterBookApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "2c9a4e01-783f-4f1e-bdf5-89ad095bdd27";
 				SHARED_PRECOMPS_DIR = "$(SRCROOT)/BarterApp/Prefix.pch";
 			};
 			name = Release;

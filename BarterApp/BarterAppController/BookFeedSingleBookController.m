@@ -111,7 +111,8 @@ int selectedBookID;
     if ([[segue identifier] isEqualToString:@"SelectForBarter"])
     {
         MyBooksViewController * viewcontroller = [segue destinationViewController];
-        viewcontroller.requesterBookID = self.selectedBookID;
+        viewcontroller.AccepterBookID = self.selectedBookID;
+        viewcontroller.AccepterID = [[dictobject objectForKey:@"book_owner_id"]integerValue];
     }
 }
 
