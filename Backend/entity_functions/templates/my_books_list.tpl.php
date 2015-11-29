@@ -147,7 +147,7 @@ body {
 <p><?php echo $value['book_description'];?></p>
 <span> Purchase Date: <?php echo $value['purchase_date'];?></span>
 <span> Author: <?php echo $value['author'];?></span>
-<span> Tags: <?php echo $value['tags'];?></span>
+<span> Tags: lorem ipsum <?php //echo $value['tags'];?></span>
 <span> Amazon link: <a href="<?php echo $value['amazon_link'];?>">Click Here</a> </span>
 </div>
     <div class="column-three">
@@ -171,7 +171,14 @@ body {
     
     <?php
     
-    }?>
+    }
+    if($counter==0)
+    {
+        ?>
+    <div class="no-books"><h3>No Books Found</h3></div>
+        <?php
+    }
+    ?>
 <script>
     $=jQuery;
     
@@ -186,7 +193,8 @@ body {
     
         $('.reject').click(function(){
   var id=$(this)[0].getAttribute('node_id_button_info');
-  var element=document.getElementById('node_id_'+id);          
+  var element=document.getElementById('node_id_'+id);
+  //element.slideUp();
   element.remove();
   
   jQuery.ajax({
@@ -219,7 +227,9 @@ success: function(longlatarr) {
   console.log($(this)[0].getAttribute('node_id_button_info'));
   var id=$(this)[0].getAttribute('node_id_button_info');
   var element=document.getElementById('node_id_'+id);
-  element.remove();
+  //$('#node_id_100').slideUp();
+  //$( "#node_id_56" ).slideUp( 600 ).delay( 1600 ).fadeOut( 800 );
+        element.remove();
   console.log(element);
  
  
