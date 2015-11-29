@@ -194,6 +194,22 @@ function books_backend_form_alter(&$form, $form_state, $form_id)
     
 }
 
+
+function _node_resource_retrieve_book($nid) {
+    //return 'heyy';
+  $node = node_load($nid);
+  if($node)
+  {
+      $array_book_node=a_book_array($node);
+              return $array_book_node;
+              //return isset($node->field_book_coverpage['und']['0']['uri']);
+                return $node;    
+            }
+            else {
+      return 'node not found';
+    }
+}
+
 function books_backend_create_access($op = 'view', $args = array()) {
     return true;
 }
