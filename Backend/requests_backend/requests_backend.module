@@ -144,6 +144,24 @@ function _node_resource_retrieve_requests($nid) {
     }
 }
 
+function a_requests_array($node)
+{
+$array_requests_array=array();    
+$array_requests_array['id']=
+        $array_requests_array['requester_id']=isset($node->field_requestor_id['und']['0']['target_id'])?$node->field_requestor_id['und']['0']['target_id']:"";
+        $array_requests_array['acceptor_id']=isset($node->field_acceptor_id['und']['0']['target_id'])?$node->field_acceptor_id['und']['0']['target_id']:"";
+        $array_requests_array['req_book_id']=isset($node->field_requestor_book['und']['0']['target_id'])?$node->field_requestor_book['und']['0']['target_id']:"";        
+        $array_requests_array['accept_book_id']=isset($node->field_acceptor_book['und']['0']['target_id'])?$node->field_acceptor_book['und']['0']['target_id']:"";
+        
+        $array_requests_array['field_acceptor_approval']=isset($node->field_acceptor_approval['und']['0']['value'])?$node->field_acceptor_approval['und']['0']['value']:"";
+        $array_requests_array['field_requestor_approval']=isset($node->field_requestor_approval['und']['0']['value'])?$node->field_requestor_approval['und']['0']['value']:"";
+        $array_requests_array['field_transactioncomplete']=isset($node->field_transactioncomplete['und']['0']['value'])?$node->field_transactioncomplete['und']['0']['value']:"";
+        
+        
+        
+        return $array_requests_array;
+}
+
 function requests_backend_create_access($op = 'view', $args = array()) {
     return true;
 }
