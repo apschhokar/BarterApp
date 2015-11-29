@@ -128,6 +128,73 @@ function requests_backend_services_resources() {
   return $node_resource;
 }
 
+//function books_backend_retrieve_all_books($user_details)
+//{
+//    $query = db_select('node', 'n');
+//$query->leftjoin('field_data_field_moderator_approval', 'av', 'av.entity_id = n.nid');
+//$query->leftjoin('field_data_field_available_for_barter', 'fb', 'fb.entity_id = n.nid');
+//$query->leftjoin('field_data_field_books_owner', 'bo', 'bo.entity_id = n.nid');
+//  $query->condition('n.type', 'books');
+//  $query->condition('av.field_moderator_approval_value', '0');
+//  $query->condition('fb.field_available_for_barter_value', '1');
+//  //$query->condition('bo.field_books_owner_target_id', $user_id);
+//
+//        $query->fields('n', array('nid'));
+//        
+//     $result = $query->execute()->fetchCol();
+//$nodes = node_load_multiple($result);
+//dpm($nodes);
+//
+//$outer=array();
+//   
+//   foreach($nodes as $value)
+//   {
+//      $outer[]=a_book_array($value); 
+//   }
+//  
+//  
+//  return json_encode($outer);
+//    
+//}
+
+//function books_backend_retrieve_books_of_user($user_details)
+//{
+//  $user_details = _services_arg_value($user_details, 'user_details');
+//  $list_array=array();
+//  
+//  $list_array[]="check";
+//  $list_array[]=$user_details;
+//  $list=book_list_for_user($user_details['user_id']);
+//  
+//  $nodes = node_load_multiple($list);
+//dpm($nodes);
+//
+//$outer=array();
+//   
+//   foreach($nodes as $value)
+//   {
+//      $outer[]=a_book_array($value); 
+//   }
+//  
+//  
+//  return json_encode($outer);
+//}
+
+//function _node_resource_delete_book($nid)
+//{
+//    //return $nid;
+//    node_delete($nid);
+//    $temp_array=array();
+//    $temp_array['reply']='deleted';
+//    return json_encode($temp_array);
+//}
+
+//function books_backend_form_alter(&$form, $form_state, $form_id)
+//{
+//    
+//}
+
+
 function _node_resource_retrieve_requests($nid) {
     //return 'heyy';
   $node = node_load($nid);
@@ -143,6 +210,60 @@ function _node_resource_retrieve_requests($nid) {
       return 'node not found';
     }
 }
+
+function a_requests_array($node)
+{
+$array_requests_array=array();    
+$array_requests_array['id']=
+        $array_requests_array['requester_id']=isset($node->field_requestor_id['und']['0']['target_id'])?$node->field_requestor_id['und']['0']['target_id']:"";
+        $array_requests_array['acceptor_id']=isset($node->field_acceptor_id['und']['0']['target_id'])?$node->field_acceptor_id['und']['0']['target_id']:"";
+        $array_requests_array['req_book_id']=isset($node->field_requestor_book['und']['0']['target_id'])?$node->field_requestor_book['und']['0']['target_id']:"";        
+        $array_requests_array['accept_book_id']=isset($node->field_acceptor_book['und']['0']['target_id'])?$node->field_acceptor_book['und']['0']['target_id']:"";
+        
+        $array_requests_array['field_acceptor_approval']=isset($node->field_acceptor_approval['und']['0']['value'])?$node->field_acceptor_approval['und']['0']['value']:"";
+        $array_requests_array['field_requestor_approval']=isset($node->field_requestor_approval['und']['0']['value'])?$node->field_requestor_approval['und']['0']['value']:"";
+        $array_requests_array['field_transactioncomplete']=isset($node->field_transactioncomplete['und']['0']['value'])?$node->field_transactioncomplete['und']['0']['value']:"";
+        
+        
+        
+        return $array_requests_array;
+}
+
+//function a_book_array($node)
+//{
+//    $array_book_node=array();
+//      $array_book_node['id']=$node->nid;
+//              $array_book_node['title']=$node->title;
+//              $array_book_node['book_owner_id']=isset($node->field_books_owner['und']['0']['value'])?$node->field_books_owner['und']['0']['value']:"";
+//              $array_book_node['book_author']=isset($node->field_author['und']['0']['value'])?$node->field_author['und']['0']['value']:"";
+//              $array_book_node['book_description']=isset($node->field_description['und']['0']['value'])?$node->field_description['und']['0']['value']:"";
+//              $array_book_node['book_year_of_purchase']=isset($node->field_year_of_purchase['und']['0']['value'])?$node->field_year_of_purchase['und']['0']['value']:"";
+//              $array_book_node['book_original_price']=isset($node->field_original_price['und']['0']['value'])?$node->field_original_price['und']['0']['value']:"";
+//              if(isset($node->field_book_coverpage['und']['0']['uri']))
+//                {
+//                    $array_book_node['book_image_url']=$_SERVER['HTTP_HOST'].'/sites/default/files/'.substr($node->field_book_coverpage['und']['0']['uri'],8);
+//                }
+//                else
+//                {
+//                $array_book_node['book_image_url']=$_SERVER['HTTP_HOST'].'/sites/default/files/'."notuploaded.JPG";
+//                }
+//              $array_book_node['book_available_for_barter']=isset($node->field_available_for_barter['und']['0']['value'])?$node->field_available_for_barter['und']['0']['value']:"";
+//              $array_book_node['book_moderator_approval']=isset($node->field_moderator_approval['und']['0']['value'])?$node->field_moderator_approval['und']['0']['value']:"";
+//              $array_book_node['amazon_link']=isset($node->field_amazon_link['und']['0']['value'])?$node->field_amazon_link['und']['0']['value']:"";
+//      
+//              return $array_book_node;
+//}
+
+function _node_resource_create_requests($node) {
+    
+    $node = _services_arg_value($node, 'node');
+  
+  $request_obj=make_new_request($node);
+  $array=array();
+  $array['request_id']=$request_obj->nid;
+  return json_encode($array);
+}
+
 
 function requests_backend_create_access($op = 'view', $args = array()) {
     return true;
