@@ -7,6 +7,9 @@
 //
 
 #import "BookFeedSingleBookController.h"
+#import "AFNetworking.h"
+#import "MyBooksViewController.h";
+
 
 @interface BookFeedSingleBookController ()
 
@@ -14,10 +17,16 @@
 
 @implementation BookFeedSingleBookController
 NSMutableDictionary *dictobject;
+int selectedBookID;
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout"
+                                                                 style:UIBarButtonItemStyleBordered
+                                                                target:nil
+                                                                action:nil];
+
     // Do any additional setup after loading the view.
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -36,7 +45,7 @@ NSMutableDictionary *dictobject;
     
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"application/hal+json",@"text/json", @"text/javascript", @"text/html", nil];
     
-    NSString *fullString = [NSString stringWithFormat:@"http://dev-my-barter-site.pantheon.io/myrestapi/books_backend/%d", self.bookID];
+    NSString *fullString = [NSString stringWithFormat:@"http://dev-my-barter-site.pantheon.io/myrestapi/books_backend/%d", self.selectedBookID];
     
     [manager GET:fullString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"hello");
@@ -94,6 +103,18 @@ NSMutableDictionary *dictobject;
 
 - (IBAction)raiseBarterRequest:(id)sender {
     [self performSegueWithIdentifier:@"SelectForBarter" sender:sender];
+    
+   }
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"SelectForBarter"])
+    {
+        MyBooksViewController * viewcontroller = [segue destinationViewController];
+        viewcontroller.requesterBookID = self.selectedBookID;
+    }
 }
+
+
 
 @end

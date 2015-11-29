@@ -8,6 +8,7 @@
 
 #import "MyRequestsViewController.h"
 #import "CustomRequestViewCell.h"
+#import "AFNetworking.h"
 
 
 @interface MyRequestsViewController () <UITableViewDataSource , UITableViewDelegate>
@@ -15,6 +16,7 @@
 @end
 
 @implementation MyRequestsViewController
+NSMutableArray *RequestDict;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,7 +28,6 @@
     NSString *myIdentifier = @"RequestCell";
     [self.myRequestTableView registerNib:[UINib nibWithNibName:@"CustomRequestCell" bundle:nil] forCellReuseIdentifier:myIdentifier];
 
-
     // Do any additional setup after loading the view.
 }
 
@@ -36,6 +37,53 @@
 
     self.myRequestTableView.delegate = self;
     self.myRequestTableView.dataSource = self;
+    
+    
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    
+    // getting an NSString
+    NSString *userID = [prefs stringForKey:@"userID"];
+    
+    //header fields
+    [manager.requestSerializer setValue:@"vTdpl8GYzaxIxbT5PF6WauKWyVLMXfv2f57WoNvV9H0" forHTTPHeaderField:@"X-CSRF-Token"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
+    NSDictionary *originalParameters = @{@"user_id":userID};
+    
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"application/hal+json",@"text/json", @"text/javascript", @"text/html", nil];
+    
+    NSString *fullString = [NSString stringWithFormat:@"http://dev-my-barter-site.pantheon.io/myrestapi/requests_backend/retrieve_user_requests"];
+    
+    
+    [manager POST:fullString parameters:originalParameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"%@", responseObject) ;
+        
+        if ([NSJSONSerialization isValidJSONObject: responseObject]){
+            NSLog(@"Good JSON \n");
+        }
+        
+        NSError* error= nil;
+        
+        NSMutableArray *jsonArray = [NSMutableArray arrayWithArray:responseObject];
+        NSString *json = [NSString stringWithFormat:@"%@" ,[jsonArray objectAtIndex:0]];
+        
+        NSData *objectData = [json dataUsingEncoding:NSUTF8StringEncoding];
+        RequestDict = [NSJSONSerialization JSONObjectWithData:objectData
+                                                  options:NSJSONReadingMutableContainers
+                                                    error:&error];
+        
+        [self.myRequestTableView reloadData];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,7 +106,7 @@
 
 {
     
-    return 10;
+    return [RequestDict count];
     
 }
 
@@ -67,12 +115,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *simpleTableIdentifier = @"RequestCell";
-    UITableViewCell *cell = (CustomRequestViewCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    CustomRequestViewCell *cell = (CustomRequestViewCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+        cell = [[CustomRequestViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
     
+    cell.requesterBook = [[RequestDict objectAtIndex:indexPath.row]objectForKey:@"acceptor_book_name"];
+    cell.yourBook = [[RequestDict objectAtIndex:indexPath.row]objectForKey:@"title"];
     return cell;
 }
 
@@ -86,14 +136,12 @@
     UIAlertAction* ok = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault
                                                handler:^(UIAlertAction * action){
                                                    //Do Some action here
-                                                   UITextField *textField = alert.textFields[0];
-                                                   NSLog(@"text was %@", textField.text);
+                                                 
                                                    
                                                }];
     UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleDefault
                                                    handler:^(UIAlertAction * action) {
                                                        
-                                                       NSLog(@"cancel btn");
                                                        
                                                        [alert dismissViewControllerAnimated:YES completion:nil];
                                                        

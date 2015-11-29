@@ -7,6 +7,8 @@
 //
 
 #import "TakeBookPhotoViewController.h"
+#import "AFNetworking.h"
+
 
 @interface TakeBookPhotoViewController () <UITextFieldDelegate>
 

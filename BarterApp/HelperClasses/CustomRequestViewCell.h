@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface CustomRequestViewCell : UITableViewCell
-- (IBAction)onAcceptButtonPressed:(id)sender;
-@property (weak, nonatomic) IBOutlet UIButton *onDeclineButtonPressed;
-@property (weak, nonatomic) IBOutlet UILabel *requestByLabel;
 
-@property (weak, nonatomic) IBOutlet UILabel *bookTitle;
+@property (weak, nonatomic) IBOutlet UIButton *onDeclineButtonPressed;
+
+@property (weak, nonatomic) IBOutlet UILabel *requesterBook;
+@property (weak, nonatomic) IBOutlet UILabel *yourBook;
+
 @end

@@ -9,6 +9,8 @@
 #import "BooksFeedViewController.h"
 #import "CustomBookCell.h"
 #import "BookFeedSingleBookController.h"
+#import "AFNetworking.h"
+
 
 @interface BooksFeedViewController ()  <UITableViewDataSource,UITableViewDelegate>
 
@@ -50,7 +52,7 @@ int selectedBook;
     manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-    NSDictionary *originalParameters = @{@"empty":@"empty"};
+    NSDictionary *originalParameters = @{@"user_id":userID};
     
     
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"application/hal+json",@"text/json", @"text/javascript", @"text/html", nil];
@@ -103,7 +105,7 @@ int selectedBook;
     if ([[segue identifier] isEqualToString:@"SingleBook"])
     {
         BookFeedSingleBookController * viewcontroller = [segue destinationViewController];
-        viewcontroller.bookID = [[[BooksAll objectAtIndex:selectedBook] objectForKey:@"id"]integerValue ];
+        viewcontroller.selectedBookID = [[[BooksAll objectAtIndex:selectedBook] objectForKey:@"id"]integerValue ];
     }
 }
 
@@ -129,8 +131,6 @@ int selectedBook;
     cell.BookTitle.text  = [[BooksAll objectAtIndex:indexPath.row]objectForKey:@"title"];
     cell.BookAuthor.text = [[BooksAll objectAtIndex:indexPath.row]objectForKey:@"book_author"];
     cell.yearOfPurchase.text = [[BooksAll objectAtIndex:indexPath.row]objectForKey:@"book_year_of_purchase"];
-    
-    
     return cell;
 }
 
