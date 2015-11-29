@@ -9,6 +9,8 @@
 #import "MyRequestsViewController.h"
 #import "CustomRequestViewCell.h"
 #import "AFNetworking.h"
+#import <MessageUI/MFMailComposeViewController.h>
+
 
 
 @interface MyRequestsViewController () <UITableViewDataSource , UITableViewDelegate>
@@ -37,8 +39,6 @@ NSMutableArray *RequestDict;
 
     self.myRequestTableView.delegate = self;
     self.myRequestTableView.dataSource = self;
-    
-    
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
@@ -77,6 +77,12 @@ NSMutableArray *RequestDict;
                                                   options:NSJSONReadingMutableContainers
                                                     error:&error];
         
+        if (RequestDict.count == 0) {
+            [self checkIFnorequest];
+
+        }
+        
+        
         [self.myRequestTableView reloadData];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -85,6 +91,31 @@ NSMutableArray *RequestDict;
 
     
 }
+
+-(void) checkIFnorequest {
+    
+    UIAlertController *alert= [UIAlertController
+                               alertControllerWithTitle:@"No Requests as of now"
+                               message:@""
+                               preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                               handler:^(UIAlertAction * action){
+                                                   //Do Some action here
+                                                   
+                                                   
+                                               }];
+  
+    
+    [alert addAction:ok];
+    
+    
+    [self presentViewController:alert animated:YES completion:nil];
+    
+
+
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -121,10 +152,17 @@ NSMutableArray *RequestDict;
         cell = [[CustomRequestViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
     
-    cell.requesterBook = [[RequestDict objectAtIndex:indexPath.row]objectForKey:@"acceptor_book_name"];
-    cell.yourBook = [[RequestDict objectAtIndex:indexPath.row]objectForKey:@"title"];
+    if (RequestDict.count == 0) {
+        return nil;
+    }
+    
+    
+    cell.requesterBook.text = [[RequestDict objectAtIndex:indexPath.row] objectForKey:@"req_book_name"];
+    cell.yourBook.text = [[RequestDict objectAtIndex:indexPath.row]objectForKey:@"acceptor_book_name"];
     return cell;
 }
+
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -136,9 +174,8 @@ NSMutableArray *RequestDict;
     UIAlertAction* ok = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault
                                                handler:^(UIAlertAction * action){
                                                    //Do Some action here
-                                                 
                                                    
-                                               }];
+                                                                                                }];
     UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleDefault
                                                    handler:^(UIAlertAction * action) {
                                                        
@@ -152,9 +189,6 @@ NSMutableArray *RequestDict;
     
   
     [self presentViewController:alert animated:YES completion:nil];
-    
-    
-    
 }
 
 

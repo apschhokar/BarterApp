@@ -46,8 +46,13 @@
 }
 
 
+-(void) loginButtonPressed{
+}
 
 
+-(void) TestLoginWebservice{
+
+}
 
 
 - (void)testExample {
