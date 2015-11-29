@@ -422,3 +422,21 @@ if(user_check_password($pass, $check))
   
   
 }
+
+
+function _user_resource_delete_exp_barter($uid) {
+  if ($uid == 1) {
+    return services_error(t('The admin user cannot be deleted.'), 403);
+  }
+
+  $account = user_load($uid);
+  if (empty($account)) {
+    return services_error(t('There is no user with ID @uid.', array('@uid' => $uid)), 404);
+  }
+  user_delete($uid);
+
+  // Everything went right.
+  return TRUE;
+}
+
+
