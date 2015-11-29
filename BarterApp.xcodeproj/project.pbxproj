@@ -517,7 +517,7 @@
 				TargetAttributes = {
 					2D353F3B1BF0177800BDA3CE = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 3TWR7QGRLZ;
+						DevelopmentTeam = NTUU5QXD56;
 					};
 					2D353F571BF0177800BDA3CE = {
 						CreatedOnToolsVersion = 7.0;
@@ -802,7 +802,7 @@
 		2D353F6D1BF0177800BDA3CE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: apschhokar@gmail.com (QXCKS63PNH)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ajay Partap Singh Chhokar (CMZ8DDF9LU)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/BarterApp/PrefixHeader.pch";
 				INFOPLIST_FILE = BarterApp/Info.plist;
@@ -811,6 +811,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = UB.BarterApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "30ca8e65-dc48-42cc-b5d6-2973e2c619dc";
 				SHARED_PRECOMPS_DIR = "$(SRCROOT)/BarterApp/Prefix.pch";
 			};
 			name = Debug;
@@ -818,7 +819,7 @@
 		2D353F6E1BF0177800BDA3CE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: apschhokar@gmail.com (QXCKS63PNH)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Ajay Partap Singh Chhokar (9W6H76D88F)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/BarterApp/PrefixHeader.pch";
 				INFOPLIST_FILE = BarterApp/Info.plist;
@@ -827,6 +828,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = UB.BarterApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "d8498f5f-bc00-4e6b-8478-3dceb965cc5e";
 				SHARED_PRECOMPS_DIR = "$(SRCROOT)/BarterApp/Prefix.pch";
 			};
 			name = Release;
