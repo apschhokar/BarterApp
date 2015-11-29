@@ -210,6 +210,31 @@ function _node_resource_retrieve_book($nid) {
     }
 }
 
+function a_book_array($node)
+{
+    $array_book_node=array();
+      $array_book_node['id']=$node->nid;
+              $array_book_node['title']=$node->title;
+              $array_book_node['book_owner_id']=isset($node->field_books_owner['und']['0']['value'])?$node->field_books_owner['und']['0']['value']:"";
+              $array_book_node['book_author']=isset($node->field_author['und']['0']['value'])?$node->field_author['und']['0']['value']:"";
+              $array_book_node['book_description']=isset($node->field_description['und']['0']['value'])?$node->field_description['und']['0']['value']:"";
+              $array_book_node['book_year_of_purchase']=isset($node->field_year_of_purchase['und']['0']['value'])?$node->field_year_of_purchase['und']['0']['value']:"";
+              $array_book_node['book_original_price']=isset($node->field_original_price['und']['0']['value'])?$node->field_original_price['und']['0']['value']:"";
+              if(isset($node->field_book_coverpage['und']['0']['uri']))
+                {
+                    $array_book_node['book_image_url']=$_SERVER['HTTP_HOST'].'/sites/default/files/'.substr($node->field_book_coverpage['und']['0']['uri'],8);
+                }
+                else
+                {
+                $array_book_node['book_image_url']=$_SERVER['HTTP_HOST'].'/sites/default/files/'."notuploaded.JPG";
+                }
+              $array_book_node['book_available_for_barter']=isset($node->field_available_for_barter['und']['0']['value'])?$node->field_available_for_barter['und']['0']['value']:"";
+              $array_book_node['book_moderator_approval']=isset($node->field_moderator_approval['und']['0']['value'])?$node->field_moderator_approval['und']['0']['value']:"";
+              $array_book_node['amazon_link']=isset($node->field_amazon_link['und']['0']['value'])?$node->field_amazon_link['und']['0']['value']:"";
+      
+              return $array_book_node;
+}
+
 function books_backend_create_access($op = 'view', $args = array()) {
     return true;
 }
