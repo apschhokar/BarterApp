@@ -4,6 +4,7 @@ function books_backend_exp_menu() {
     return $items;
 }
 function books_backend_services_resources() { 
+
     $node_resource = array(
     'books_backend' => array(
       'operations' => array(
@@ -111,7 +112,7 @@ function books_backend_services_resources() {
             ),
           ),
           'access callback' => 'books_backend_create_access',
-            ),   
+        ),   
       ),
        ),
         );
@@ -128,7 +129,7 @@ $query->leftjoin('field_data_field_books_owner', 'bo', 'bo.entity_id = n.nid');
   $query->condition('n.type', 'books');
   $query->condition('av.field_moderator_approval_value', '0');
   $query->condition('fb.field_available_for_barter_value', '1');
-     $query->fields('n', array('nid'));
+   $query->fields('n', array('nid'));
         
      $result = $query->execute()->fetchCol();
 $nodes = node_load_multiple($result);
@@ -182,14 +183,29 @@ function books_backend_form_alter(&$form, $form_state, $form_id)
     
 }
 
+
+function _node_resource_retrieve_book($nid) {
+  $node = node_load($nid);
+  if($node)
+  {
+      $array_book_node=a_book_array($node);
+              return $array_book_node;
+        
+                return $node;    
+            }
+            else {
+      return 'node not found';
+    }
+}
+
 function books_backend_create_access($op = 'view', $args = array()) {
     return true;
 }
 
 
 function _node_resource_update_book($nid, $node) {
+
   $node_data = _services_arg_value($node, 'node');
 
   return $node_data;
- 
 }
