@@ -1,4 +1,6 @@
 <?php
+
+
 function entity_functions_menu() {
     $items = array();
 
@@ -29,10 +31,19 @@ function entity_functions_menu() {
         'type' => MENU_CALLBACK,
      );
     
-    $items['book_list'] = array(
+    $items['admin/books_list'] = array(
         'title' => 'Manager Approval',
         'page callback' => 'books_list',
+        //'access arguments' => user_has_access,
+        'access callback' => 'access_list',
+        'type' => MENU_CALLBACK,
+     );
+    $items['admin/role_change'] = array(
+        'title' => 'Manager Approval',
+        'page callback' => 'users_list',
+        //'access arguments' => user_has_access,
         'access arguments' => array('access content'),
+        'access callback' => 'role_access_list',
         'type' => MENU_CALLBACK,
      );
     $items['foo/ajax/approve_books'] = array(
@@ -47,7 +58,81 @@ function entity_functions_menu() {
     'page callback' => 'foo_ajax_reject_books',
     'access callback' => TRUE
   );
+     $items['foo/ajax/approve_user'] = array(
+    'title' => t('foo AJAX'),
+    'type' => MENU_CALLBACK,
+    'page callback' => 'foo_ajax_approve_user',
+    'access callback' => TRUE
+  );
+    $items['foo/ajax/reject_user'] = array(
+    'title' => t('foo AJAX'),
+    'type' => MENU_CALLBACK,
+    'page callback' => 'foo_ajax_reject_user',
+    'access callback' => TRUE
+  );
     return $items;
+}
+
+function access_list()
+{
+    global $user;
+watchdog('$file','<pre>'.print_r($user,true).'</pre>');
+watchdog('$roles','<pre>'.print_r($user->roles,true).'</pre>');
+$is_moderator=in_array('moderator'  , $user->roles , $strict = FALSE);
+$is_admin=in_array('administrator'  , $user->roles , $strict = FALSE);
+watchdog('$is_moderator','<pre>'.print_r($is_moderator,true).'</pre>');
+watchdog('$is_admin','<pre>'.print_r($is_admin,true).'</pre>');
+return $is_moderator || $is_admin;
+    return false;
+            
+    
+}
+function role_access_list()
+{
+    global $user;
+watchdog('$file','<pre>'.print_r($user,true).'</pre>');
+watchdog('$roles','<pre>'.print_r($user->roles,true).'</pre>');
+$is_role_moderator=in_array('role moderator'  , $user->roles , $strict = FALSE);
+$is_admin=in_array('administrator'  , $user->roles , $strict = FALSE);
+watchdog('$is_moderator','<pre>'.print_r($is_role_moderator,true).'</pre>');
+watchdog('$is_admin','<pre>'.print_r($is_admin,true).'</pre>');
+return $is_role_moderator || $is_admin;
+    return false;
+            
+    
+}
+
+
+function foo_ajax_reject_user()
+{    
+    $id_to_reject=$_POST['id'];        
+    watchdog('$id_to_reject','<pre>'.print_r($id_to_reject,true).'</pre>');
+    $return=switch_role($id_to_reject);
+    
+    drupal_json_output('rej'.$id_to_reject);
+}
+
+function switch_role($uid)
+{
+    $loaded_user=user_load($uid);
+    watchdog('$loaded_user','<pre>'.print_r($loaded_user,true).'</pre>');
+$is_moderator=in_array('moderator'  , $loaded_user->roles , $strict = FALSE);   
+watchdog('$is_moderator','<pre>'.print_r($is_moderator,true).'</pre>');
+if($is_moderator)
+{
+    unset($loaded_user->roles[4]);    
+}
+else {
+      $loaded_user->roles[4]="moderator";
+}
+user_save($loaded_user);
+    
+return "nothing";
+}
+function foo_ajax_approve_user()
+{
+    $id_to_approve=$_POST['id'];    
+    drupal_json_output('app'.$id_to_reject);
 }
 
 function foo_ajax_reject_books()
@@ -71,45 +156,38 @@ function foo_ajax_approve_books()
 function helloworld()
 {
     
-    return 'sample page';
+    return t('hello world! sample page');
 }
 
 function make_new_user($account)
 {
-    dpm(user_load(69));
-    
-    dpm('here');
-//       $email='ajfyyyftyv2@sahil.com';
-//       $pass='qwerty';
-//    $firstname='firstname';
-//    $lastname=='lastname';
     
        $email=$account['email'];
        $pass=$account['pass'];
     $firstname=$account['firstName'];
     $lastname=$account['lastName'];
     
-   if(is_object(user_load_by_mail($email)))
-   {
+   if (is_object(user_load_by_mail($email)))   {
+       
        return 'already a user';
        
    }
    
     
-    $split = explode('@',$email);
+    $split = explode('@', $email);
     $name = $split[0];
 
     
     $users = db_select('users', 'u')
     ->fields('u', array('uid'))
-    ->orderBy('u.uid',"DESC")    
+    ->orderBy('u.uid', "DESC")    
     ->execute()
     ->fetchAll();
 
 
 if(isset($users['0']->uid))
 {
-    $name=$name."(".($users['0']->uid+1).")";
+    $name=$name . "(" . ($users['0']->uid+1) . ")";
 }
 
  $new_user = array(
@@ -215,3 +293,177 @@ watchdog('$file','<pre>'.print_r($file,true).'</pre>');
     dpm($node);
     return 'make new book';    
 }
+function make_new_request($node)
+{
+    
+    node_load('53');
+    $title='sample_book_req';
+    $requester_id=$node['requester_id'];
+    $acceptor_id=$node['acceptor_id'];
+    $req_book_id=$node['req_book_id'];
+    $accept_book_id=$node['accept_book_id'];
+    
+//    $requester_id='69';
+//    $acceptor_id='11';
+//    $req_book_id='51';
+//    $accept_book_id='52';
+    
+    $node = new stdClass;
+    $node->type = 'requests';
+    $node->title = $title;
+    node_object_prepare($node);
+    
+    $node->field_requestor_id[LANGUAGE_NONE]['0']['target_id']=$requester_id;
+    $node->field_acceptor_id[LANGUAGE_NONE]['0']['target_id']=$acceptor_id;
+    $node->field_requestor_book[LANGUAGE_NONE]['0']['target_id']=$req_book_id;
+    $node->field_acceptor_book[LANGUAGE_NONE]['0']['target_id']=$accept_book_id;
+            
+            $node->field_requestor_approval[LANGUAGE_NONE]['0']['value']='0';
+            $node->field_acceptor_approval[LANGUAGE_NONE]['0']['value']='0';
+            $node->field_transactioncomplete[LANGUAGE_NONE]['0']['value']='0';
+            
+    node_save($node);
+    return $node;
+    dpm($node);
+    return 'make new requests';    
+}
+
+function book_list_for_user($user_id)
+{
+    $query = db_select('node', 'n');
+$query->leftjoin('field_data_field_moderator_approval', 'av', 'av.entity_id = n.nid');
+$query->leftjoin('field_data_field_books_owner', 'bo', 'bo.entity_id = n.nid');
+  $query->condition('n.type', 'books');
+  $query->condition('av.field_moderator_approval_value', '0');
+  $query->condition('bo.field_books_owner_target_id', $user_id);
+
+        $query->fields('n', array('nid'));
+        
+
+     $result = $query->execute()->fetchCol();
+
+     return $result;
+   
+    
+}
+
+
+function users_list()
+{
+    
+    $query = db_select('users', 'u');
+    $query->leftjoin('users_roles', 'ur', 'ur.uid = u.uid');
+//  $query->condition('n.type', 'books');
+  //$query->condition('ur.rid', '3','!=');
+        $query->fields('u', array('uid'));
+        $query->fields('u', array('mail'));
+        $query->fields('ur', array('rid'));
+        
+     $result = $query->execute()->fetchAll();
+     
+     $anonymous=array();
+     foreach($result as $value)
+     {
+         if((isset($value->rid) && ($value->rid==3 || $value->rid==5)) || $value->uid==0)
+         {
+         
+         }
+         else {
+             $anonymous[]=$value->uid;
+         }
+     }
+     dpm($anonymous);
+     dpm($result);
+     
+     
+//return 'hellooo';     
+$nodes = user_load_multiple($anonymous);
+dpm($nodes);
+
+$outer=array();
+   
+   foreach($nodes as $value)
+   {
+   $list_array=array();
+   $list_array['uid']=$value->uid;   
+   
+   $list_array['mail']=$value->mail;   
+   $list_array['first_name']=isset($value->field_user_first_name['und']['0']['value'])?$value->field_user_first_name['und']['0']['value']:"";   
+   $list_array['last_name']=isset($value->field_last_name['und']['0']['value'])?$value->field_last_name['und']['0']['value']:"";   
+   $outer[]=$list_array;
+   }
+   
+   return theme('users_list',array('output' => $outer));
+
+}
+
+function books_list()
+{
+    
+    $query = db_select('node', 'n');
+$query->leftjoin('field_data_field_moderator_approval', 'av', 'av.entity_id = n.nid');
+  $query->condition('n.type', 'books');
+  $query->condition('av.field_moderator_approval_value', '1');
+
+        $query->fields('n', array('nid'));
+        
+
+     $result = $query->execute()->fetchCol();
+     dpm($result);
+     
+//     
+//     
+//    $nids = db_select('node', 'n')
+//            ->join('field_data_field_moderator_approval', 'av', 'av.entity_id = n.nid')
+//    ->fields('n', array('nid'))
+//    ->fields('n', array('type'))
+//    
+//    ->condition('n.type', 'books')
+//    //->condition('av.field_moderator_approval_value', '1')        
+//    ->execute()
+//    ->fetchCol(); // returns an indexed array
+//
+//// Now return the node objects.
+$nodes = node_load_multiple($result);
+dpm($nodes);
+
+$outer=array();
+   
+   foreach($nodes as $value)
+   {
+   $list_array=array();
+   $list_array['nid']=$value->nid;   
+   $list_array['title']=$value->title;   
+   $list_array['book_description']=isset($value->field_description['und']['0']['value'])?$value->field_description['und']['0']['value']:"";   
+   $list_array['purchase_date']=isset($value->field_year_of_purchase['und']['0']['value'])?$value->field_year_of_purchase['und']['0']['value']:"";   
+   $list_array['author']=isset($value->field_author['und']['0']['value'])?$value->field_author['und']['0']['value']:""; 
+   $list_array['tags']="Fiction, Fantasy, Magic"; 
+   $list_array['amazon_link']=isset($value->field_amazon_link['und']['0']['value'])?$value->field_amazon_link['und']['0']['value']:""; 
+   dpm(isset($value->field_book_coverpage['und']['0']['uri']));
+   if(isset($value->field_book_coverpage['und']['0']['uri']))
+   {
+       $list_array['image_url']=substr($value->field_book_coverpage['und']['0']['uri'],8);
+   }
+   else
+   {
+   $list_array['image_url']="notuploaded.JPG";
+   }
+   $outer[]=$list_array;
+   }
+   
+   return theme('books_list',array('output' => $outer));
+
+}
+
+function entity_functions_theme() {
+    return array(
+        'books_list' => array(
+            'render element' => 'elements',
+            'template' => 'templates/my_books_list',
+        ),
+        'users_list' => array(
+            'render element' => 'elements',
+            'template' => 'templates/my_users_list',
+        ),
+    );
+} 

@@ -368,7 +368,7 @@ function _user_resource_retrieve_exp_barter($uid)
   }
   else
   {
-      return $account;
+      return json_encode($account);
       
   }
 
@@ -440,3 +440,24 @@ function _user_resource_delete_exp_barter($uid) {
 }
 
 
+function _user_resource_login_exp_barter($account)
+{
+  $account = _services_arg_value($account, 'account');
+  
+    $email=$account['email'];
+  $pass=$account['pass'];  
+    $loaded=user_load_by_mail($email);
+  //  $check_pass="22";
+    form_load_include($form_state, 'inc', 'content', 'includes/password');
+  $check_pass=user_check_password($pass, $loaded);
+  
+  $array=array();
+          $array['email']=$email;
+  $array['pass']=$pass;
+   $array['uid']=isset($loaded->uid)?$loaded->uid:"";
+  
+          $array['result']=$check_pass;
+    return json_encode($array);
+    
+    
+}
