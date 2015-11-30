@@ -221,10 +221,11 @@ bool fromBarterRequest;
     manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-    NSString* AccepterID =[NSString stringWithFormat:@"%d",  [[[dictobj objectAtIndex:selectedRow] objectForKey:@"book_owner_id"]integerValue ]];
+  
+    NSLog(@" my accepter is %d",  [[[dictobj objectAtIndex:selectedRow] objectForKey:@"book_owner_id"]integerValue ]);
     NSString * AcceptorBookID = [NSString stringWithFormat:@"%d",  [[[dictobj objectAtIndex:selectedRow] objectForKey:@"id"]integerValue ]];
     
-    NSDictionary *originalParameters = @{@"requester_id":userID , @"req_book_id":[NSString stringWithFormat:@"%ld" , (long)self.requesterBookID], @"acceptor_id":AccepterID , @"accept_book_id":AcceptorBookID};
+    NSDictionary *originalParameters = @{@"requester_id":userID , @"req_book_id":AcceptorBookID, @"acceptor_id": [NSString stringWithFormat:@"%ld" ,self.AccepterID] , @"accept_book_id": [NSString stringWithFormat:@"%ld" , (long)self.AccepterBookID]};
     
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"application/hal+json",@"text/json", @"text/javascript", @"text/html", nil];
     
@@ -248,10 +249,9 @@ bool fromBarterRequest;
                                    message:@""
                                    preferredStyle:UIAlertControllerStyleAlert];
         
-        UIAlertAction* ok = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault
+        UIAlertAction* ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
                                                    handler:^(UIAlertAction * action){
                                                        //Do Some action here
-                                                       [self raiseBarterRequest];
                                                    }];
         
         [alert addAction:ok];

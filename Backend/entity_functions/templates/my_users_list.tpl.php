@@ -5,6 +5,26 @@
 <head>
 <title>GeoJSON example</title>
 <style>
+
+.role
+{
+    cursor: pointer;
+    background-size: 105px 35px;
+    width: 128px;
+    background-image: url("http://dev-my-barter-site.pantheon.io/sites/default/files/off.jpg");
+    height: 63px;
+    background-repeat:no-repeat;
+}
+    
+.role.moderator
+{
+    cursor: pointer;
+    background-size: 105px 35px;
+    width: 128px;
+    background-image: url("http://dev-my-barter-site.pantheon.io/sites/default/files/on.jpg");
+    height: 63px;
+    background-repeat:no-repeat;
+}
 body {
     
 }
@@ -34,17 +54,19 @@ body {
 {
     float: left;
     width: 15%;
+    margin-top:-40px;
     
 }
 
 .hr-style
 {
+    margin-bottom: 13px;
     clear:both;
 }
 .each_row_0
 {
     clear:both;
-    background-color: linen;
+    //background-color: linen;
 }
 .each_row_0 div
 {
@@ -58,7 +80,7 @@ body {
 }
 .each_row_1{
     clear:both;
-    background-color: lightblue;
+    //background-color: lightblue;
     //background-color: blue;
 }
 
@@ -129,31 +151,51 @@ body {
         }
         
         ?> 
-<div class="each_row_<?php echo $count?>" id="node_id_<?php echo $value['nid'];?>">
-    <!--<div class="a">Id<?php echo $value['nid'];?></div>
-    <div class="b">Id<?php echo $value['title'];?></div>
+<div class="each_row_<?php echo $count?>" id="node_id_<?php echo $value['uid'];?>">
+    <!--<div class="a">Id<?php echo $value['uid'];?></div>
+    <div class="b">Id<?php echo $value['mail'];?></div>
     <br>
 -->    
         
     <h1 style="display:inline; float:left">    
 </h1> 
     <!--<input type="button" value="LogOut" style="vertical-align:top; float: right"/>-->
-<h3> <?php echo $counter?>) Book Name: <?php echo $value['title'];?></h3>
+<h2> <?php echo $counter?>) User Info: <?php echo $value['mail'];?></h2>
+<h2> <?php //echo $counter?>  <?php echo $value['first_name']." ".$value['last_name'];?></h2>
 
 <div class="column-one">
-<img src="http://dev-my-barter-site.pantheon.io/sites/default/files/<?php echo $value['image_url'];?>" alt="Twilight cover page" width="128" height="128" > 
+<!--<img src="http://dev-my-barter-site.pantheon.io/sites/default/files/<?php //echo $value['image_url'];?>" alt="Twilight cover page" width="128" height="128" > 
+-->
 </div> 
 <div class="column-two">
-<p><?php echo $value['book_description'];?></p>
-<span> Purchase Date: <?php echo $value['purchase_date'];?></span>
-<span> Author: <?php echo $value['author'];?></span>
-<span> Tags: lorem ipsum <?php //echo $value['tags'];?></span>
-<span> Amazon link: <a href="<?php echo $value['amazon_link'];?>">Click Here</a> </span>
+<p><?php //echo $value['first_name'];?></p>
+<!--
+<span> Purchase Date: <?php //echo $value['first_name'];?></span>
+<span> Author: <?php //echo $value['first_name'];?></span>
+<span> Tags: <?php //echo $value['first_name'];?></span>
+<span> Amazon link: <a href="<?php //echo $value['first_name'];?>">Click Here</a> </span>
+-->
 </div>
     <div class="column-three">
-    <div><button type="button" class="approve" id="approve_<?php echo $value['nid'];?>" node_id_button_info="<?php echo $value['nid'];?>">Approve</button></div>
-    <div><button type="button" class="reject" id="reject_<?php echo $value['nid'];?>" node_id_button_info="<?php echo $value['nid'];?>">Reject</button></div>
-</div>
+    <!--<div><button type="button" class="approve" id="approve_<?php echo $value['uid'];?>" node_id_button_info="<?php echo $value['uid'];?>">Approve</button></div>-->
+    <?php
+    $userl=user_load($value['uid']);
+    
+    $is_role_moderator=in_array('moderator'  , $userl->roles , $strict = FALSE);
+    if($is_role_moderator)
+    {?>
+        <div><div class="role moderator" id="reject_<?php echo $value['uid'];?>" node_id_button_info="<?php echo $value['uid'];?>"></div></div>
+<?php
+    }
+    else
+    {?>
+        <div><div class="role" id="reject_<?php echo $value['uid'];?>" node_id_button_info="<?php echo $value['uid'];?>"></div></div>
+<?php
+    }
+?>    
+        
+        
+    </div>
     
     <!--<input type="button" value="POST" /> &nbsp; &nbsp;
   
@@ -173,10 +215,10 @@ body {
     
     }
     if($counter==0)
-    {
-        ?>
-    <div class="no-books"><h3>No Books Found</h3></div>
-        <?php
+    {?>
+    <div class="no-user"><h3>No User Exists</h3></div>
+    <?php
+    
     }
     ?>
 <script>
@@ -191,20 +233,20 @@ body {
    $( document ).ready(function() {
     console.log( "ready!" );
     
-        $('.reject').click(function(){
+        $('.role').click(function(){
   var id=$(this)[0].getAttribute('node_id_button_info');
   var element=document.getElementById('node_id_'+id);
   //element.slideUp();
-  element.remove();
-  
+  //element.remove();
+  thissave=$(this);
   jQuery.ajax({
                     type: 'POST',
-                    url: '/foo/ajax/reject_books',
+                    url: '/foo/ajax/reject_user',
                     dataType: 'json',
       
 success: function(longlatarr) { 
-    console.log(longlatarr);
- 
+    
+ thissave.toggleClass('moderator');
 
 
 
@@ -221,7 +263,7 @@ success: function(longlatarr) {
  
   
         
-    $('.approve').click(function(){
+    $('.moderator').click(function(){
   //do something
   console.log($(this)[0]);
   console.log($(this)[0].getAttribute('node_id_button_info'));
@@ -229,17 +271,18 @@ success: function(longlatarr) {
   var element=document.getElementById('node_id_'+id);
   //$('#node_id_100').slideUp();
   //$( "#node_id_56" ).slideUp( 600 ).delay( 1600 ).fadeOut( 800 );
-        element.remove();
+    //    element.remove();
   console.log(element);
  
  
  jQuery.ajax({
                     type: 'POST',
-                    url: '/foo/ajax/approve_books',
+                    url: '/foo/ajax/approve_user',
                     dataType: 'json',
       
 success: function(longlatarr) { 
     console.log(longlatarr);
+    
 //alert('sent successfully');
     },
                     error: function() { alert(" An error occurred  "); },

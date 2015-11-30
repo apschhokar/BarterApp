@@ -107,10 +107,8 @@
                                                               options:NSJSONReadingMutableContainers
                                                                 error:&error];
         
-     
-        
         UIAlertController * alert=   [UIAlertController
-                                      alertControllerWithTitle:[NSString stringWithFormat:@"%@", responseObject]
+                                      alertControllerWithTitle:[NSString stringWithFormat:@"Successfully registered"]
                                       message:@""
                                       preferredStyle:UIAlertControllerStyleAlert];
         
@@ -126,23 +124,9 @@
                                         [alert dismissViewControllerAnimated:YES completion:nil];
                                         
                                     }];
-        UIAlertAction* noButton = [UIAlertAction
-                                   actionWithTitle:@"cancel"
-                                   style:UIAlertActionStyleDefault
-                                   handler:^(UIAlertAction * action)
-                                   {
-                                       [[self navigationController] popViewControllerAnimated:YES];
-                                      
-                                       [alert dismissViewControllerAnimated:YES completion:nil];
-                                       
-                                   }];
         
         [alert addAction:yesButton];
-        [alert addAction:noButton];
-        
         [self presentViewController:alert animated:YES completion:nil];
-        
-        
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);

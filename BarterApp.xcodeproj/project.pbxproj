@@ -739,7 +739,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Ajay Partap Singh Chhokar (CMZ8DDF9LU)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ajay Partap Singh Chhokar (CMZ8DDF9LU)";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -759,7 +759,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "30ca8e65-dc48-42cc-b5d6-2973e2c619dc";
+				PROVISIONING_PROFILE = "ebd5829a-df15-49ef-aba8-a59df83a5a8f";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -797,7 +797,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "d8498f5f-bc00-4e6b-8478-3dceb965cc5e";
+				PROVISIONING_PROFILE = "2c9a4e01-783f-4f1e-bdf5-89ad095bdd27";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -815,7 +815,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = UB.BarterBookApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "30ca8e65-dc48-42cc-b5d6-2973e2c619dc";
+				PROVISIONING_PROFILE = "ebd5829a-df15-49ef-aba8-a59df83a5a8f";
 				SHARED_PRECOMPS_DIR = "$(SRCROOT)/BarterApp/Prefix.pch";
 			};
 			name = Debug;
@@ -832,7 +832,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = UB.BarterBookApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d8498f5f-bc00-4e6b-8478-3dceb965cc5e";
+				PROVISIONING_PROFILE = "2c9a4e01-783f-4f1e-bdf5-89ad095bdd27";
 				SHARED_PRECOMPS_DIR = "$(SRCROOT)/BarterApp/Prefix.pch";
 			};
 			name = Release;

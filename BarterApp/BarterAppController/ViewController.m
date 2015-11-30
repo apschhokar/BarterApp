@@ -95,6 +95,9 @@
     if ([[segue identifier] isEqualToString:@"LoginSegue"])
     {
         NSLog(@"ok fine");
+//        BookFeedSingleBookController * viewcontroller = [segue destinationViewController];
+//        viewcontroller.selectedBookID = [[[BooksAll objectAtIndex:selectedBook] objectForKey:@"id"]integerValue ];
+
     }
     if ([[segue identifier] isEqualToString:@"RegisterSegue"])
     {
