@@ -98,6 +98,7 @@ function books_backend_services_resources() {
             ),
           ),
           'access callback' => 'books_backend_create_access',
+          //'file' => array('type' => 'inc', 'module' => 'services', 'name' => 'resources/user_resource'),
         ),        
          'retrieve_all_books' => array(
           'help' => 'Login a user for a new session',
@@ -122,16 +123,23 @@ function books_backend_services_resources() {
 
 function books_backend_retrieve_all_books($user_details)
 {
+    $user_details = _services_arg_value($user_details, 'user_details');
+  
+  $no_user=$user_details['user_id'];
+  
     $query = db_select('node', 'n');
 $query->leftjoin('field_data_field_moderator_approval', 'av', 'av.entity_id = n.nid');
 $query->leftjoin('field_data_field_available_for_barter', 'fb', 'fb.entity_id = n.nid');
 $query->leftjoin('field_data_field_books_owner', 'bo', 'bo.entity_id = n.nid');
+  $query->condition('bo.field_books_owner_target_id', $no_user,'!=');
   $query->condition('n.type', 'books');
   $query->condition('av.field_moderator_approval_value', '0');
   $query->condition('fb.field_available_for_barter_value', '1');
-   $query->fields('n', array('nid'));
+
+        $query->fields('n', array('nid'));
         
      $result = $query->execute()->fetchCol();
+     
 $nodes = node_load_multiple($result);
 dpm($nodes);
 
@@ -185,17 +193,107 @@ function books_backend_form_alter(&$form, $form_state, $form_id)
 
 
 function _node_resource_retrieve_book($nid) {
+    
   $node = node_load($nid);
   if($node)
   {
       $array_book_node=a_book_array($node);
-              return $array_book_node;
-        
+              return json_encode($array_book_node);
+             
                 return $node;    
             }
             else {
       return 'node not found';
     }
+}
+
+function a_book_array($node)
+{
+    $array_book_node=array();
+      $array_book_node['id']=$node->nid;
+              $array_book_node['title']=$node->title;
+              $array_book_node['book_owner_id']=isset($node->field_books_owner['und']['0']['target_id'])?$node->field_books_owner['und']['0']['target_id']:"";
+              $array_book_node['book_author']=isset($node->field_author['und']['0']['value'])?$node->field_author['und']['0']['value']:"";
+              $array_book_node['book_description']=isset($node->field_description['und']['0']['value'])?$node->field_description['und']['0']['value']:"";
+              $array_book_node['book_year_of_purchase']=isset($node->field_year_of_purchase['und']['0']['value'])?$node->field_year_of_purchase['und']['0']['value']:"";
+              $array_book_node['book_original_price']=isset($node->field_original_price['und']['0']['value'])?$node->field_original_price['und']['0']['value']:"";
+              if(isset($node->field_book_coverpage['und']['0']['uri']))
+                {
+                    $array_book_node['book_image_url']='http://'.$_SERVER['HTTP_HOST'].'/sites/default/files/'.substr($node->field_book_coverpage['und']['0']['uri'],8);
+                }
+                else
+                {
+                $array_book_node['book_image_url']='http://'.$_SERVER['HTTP_HOST'].'/sites/default/files/'."notuploaded.JPG";
+                }
+              $array_book_node['book_available_for_barter']=isset($node->field_available_for_barter['und']['0']['value'])?$node->field_available_for_barter['und']['0']['value']:"";
+              $array_book_node['book_moderator_approval']=isset($node->field_moderator_approval['und']['0']['value'])?$node->field_moderator_approval['und']['0']['value']:"";
+              $array_book_node['amazon_link']=isset($node->field_amazon_link['und']['0']['value'])?$node->field_amazon_link['und']['0']['value']:"";
+      
+              return $array_book_node;
+}
+
+function _node_resource_create_book($node) {
+    
+    watchdog('ajay','<pre>'.print_r($node,true).'</pre>');
+
+  $node = _services_arg_value($node, 'node');
+  
+  $book_obj=make_new_book($node);
+  $new_book_made['new_book_id']=$book_obj->nid;
+  //$new_book_made['book']=$book_obj;
+  
+  
+  return json_encode($new_book_made);
+  
+  return json_encode($node);
+  watchdog('check','<pre>'.print_r($node,true).'</pre>');
+  
+  unset($node['image_base64']);
+  return json_encode($node);
+  $data='data:image/png;base64,'.$node['random'];
+list($type, $data) = explode(';', $data);
+list(, $data)      = explode(',', $data);
+$data = base64_decode($data);
+
+
+    
+    $f=file_put_contents('public://sahil46.png', $data);
+  watchdog('$f','<pre>'.print_r($f,true).'</pre>');
+  
+  
+  return $node['random'];
+  if(isset($node_value['decision']) && $node_value['decision']=='new')
+  {
+  $title=$node_value['title'];
+  $description=$node_value['description'];
+  $field_year_of_purchase=$node_value['year_of_purchase'];
+  $author=$node_value['author'];
+  $field_original_price=$node_value['field_original_price'];
+  $uid=$node_value['uid'];
+  
+ return $node;
+  
+  $node = new stdClass;
+$node->type = 'books';
+node_object_prepare($node);
+$node->title = $title;
+$node->field_description[LANGUAGE_NONE]['0']['value'] = $description;
+$node->field_year_of_purchase[LANGUAGE_NONE]['0']['value'] = $field_year_of_purchase;
+$node->field_author[LANGUAGE_NONE]['0']['value'] = $author;
+$node->field_original_price[LANGUAGE_NONE]['0']['value'] = $field_original_price;
+$node->field_books_owner[LANGUAGE_NONE]['0']['target_id']=$uid;
+node_save($node);  
+  
+  
+  
+  return $node;
+  }
+  else if($node_value['decision']=='new')
+  {
+      
+  }
+  
+  
 }
 
 function books_backend_create_access($op = 'view', $args = array()) {
@@ -204,7 +302,6 @@ function books_backend_create_access($op = 'view', $args = array()) {
 
 
 function _node_resource_update_book($nid, $node) {
-
   $node_data = _services_arg_value($node, 'node');
 
   return $node_data;
