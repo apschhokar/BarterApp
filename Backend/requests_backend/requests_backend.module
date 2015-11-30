@@ -277,7 +277,14 @@ function a_requests_array($node)
 {
 $array_requests_array=array();    
 $array_requests_array['id']=$node->nid;        
-        $array_requests_array['acceptor_id']=isset($node->field_acceptor_id['und']['0']['target_id'])?$node->field_acceptor_id['und']['0']['target_id']:"";        
+$accept_user_id=isset($node->field_acceptor_id['und']['0']['target_id'])?$node->field_acceptor_id['und']['0']['target_id']:"";        
+$requestor_user_id=isset($node->field_requestor_id['und']['0']['target_id'])?$node->field_requestor_id['und']['0']['target_id']:"";
+$acceptor_load=user_load($accept_user_id);
+$requestor_load=user_load($requestor_user_id);        
+$array_requests_array['acceptor_mail']=isset($acceptor_load->mail)?$acceptor_load->mail:"";
+$array_requests_array['requestor_mail']=isset($requestor_load->mail)?$requestor_load->mail:"";
+
+$array_requests_array['acceptor_id']=isset($node->field_acceptor_id['und']['0']['target_id'])?$node->field_acceptor_id['und']['0']['target_id']:"";        
         if(isset($node->field_acceptor_book['und']['0']['target_id']))
         {
             $accept=node_load($node->field_acceptor_book['und']['0']['target_id']);
@@ -298,6 +305,10 @@ $array_requests_array['id']=$node->nid;
         {
             $array_requests_array['req_book_name']="";
         }
+        
+        
+        
+        
         $array_requests_array['req_book_id']=isset($node->field_requestor_book['und']['0']['target_id'])?$node->field_requestor_book['und']['0']['target_id']:"";        
         
         $array_requests_array['field_acceptor_approval']=isset($node->field_acceptor_approval['und']['0']['value'])?$node->field_acceptor_approval['und']['0']['value']:"";
