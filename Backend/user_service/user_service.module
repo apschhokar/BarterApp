@@ -368,7 +368,7 @@ function _user_resource_retrieve_exp_barter($uid)
   }
   else
   {
-      return $account;
+      return json_encode($account);
       
   }
 
