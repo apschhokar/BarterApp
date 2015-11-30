@@ -348,3 +348,123 @@ $reply=make_new_user($account);
   return json_encode($reply);
 }
 
+
+function _user_resource_update_exp_barter($uid, $account) {
+  // Adds backwards compatability with regression fixed in #1083242
+  $account = _services_arg_value($account, 'data');
+
+  $account['uid'] = $uid;
+ return 'hiiiupdate';
+  return json_encode(user_load(11));
+}
+
+
+function _user_resource_retrieve_exp_barter($uid)
+{
+watchdog('$uid','<pre>'.print_r($uid,true).'</pre>');      
+  $account = user_load($uid);
+  if (empty($account)) {
+    return services_error(t('There is no user with ID @uid.', array('@uid' => $uid)), 404);
+  }
+  else
+  {
+      $user_array=array();
+      $user_array['uid']=isset($account->uid)?$account->uid:"";
+      $user_array['mail']=isset($account->mail)?$account->mail:"";
+      $user_array['firstName']=isset($account->field_user_first_name['und']['0']['value'])?$account->field_user_first_name['und']['0']['value']:"";
+      $user_array['lastName']=isset($account->field_last_name['und']['0']['value'])?$account->field_last_name['und']['0']['value']:"";
+      
+      return json_encode($user_array);
+      //return json_encode($account);
+      
+  }
+
+  
+  $email=$account['email'];
+  $pass=$decoded['pass'];
+ 
+//
+//  //$array['c']=$str;
+  $array=array();
+$array['c']=$email;
+$array['d']=$pass;
+ //     return json_encode($array);
+  
+if(valid_email_address($email))
+{
+    $split = explode('@',$email);
+$name = $split[0];
+$name=$name;
+    
+}
+else
+{
+    return 'not a valid email';
+}
+$reply=array();
+$check=user_load_by_mail($email);
+ 
+//watchdog('dsdsdsdsdsd','<pre>'.print_r(user_check_password($pass, $check),true).'</pre>');
+//return json_encode($check); 
+module_load_include('inc', 'content', 'includes/password');
+
+if(user_check_password($pass, $check))
+    {
+    $reply['a']='password matched';
+    $reply['b']=$check;
+                return json_encode($reply);
+    }
+    else
+    {
+        $reply['0']='password FAILED';
+        
+        return json_encode($reply);
+    }
+        
+  
+  
+  
+  
+  
+  
+  
+}
+
+
+function _user_resource_delete_exp_barter($uid) {
+  if ($uid == 1) {
+    return services_error(t('The admin user cannot be deleted.'), 403);
+  }
+
+  $account = user_load($uid);
+  if (empty($account)) {
+    return services_error(t('There is no user with ID @uid.', array('@uid' => $uid)), 404);
+  }
+  user_delete($uid);
+
+  // Everything went right.
+  return TRUE;
+}
+
+
+function _user_resource_login_exp_barter($account)
+{
+  $account = _services_arg_value($account, 'account');
+  
+    $email=$account['email'];
+  $pass=$account['pass'];  
+    $loaded=user_load_by_mail($email);
+  //  $check_pass="22";
+    form_load_include($form_state, 'inc', 'content', 'includes/password');
+  $check_pass=user_check_password($pass, $loaded);
+  
+  $array=array();
+          $array['email']=$email;
+  $array['pass']=$pass;
+   $array['uid']=isset($loaded->uid)?$loaded->uid:"";
+  
+          $array['result']=$check_pass;
+    return json_encode($array);
+    
+    
+}

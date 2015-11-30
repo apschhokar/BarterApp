@@ -4,6 +4,7 @@ package = public-action
 version = VERSION
 core = 7.x
 files[] = entity_functions.module
+files[] = tests/entity_functions.test
 ; Information added by drupal.org packaging script on 2015-11-18
 version = "7.0-alpha3"
 project = "drupal"
