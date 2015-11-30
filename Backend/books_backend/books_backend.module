@@ -3,9 +3,6 @@ function books_backend_exp_menu() {
     $items = array();
     return $items;
 }
-
-
-
 function books_backend_services_resources() { 
 
     $node_resource = array(
@@ -101,7 +98,7 @@ function books_backend_services_resources() {
             ),
           ),
           'access callback' => 'books_backend_create_access',
-          ),        
+        ),        
          'retrieve_all_books' => array(
           'help' => 'Login a user for a new session',
           'callback' => 'books_backend_retrieve_all_books',
@@ -115,12 +112,37 @@ function books_backend_services_resources() {
             ),
           ),
           'access callback' => 'books_backend_create_access',
-           ),   
+        ),   
       ),
        ),
         );
     
   return $node_resource;
+}
+
+function books_backend_retrieve_all_books($user_details)
+{
+    $query = db_select('node', 'n');
+$query->leftjoin('field_data_field_moderator_approval', 'av', 'av.entity_id = n.nid');
+$query->leftjoin('field_data_field_available_for_barter', 'fb', 'fb.entity_id = n.nid');
+$query->leftjoin('field_data_field_books_owner', 'bo', 'bo.entity_id = n.nid');
+  $query->condition('n.type', 'books');
+  $query->condition('av.field_moderator_approval_value', '0');
+  $query->condition('fb.field_available_for_barter_value', '1');
+        $query->fields('n', array('nid'));
+        
+     $result = $query->execute()->fetchCol();
+$nodes = node_load_multiple($result);
+dpm($nodes);
+
+$outer=array();
+   
+   foreach($nodes as $value)
+   {
+      $outer[]=a_book_array($value); 
+   }
+  return json_encode($outer);
+    
 }
 
 function books_backend_create_access($op = 'view', $args = array()) {
