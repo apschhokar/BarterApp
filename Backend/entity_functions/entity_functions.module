@@ -215,3 +215,124 @@ watchdog('$file','<pre>'.print_r($file,true).'</pre>');
     dpm($node);
     return 'make new book';    
 }
+function make_new_request($node)
+{
+    
+    node_load('53');
+    $title='sample_book_req';
+    $requester_id=$node['requester_id'];
+    $acceptor_id=$node['acceptor_id'];
+    $req_book_id=$node['req_book_id'];
+    $accept_book_id=$node['accept_book_id'];
+    
+//    $requester_id='69';
+//    $acceptor_id='11';
+//    $req_book_id='51';
+//    $accept_book_id='52';
+    
+    $node = new stdClass;
+    $node->type = 'requests';
+    $node->title = $title;
+    node_object_prepare($node);
+    
+    $node->field_requestor_id[LANGUAGE_NONE]['0']['target_id']=$requester_id;
+    $node->field_acceptor_id[LANGUAGE_NONE]['0']['target_id']=$acceptor_id;
+    $node->field_requestor_book[LANGUAGE_NONE]['0']['target_id']=$req_book_id;
+    $node->field_acceptor_book[LANGUAGE_NONE]['0']['target_id']=$accept_book_id;
+            
+            $node->field_requestor_approval[LANGUAGE_NONE]['0']['value']='0';
+            $node->field_acceptor_approval[LANGUAGE_NONE]['0']['value']='0';
+            $node->field_transactioncomplete[LANGUAGE_NONE]['0']['value']='0';
+            
+    node_save($node);
+    return $node;
+    dpm($node);
+    return 'make new requests';    
+}
+
+function book_list_for_user($user_id)
+{
+    $query = db_select('node', 'n');
+$query->leftjoin('field_data_field_moderator_approval', 'av', 'av.entity_id = n.nid');
+$query->leftjoin('field_data_field_books_owner', 'bo', 'bo.entity_id = n.nid');
+  $query->condition('n.type', 'books');
+  $query->condition('av.field_moderator_approval_value', '0');
+  $query->condition('bo.field_books_owner_target_id', $user_id);
+
+        $query->fields('n', array('nid'));
+        
+
+     $result = $query->execute()->fetchCol();
+
+     return $result;
+   
+    
+}
+
+
+function books_list()
+{
+    
+    $query = db_select('node', 'n');
+$query->leftjoin('field_data_field_moderator_approval', 'av', 'av.entity_id = n.nid');
+  $query->condition('n.type', 'books');
+  $query->condition('av.field_moderator_approval_value', '1');
+
+        $query->fields('n', array('nid'));
+        
+
+     $result = $query->execute()->fetchCol();
+     dpm($result);
+     
+//     
+//     
+//    $nids = db_select('node', 'n')
+//            ->join('field_data_field_moderator_approval', 'av', 'av.entity_id = n.nid')
+//    ->fields('n', array('nid'))
+//    ->fields('n', array('type'))
+//    
+//    ->condition('n.type', 'books')
+//    //->condition('av.field_moderator_approval_value', '1')        
+//    ->execute()
+//    ->fetchCol(); // returns an indexed array
+//
+//// Now return the node objects.
+$nodes = node_load_multiple($result);
+dpm($nodes);
+
+$outer=array();
+   
+   foreach($nodes as $value)
+   {
+   $list_array=array();
+   $list_array['nid']=$value->nid;   
+   $list_array['title']=$value->title;   
+   $list_array['book_description']=isset($value->field_description['und']['0']['value'])?$value->field_description['und']['0']['value']:"";   
+   $list_array['purchase_date']=isset($value->field_year_of_purchase['und']['0']['value'])?$value->field_year_of_purchase['und']['0']['value']:"";   
+   $list_array['author']=isset($value->field_author['und']['0']['value'])?$value->field_author['und']['0']['value']:""; 
+   $list_array['tags']="Fiction, Fantasy, Magic"; 
+   $list_array['amazon_link']=isset($value->field_amazon_link['und']['0']['value'])?$value->field_amazon_link['und']['0']['value']:""; 
+   dpm(isset($value->field_book_coverpage['und']['0']['uri']));
+   if(isset($value->field_book_coverpage['und']['0']['uri']))
+   {
+       $list_array['image_url']=substr($value->field_book_coverpage['und']['0']['uri'],8);
+   }
+   else
+   {
+   $list_array['image_url']="notuploaded.JPG";
+   }
+   $outer[]=$list_array;
+   }
+   
+   return theme('books_list',array('output' => $outer));
+
+}
+
+function entity_functions_theme() {
+    return array(
+        'books_list' => array(
+            'render element' => 'elements',
+            'template' => 'templates/my_books_list',
+        ),
+    );
+} 
