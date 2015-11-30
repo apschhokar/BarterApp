@@ -32,14 +32,14 @@ function entity_functions_menu() {
      );
     
     $items['admin/books_list'] = array(
-        'title' => 'Manager Approval',
+        'title' => 'Moderator Approval',
         'page callback' => 'books_list',
         //'access arguments' => user_has_access,
         'access callback' => 'access_list',
         'type' => MENU_CALLBACK,
      );
     $items['admin/role_change'] = array(
-        'title' => 'Manager Approval',
+        'title' => 'Assign Moderator',
         'page callback' => 'users_list',
         //'access arguments' => user_has_access,
         'access arguments' => array('access content'),
@@ -70,7 +70,26 @@ function entity_functions_menu() {
     'page callback' => 'foo_ajax_reject_user',
     'access callback' => TRUE
   );
+    $items['logout_user_not_moderator'] = array(
+        'title' => 'Function Page',
+        'page callback' => 'logout_user_not_moderator',
+        'access arguments' => array('access content'),
+        'type' => MENU_CALLBACK,
+     );
+    
     return $items;
+}
+
+function logout_user_not_moderator()
+{
+    module_load_include('pages.inc', 'user');
+    drupal_set_message('Not a moderator',$type='status');
+ user_logout();
+ 
+ 
+ drupal_goto('http://dev-my-barter-site.pantheon.io/');
+ return '';
+    
 }
 
 function access_list()
