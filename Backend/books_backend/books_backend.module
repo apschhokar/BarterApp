@@ -3,6 +3,7 @@ function books_backend_exp_menu() {
     $items = array();
     return $items;
 }
+
 function books_backend_services_resources() { 
 
     $node_resource = array(
@@ -129,7 +130,7 @@ $query->leftjoin('field_data_field_books_owner', 'bo', 'bo.entity_id = n.nid');
   $query->condition('n.type', 'books');
   $query->condition('av.field_moderator_approval_value', '0');
   $query->condition('fb.field_available_for_barter_value', '1');
-        $query->fields('n', array('nid'));
+     $query->fields('n', array('nid'));
         
      $result = $query->execute()->fetchCol();
 $nodes = node_load_multiple($result);
@@ -141,10 +142,36 @@ $outer=array();
    {
       $outer[]=a_book_array($value); 
    }
+  
+  
   return json_encode($outer);
     
+}
+
+function books_backend_retrieve_books_of_user($user_details)
+{
+  $user_details = _services_arg_value($user_details, 'user_details');
+  $list_array=array();
+  
+  $list_array[]="check";
+  $list_array[]=$user_details;
+  $list=book_list_for_user($user_details['user_id']);
+  
+  $nodes = node_load_multiple($list);
+dpm($nodes);
+
+$outer=array();
+   
+   foreach($nodes as $value)
+   {
+      $outer[]=a_book_array($value); 
+   }
+  
+  
+  return json_encode($outer);
 }
 
 function books_backend_create_access($op = 'view', $args = array()) {
     return true;
 }
+
