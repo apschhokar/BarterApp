@@ -130,10 +130,20 @@ function books_backend_services_resources() {
 
 function books_backend_retrieve_all_books($user_details)
 {
+    $user_details = _services_arg_value($user_details, 'user_details');
+  
+  
+  
+  $no_user=$user_details['user_id'];
+  //return $no_user;
+  //$list=book_list_for_user($user_details['user_id']);
+    
+    
     $query = db_select('node', 'n');
 $query->leftjoin('field_data_field_moderator_approval', 'av', 'av.entity_id = n.nid');
 $query->leftjoin('field_data_field_available_for_barter', 'fb', 'fb.entity_id = n.nid');
 $query->leftjoin('field_data_field_books_owner', 'bo', 'bo.entity_id = n.nid');
+  $query->condition('bo.field_books_owner_target_id', $no_user,'!=');
   $query->condition('n.type', 'books');
   $query->condition('av.field_moderator_approval_value', '0');
   $query->condition('fb.field_available_for_barter_value', '1');
@@ -142,6 +152,7 @@ $query->leftjoin('field_data_field_books_owner', 'bo', 'bo.entity_id = n.nid');
         $query->fields('n', array('nid'));
         
      $result = $query->execute()->fetchCol();
+     
 $nodes = node_load_multiple($result);
 dpm($nodes);
 
@@ -201,7 +212,7 @@ function _node_resource_retrieve_book($nid) {
   if($node)
   {
       $array_book_node=a_book_array($node);
-              return $array_book_node;
+              return json_encode($array_book_node);
               //return isset($node->field_book_coverpage['und']['0']['uri']);
                 return $node;    
             }
@@ -215,18 +226,18 @@ function a_book_array($node)
     $array_book_node=array();
       $array_book_node['id']=$node->nid;
               $array_book_node['title']=$node->title;
-              $array_book_node['book_owner_id']=isset($node->field_books_owner['und']['0']['value'])?$node->field_books_owner['und']['0']['value']:"";
+              $array_book_node['book_owner_id']=isset($node->field_books_owner['und']['0']['target_id'])?$node->field_books_owner['und']['0']['target_id']:"";
               $array_book_node['book_author']=isset($node->field_author['und']['0']['value'])?$node->field_author['und']['0']['value']:"";
               $array_book_node['book_description']=isset($node->field_description['und']['0']['value'])?$node->field_description['und']['0']['value']:"";
               $array_book_node['book_year_of_purchase']=isset($node->field_year_of_purchase['und']['0']['value'])?$node->field_year_of_purchase['und']['0']['value']:"";
               $array_book_node['book_original_price']=isset($node->field_original_price['und']['0']['value'])?$node->field_original_price['und']['0']['value']:"";
               if(isset($node->field_book_coverpage['und']['0']['uri']))
                 {
-                    $array_book_node['book_image_url']=$_SERVER['HTTP_HOST'].'/sites/default/files/'.substr($node->field_book_coverpage['und']['0']['uri'],8);
+                    $array_book_node['book_image_url']='http://'.$_SERVER['HTTP_HOST'].'/sites/default/files/'.substr($node->field_book_coverpage['und']['0']['uri'],8);
                 }
                 else
                 {
-                $array_book_node['book_image_url']=$_SERVER['HTTP_HOST'].'/sites/default/files/'."notuploaded.JPG";
+                $array_book_node['book_image_url']='http://'.$_SERVER['HTTP_HOST'].'/sites/default/files/'."notuploaded.JPG";
                 }
               $array_book_node['book_available_for_barter']=isset($node->field_available_for_barter['und']['0']['value'])?$node->field_available_for_barter['und']['0']['value']:"";
               $array_book_node['book_moderator_approval']=isset($node->field_moderator_approval['und']['0']['value'])?$node->field_moderator_approval['und']['0']['value']:"";
