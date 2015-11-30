@@ -361,14 +361,21 @@ function _user_resource_update_exp_barter($uid, $account) {
 
 function _user_resource_retrieve_exp_barter($uid)
 {
-    
+watchdog('$uid','<pre>'.print_r($uid,true).'</pre>');      
   $account = user_load($uid);
   if (empty($account)) {
     return services_error(t('There is no user with ID @uid.', array('@uid' => $uid)), 404);
   }
   else
   {
-      return json_encode($account);
+      $user_array=array();
+      $user_array['uid']=isset($account->uid)?$account->uid:"";
+      $user_array['mail']=isset($account->mail)?$account->mail:"";
+      $user_array['firstName']=isset($account->field_user_first_name['und']['0']['value'])?$account->field_user_first_name['und']['0']['value']:"";
+      $user_array['lastName']=isset($account->field_last_name['und']['0']['value'])?$account->field_last_name['und']['0']['value']:"";
+      
+      return json_encode($user_array);
+      //return json_encode($account);
       
   }
 
