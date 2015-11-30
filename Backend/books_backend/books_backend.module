@@ -3,9 +3,7 @@ function books_backend_exp_menu() {
     $items = array();
     return $items;
 }
-
 function books_backend_services_resources() { 
-
     $node_resource = array(
     'books_backend' => array(
       'operations' => array(
@@ -113,7 +111,7 @@ function books_backend_services_resources() {
             ),
           ),
           'access callback' => 'books_backend_create_access',
-        ),   
+            ),   
       ),
        ),
         );
@@ -171,7 +169,27 @@ $outer=array();
   return json_encode($outer);
 }
 
+function _node_resource_delete_book($nid)
+{
+    node_delete($nid);
+    $temp_array=array();
+    $temp_array['reply']='deleted';
+    return json_encode($temp_array);
+}
+
+function books_backend_form_alter(&$form, $form_state, $form_id)
+{
+    
+}
+
 function books_backend_create_access($op = 'view', $args = array()) {
     return true;
 }
 
+
+function _node_resource_update_book($nid, $node) {
+  $node_data = _services_arg_value($node, 'node');
+
+  return $node_data;
+ 
+}
