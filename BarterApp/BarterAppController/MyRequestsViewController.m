@@ -13,12 +13,13 @@
 
 
 
-@interface MyRequestsViewController () <UITableViewDataSource , UITableViewDelegate>
+@interface MyRequestsViewController () <UITableViewDataSource , UITableViewDelegate,MFMailComposeViewControllerDelegate>
 
 @end
 
 @implementation MyRequestsViewController
 NSMutableArray *RequestDict;
+int selectedID;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -165,6 +166,7 @@ NSMutableArray *RequestDict;
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    selectedID = indexPath.row;
     
     UIAlertController *alert= [UIAlertController
                                alertControllerWithTitle:@"Accept Request"
@@ -174,6 +176,21 @@ NSMutableArray *RequestDict;
     UIAlertAction* ok = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault
                                                handler:^(UIAlertAction * action){
                                                    //Do Some action here
+                                                   
+                                                   NSString *emailTitle = @"Barter Request Accept";
+                                                   // Email Content
+                                                   NSString *messageBody = @"Hi Just saw your request! I am interested in the barter! If interested please share your location and contact information!";
+                                                   // To address
+                                                   NSArray *toRecipents = [NSArray arrayWithObject:[[RequestDict objectAtIndex:selectedID]objectForKey:@"requestor_mail" ]];
+                                                   
+                                                   MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
+                                                   mc.mailComposeDelegate = self;
+                                                   [mc setSubject:emailTitle];
+                                                   [mc setMessageBody:messageBody isHTML:NO];
+                                                   [mc setToRecipients:toRecipents];
+                                                   
+                                                   // Present mail view controller on screen
+                                                   [self presentViewController:mc animated:YES completion:NULL];
                                                    
                                                                                                 }];
     UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleDefault
@@ -195,7 +212,29 @@ NSMutableArray *RequestDict;
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 100;
 }
-
+- (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            NSLog(@"Mail cancelled");
+            break;
+        case MFMailComposeResultSaved:
+            NSLog(@"Mail saved");
+            break;
+        case MFMailComposeResultSent:
+            NSLog(@"Mail sent");
+            break;
+        case MFMailComposeResultFailed:
+            NSLog(@"Mail sent failure: %@", [error localizedDescription]);
+            break;
+        default:
+            break;
+    }
+    
+    // Close the Mail Interface
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
 
 
 @end

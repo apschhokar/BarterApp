@@ -10,5 +10,6 @@
 
 @interface MyRequestsViewController : UIViewController <UITableViewDelegate , UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *myRequestTableView;
+-(void) checkIFnorequest ;
 
 @end

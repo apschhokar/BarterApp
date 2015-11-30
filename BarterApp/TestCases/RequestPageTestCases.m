@@ -32,6 +32,13 @@
     // Use XCTAssert and related functions to verify your tests produce the correct results.
 }
 
+-(void) testcheckALertView{
+    [self.vcToTest checkIFnorequest];
+    XCTAssertNotNil(self.vcToTest);
+    
+
+}
+
 - (void)testPerformanceExample {
     // This is an example of a performance test case.
     [self measureBlock:^{

@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface MyProfileViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UILabel *FirstName;
+@property (weak, nonatomic) IBOutlet UITextField *emailID;
 
 @end

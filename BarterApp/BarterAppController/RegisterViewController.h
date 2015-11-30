@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *confirmPassword;
 - (IBAction)onRegisterButtonPressed:(id)sender;
 -(BOOL) validateEmail: (NSString *) candidate;
-
+-(BOOL) checkAllTheParameters;
+-(void) showAlertView: (NSString *) Title and:(NSString *) information;
 
 @end

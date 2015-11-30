@@ -7,6 +7,7 @@
 //
 
 #import "MyProfileViewController.h"
+#import "AFNetworking.h"
 
 @interface MyProfileViewController ()
 
@@ -43,7 +44,7 @@ NSMutableDictionary *MyProfileDict;
     
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"application/hal+json",@"text/json", @"text/javascript", @"text/html", nil];
     
-    NSString *fullString = [NSString stringWithFormat:@"http://dev-my-barter-site.pantheon.io/myrestapi/barter_user_service/%d" , userID];
+    NSString *fullString = [NSString stringWithFormat:@"http://dev-my-barter-site.pantheon.io/myrestapi/barter_user_service/%@" , userID];
     
     
     [manager GET:fullString parameters:originalParameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -65,13 +66,13 @@ NSMutableDictionary *MyProfileDict;
                                                   options:NSJSONReadingMutableContainers
                                                     error:&error];
         
+         self.FirstName.text = [MyProfileDict objectForKey:@"firstName"];
+        self.emailID.text = [MyProfileDict objectForKey:@"mail"];
+        
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
-    
-
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -88,5 +89,7 @@ NSMutableDictionary *MyProfileDict;
     // Pass the selected object to the new view controller.
 }
 */
+
+
 
 @end

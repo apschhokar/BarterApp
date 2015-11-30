@@ -47,12 +47,27 @@
 
 
 -(void) loginButtonPressed{
+    
 }
 
 
--(void) TestLoginWebservice{
 
+//check if the app does not crash on runing the function
+-(void) testLoginWebservice{
+    [self.vcToTest onLoginButtonPressed:nil];
+    XCTAssertNotNil(self.vcToTest);
+  
+
+    
 }
+
+//check if the app does not crash on runing the function
+-(void) testAlertview{
+    [self.vcToTest showAlertView:@"hello" and:@"Unit test"];
+    XCTAssertNotNil(self.vcToTest);
+}
+
+
 
 
 - (void)testExample {

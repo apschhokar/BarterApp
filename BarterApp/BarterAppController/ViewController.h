@@ -17,6 +17,7 @@
 -(void) saveUserID : (NSDictionary *) retreivedDictionary;
 -(BOOL) validateEmail: (NSString *) candidate ;
 -(void) showAlertView: (NSString *) Title and:(NSString *) information;
+@property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 
 
 @end

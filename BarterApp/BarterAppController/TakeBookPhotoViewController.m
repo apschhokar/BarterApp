@@ -80,7 +80,7 @@
     
     NSString * image = [ self getImageBase64];
     
-    NSDictionary *originalParameters = @{@"title":[self.bookTitle text] ,@"book_owner_id":userID , @"book_author": [self.bookAuthor text] ,@"book_description": [self.bookDescription text], @"image_encode": image ,@"book_year_of_purchase" :[self.yearOfPurchase text] , @"book_original_price": [self.originalPrice text] ,@"amazon_link" : [NSString stringWithFormat:@"nothing"]};
+    NSDictionary *originalParameters = @{@"title":[self.bookTitle text] ,@"book_owner_id":userID , @"book_author": [self.bookAuthor text] ,@"book_description": [self.bookDescription text], @"image_encode": image ,@"book_year_of_purchase" :[self.yearOfPurchase text] , @"book_original_price": [self.originalPrice text] ,@"amazon_link" : [NSString stringWithFormat:@"www.amazon.com"]};
     
     
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"application/hal+json",@"text/json", @"text/javascript", @"text/html", nil];

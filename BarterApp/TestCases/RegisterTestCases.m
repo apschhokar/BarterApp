@@ -35,13 +35,20 @@
 }
 
 
-
+-(void) testAllParameters{
+    XCTAssertTrue([self.vcToTest checkAllTheParameters]);
+}
 
 -(void) testForValidEmail{
     NSString *validEmail = @"apschhokar@gmail.com";
     XCTAssertTrue( [self.vcToTest validateEmail:validEmail]);
     NSString *invalidEmail = @"r@gmail";
     XCTAssertFalse( [self.vcToTest validateEmail:invalidEmail]);
+}
+
+-(void) testAlertview{
+    [self.vcToTest showAlertView:@"hello" and:@"Unit test"];
+    XCTAssertNotNil(self.vcToTest);
 }
 
 
